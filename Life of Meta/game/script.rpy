@@ -1,6 +1,4 @@
-﻿# hallo
-
-# Declare characters used by this game.
+﻿# Declare characters used by this game.
 define s = Character(_("Sylvie"), color="#c8ffc8")
 define m = Character(_("MetaRobin"), color="#c8c8ff")
 
