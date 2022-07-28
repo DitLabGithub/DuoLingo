@@ -1,16 +1,14 @@
 ﻿# Declare characters used by this game.
 define s = Character(_("Sylvie"), color="#c8ffc8")
-define m = Character(_("MetaRobin"), color="#c8c8ff")
+define m = Character(_("MetaRobbin"), color="#c8c8ff")
+define v = Character(_("Metavriendin"), color="#a23af9")
 
-# This is a variable that is True if you've compared a VN to a book, and False
-# otherwise.
-default book = False
 #random score die overal gebruikt kan worden
 default rng = 4
 #werkscore voor hoe goed je werk doet
 default score = 5
 #score om te bepalen of je een booster hebt of niet
-default booster = 0
+default booster = False
 #score om te bepalen welk event je hebt afgerond zodat je doorgaat in het leven
 default lasteventnr = 0
 
@@ -457,6 +455,14 @@ label eventpicker:
 
             jump loverevent
 
+        if lasteventnr == 3:
+
+            jump deavond
+
+        if lasteventnr == 4:
+
+            jump deechteavond
+
     return
 
 label covidevent:
@@ -465,7 +471,7 @@ label covidevent:
 
     show win
 
-    if booster == 0:
+    if booster:
 
         "tijd voor een avondje uit..."
         "beetje relaxen maar is je covid pass in orde?"
@@ -488,7 +494,7 @@ label covidevent:
                 "je mist helaas een goed feestje, maar bent gelukkig op tijd op werk"
                 "en je afspraak voor een booster is gemaakt"
 
-                $ booster += 1
+                $ booster = True
 
                 jump randomcasus
 
@@ -597,10 +603,59 @@ label loverevent:
 
             "je besluit maar naar huis te gaan...":
 
-                "je loopt naar de bar en betaald je rekening"
+                "je loopt naar de bar en betaalt je rekening"
                 "daarna snel naar huis en komt redelijk vroeg thuis"
                 "de volgende ochtend ben je een beetje brak, maar nog op tijd op het werk"
 
                 jump randomcasus
 
         return
+
+label deavond:
+
+    "Als je terug komt uit je werk besluit je haar te bellen"
+    "wat wil je doen?"
+
+    menu:
+
+        "praat nog wat langer door aan de telefoon":
+
+            "je praat nog wat langer door aan de telefoon"
+            "na een tijdje zegt ze dat ze nu toch echt moet gaan... "
+            "dus jullie zeggen elkaar gedag en beloven weer te bellen"
+            jump raondomcasus
+
+
+        "vraag haar uit":
+
+            m "zeg... ehm... zou je... ehm... "
+            v "wat zeg je MetaRobbin? de verbinding valt wel?"
+            "je zegt nog wat... maar je hoort dat de verbinding wordt verbroken..."
+            "je besluit maar naar bed te gaan en je op te maken voor een volgende werkdag"
+
+            "als je wakker wordt voel je je wat sip... dit was de kans om haar mee uit te vragen"
+            "terwijl je naar je werk loopt krijg je een berichtje"
+            v "Hey MetaRobbin, sorry van ons gesprek gister... ik wilde je eigenlijk wat vragen"
+            m "ik jou ook eigenlijk, ik bel je gelijk"
+
+            "je belt haar op en ze neem gelijk op"
+            v "Hoi MetaRobbin, wil je wel met me uit?"
+            m "wa... hmm? ehm... ja!"
+            v "oh gelukkig, wat wilde jij vragen?"
+            m "hetzelfde"
+            "jullie spreken af om snel weer te bellen voor een avondje uit"
+
+            $ lasteventnr += 1
+
+        "sluit af en ga naar bed":
+
+            "jammer... zo wordt het nooit wat natuurlijk..."
+
+            scene gameover
+
+    return
+
+label deechteavond:
+
+return
+
