@@ -5,8 +5,14 @@ define m = Character(_("MetaRobin"), color="#c8c8ff")
 # This is a variable that is True if you've compared a VN to a book, and False
 # otherwise.
 default book = False
+#random score die overal gebruikt kan worden
 default rng = 4
+#werkscore voor hoe goed je werk doet
 default score = 5
+#score om te bepalen of je een booster hebt of niet
+default booster = 0
+#score om te bepalen welk event je hebt afgerond zodat je doorgaat in het leven
+default lasteventnr = 0
 
 label start:
 
@@ -23,6 +29,10 @@ label start:
 
             jump toekomst
 
+        "test events":
+
+            jump covidevent
+    return
 
 label born:
 
@@ -40,7 +50,7 @@ label born:
 
     "natuurlijk moet je eerst aangemeld worden bij de gemeente om je registraties op orde te maken... "
 
-
+    return
 
 
 label afgestudeerd:
@@ -49,7 +59,10 @@ label afgestudeerd:
 
 label toekomst:
 
-    jump gameover
+    # moet nog verder uitgewerkt worden...
+   scene gameover
+   with fade
+   return
 
 
 
@@ -80,6 +93,8 @@ label werk:
     "Je wordt begroet door je manager, Sylvie"
 
     jump intro
+
+    return
 
 
 label intro:
@@ -160,6 +175,8 @@ label randomcasus:
 
         jump casus5
 
+    return
+
 label casus1:
 
     # inholland casus
@@ -182,6 +199,8 @@ label casus1:
         "Nee":
 
             jump goedbezig
+    return
+
 
 label casus2:
 
@@ -357,7 +376,7 @@ label goedbezig:
 
         "Probeer de volgende!"
 
-        jump randomcasus
+        jump eventpicker
 
         return
 
@@ -372,10 +391,15 @@ label goedbezig:
 
         s "Hulde!"
 
-        s "Tijd voor een feestje!"
-
         show win
         with fade
+
+        s "je hebt zulk goed werk gedaan hier MetaRobbin... "
+        s "je verdient een promotie!"
+        s "we gaan ook het systeem van diplomas een beetje veranderen"
+        s "hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
+
+        jump toekomstbaan
 
     return
 
@@ -392,7 +416,7 @@ label badending:
 
         s "Voor deze keer zie ik het door de vingers..."
 
-        jump randomcasus
+        jump eventpicker
 
     if score < 4:
 
@@ -404,3 +428,179 @@ label badending:
         with fade
 
     return
+
+label toekomstbaan:
+
+    scene black
+    with dissolve
+
+    #andere baan... en uitleg van het nieuwe systeem...
+    return
+
+label eventpicker:
+# de eventpicker voor activiteiten na meta's werkdag
+
+    $ rng = renpy.random.randint (1,3)
+
+    if rng < 3:
+
+        jump randomcasus
+
+    if rng == 3:
+
+
+        if lasteventnr == 1:
+
+            jump covidevent
+
+        if lasteventnr == 2:
+
+            jump loverevent
+
+    return
+
+label covidevent:
+# eerste event voor na werk. uitgaan met de covid pass
+# eventnr 1
+
+    show win
+
+    if booster == 0:
+
+        "tijd voor een avondje uit..."
+        "beetje relaxen maar is je covid pass in orde?"
+        "je pakt je telefoon en checkt je wallet"
+        "je kijkt en ziet geen QR code... je vaccinatie is verlopen..."
+
+        "wat ga je doen?"
+
+        menu:
+
+            "laat je testen":
+
+                "je hebt een fantastisch feestje tot laat in de nacht"
+                "helaas... kom je veel te laat op je werk"
+
+                jump badending
+
+            "je besluit niet te gaan en een nieuwe booster aan te vragen":
+
+                "je mist helaas een goed feestje, maar bent gelukkig op tijd op werk"
+                "en je afspraak voor een booster is gemaakt"
+
+                $ booster += 1
+
+                jump randomcasus
+
+            "je besluit gewoon te gaan en maar zien hoe het loopt":
+
+                "je gaat de stad in en komt wat vrienden tegen"
+                "jullie besluiten naar de kroeg te gaan"
+                "als jullie bij de kroeg komen zie je dat er een corona controle is..."
+
+                menu:
+
+                    "je besluit toch maar naar huis te gaan":
+
+                        "je mist helaas een goed feestje, maar bent gelukkig op tijd op werk"
+
+                        jump randomcasus
+
+
+                    "je gaat naar een andere kroeg, zonder corona controle":
+
+                        "je zit in je eentje in de kroeg, want al je vrienden zijn de andere kroeg gegaan"
+                        "na een tijdje verveel je je en besluit je maar naar huis te gaan"
+                        "op tijd naar bed. in ieder geval ben je op tijd op je werk"
+
+                        jump randomcasus
+
+
+                    "je besluit een telefoon van je vriend te gebruiken":
+
+                        "na wat gedoe kom je toch binnen"
+                        "laat het feest maar beginnen!!"
+                        "na een paar uur wil je nog een biertje halen, maar je krijgt een onverwachte controle"
+
+                        menu:
+
+                            "je besluit maar snel naar huis te gaan":
+
+                                "redelijk aangeschoten kom je thuis aan"
+                                "de volgende ochtend wordt je waker met een behoorlijke kater"
+                                "maar gelukkig wel op tijd op het werk"
+
+                                jump randomcasus
+
+                            "je vraagt je vriend om een biertje te gaan halen":
+
+                                "je hebt een fantastisch feestje tot laat in de nacht"
+                                "helaas... kom je veel te laat op je werk"
+
+                                jump badending
+
+                            "je gaat gewoon bestellen":
+
+                                "je loopt naar de bar en besteld een rondje bier"
+                                "de barman vraagt naar je coronapas"
+                                "je kijkt hem aan en zegt dat je die niet hebt"
+                                "de barman roept de uitsmijter waarop een kleine vechtpartij begint"
+                                "de volgende ochtend wordt je wakker in een politiecel"
+                                $ score -= 20
+                                s "je bent ontslagen!"
+
+                                scene gameover
+                                with fade
+
+    if booster == 1:
+
+        "tijd voor een avondje uit..."
+        "beetje relaxen maar is je covid pass in orde?"
+        "je pakt je telefoon en checkt je wallet"
+        "je kijkt en ziet een QR code. Mooi! niets houd je tegen om te gaan feesten!"
+
+        "helaas kom je veel te laat op je werk..."
+        $ lasteventnr += 1
+
+        jump badending
+    return
+
+label loverevent:
+#tweede event voor meta robbin
+
+        "tijd voor een avondje uit..."
+        "beetje relaxen maar is je covid pass in orde?"
+        "je pakt je telefoon en checkt je wallet"
+        "je kijkt en ziet een QR code. Mooi! niets houd je tegen om te gaan feesten!"
+        "na een tijdje kom een een mooi persoon tegen"
+        "wat doe je?"
+
+        menu:
+
+            "je spreek haar aan?":
+
+                "je loopt op haar af en begint te praten"
+                "het wordt een hele leuk avond en je komt veel te laat thuis, maar wel met een telefoonnummer"
+                "helaas kom je wel te laat op je werk..."
+
+                $ lasteventnr += 1
+
+                jump badending
+
+            "je blijft zitten waar je zit en drinkt nog wat verder":
+
+                "je besteld nog een biertje en gaat daarna over op vodka"
+                "het wordt een lange avond en wordt wakker naar de kroeg"
+                "helaas, ga je vandaag je werk niet halen..."
+
+                jump badending
+
+            "je besluit maar naar huis te gaan...":
+
+                "je loopt naar de bar en betaald je rekening"
+                "daarna snel naar huis en komt redelijk vroeg thuis"
+                "de volgende ochtend ben je een beetje brak, maar nog op tijd op het werk"
+
+                jump randomcasus
+
+        return
