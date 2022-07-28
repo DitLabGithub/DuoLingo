@@ -10,6 +10,51 @@ default score = 5
 
 label start:
 
+    menu:
+        "ga naar werk spel":
+
+            jump werk
+
+        "begin metas leven":
+
+            jump born
+
+        "naar de toekomst van meta":
+
+            jump toekomst
+
+
+label born:
+
+    #geboorte van meta robin voorstellen van mama en papa meta...
+    #aangifte van meta robin bij de gemeente
+    #inschrijven meta bij een school
+    #àanmelden voor stex met beperking
+    #aanmelden stufi
+
+    "dit zijn metapapa en metamama."
+
+    "metamama staat op het punt om te bevallen en hiermee begint jouw leven."
+
+    "je vernoemen je naar je overgrootvader en vanaf nu heet je MetaRobin"
+
+    "natuurlijk moet je eerst aangemeld worden bij de gemeente om je registraties op orde te maken... "
+
+
+
+
+label afgestudeerd:
+
+    jump werk
+
+label toekomst:
+
+    jump gameover
+
+
+
+label werk:
+
     # Start by playing some music.
     # play music "illurock.opus"
 
