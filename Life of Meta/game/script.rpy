@@ -10,7 +10,7 @@ default score = 5
 #score om te bepalen of je een booster hebt of niet
 default booster = False
 #score om te bepalen welk event je hebt afgerond zodat je doorgaat in het leven
-default lasteventnr = 0
+default lasteventnr = 1
 
 label start:
 
@@ -471,7 +471,7 @@ label covidevent:
 
     show win
 
-    if booster:
+    if booster == False:
 
         "tijd voor een avondje uit..."
         "beetje relaxen maar is je covid pass in orde?"
@@ -558,7 +558,7 @@ label covidevent:
                                 scene gameover
                                 with fade
 
-    if booster == 1:
+    if booster:
 
         "tijd voor een avondje uit..."
         "beetje relaxen maar is je covid pass in orde?"
@@ -656,6 +656,100 @@ label deavond:
     return
 
 label deechteavond:
+#keuze om tot de vrijpartij te komen... of niet...
+
+    "het is zo ver! eindelijk een avondje uit"
+    "je besluit je netjes aan te kleden"
+
+    "waar wil je afspreken?"
+    menu:
+        "in een restaurant":
+
+            v "weet jij nog een leuk restaurant?"
+            m "ja hoor, hier om de hoek zit een leukv eettentje"
+            v "leuk!"
+            "jullie gaan naar binnen en raken aan de praat"
+            "na een heerlijk diner gaan jullie naar buiten"
+            v "ga je mee naar mijn huis?"
+            m "ehm... ja... leuk.."
+            "ze kust je langzaam op je lippen en daarna lopen jullie naar haar huis"
+            jump consentual
+
+        "in de kroeg":
+
+            "jullie spreken af in de kroeg waar jullie elkaar hebben ontmoet"
+            "als je aankomt zit ze er al"
+            "je geeft haar een knuffel"
+            m "wil je wat drinken?"
+            v "doe maar een biertje"
+            "je loopt naar de bar en haalt 2 biertjes op en gaat naast haar zitten"
+            "al snel raken jullie in gesprek en hebben een leuke avond"
+            "na een tijdje beginnen jullie te zoenen en vraagt ze"
+            v "ga je mee naar mijn huis?"
+
+            menu:
+                "ja, graag":
+                    jump consentual
+
+                "nee, laten we nog even blijven":
+                    "jullie halen nog een biertje... en nog een... en nog een"
+                    "aan het einde van de avond gaan jullie allebei naar je eigen huis"
+                    "helaas metarobbin! je had de kans... volgende keer beter"
+
+                    jump randomcasus
+
+        "in de bioscoop":
+            "je ontmoet haar bij de bioscoop"
+            "maar welke film wil je zien"
+            menu:
+
+                "The room":
+                    "na 3 minuten film rennen jullie de bioscoopzaal uit"
+                    "dit is geen goed idee voor een avondje uit met haar"
+                    "volgende keer beter!"
+                    jump randomcasus
+
+                "the titanic":
+                    "hoewel de film haar erg aanspreekt, val jij langzaam in slaap"
+                    "als je wakker wordt is ze verdwenen..."
+                    "volgende keer beter!"
+                    jump randomcasus
+
+                "the postman met kevin costner!":
+                    "je zit te genieten van de fantastische film met schitterende beelden"
+                    "helaas valt ze langzaam in slaap"
+                    "als ze wakker wordt zegt ze"
+                    v "ik denk dat ik maar ga..."
+                    "volgende keer beter!"
+                    jump randomcasus
+
+                "cocktail":
+                    "voor je naar de bioscoopzaal gaat kopen jullie een drankje"
+                    v "wil je ook een biertje?"
+                    m "graag, zal ik ze halen"
+                    v "dat is lief"
+                    m "wil je ook wat eten erbij?"
+                    v "nee hoor, dankje"
+                    "jullie lopen naar de bioscoopzaal en gaan ergens achterin zitten"
+                    "de film begint en jullie gaan steeds dichter bij elkaar zitten"
+                    "na een tijdje beginnen jullie langzaam aan te zoenen"
+                    v "zullen we naar mijn huis gaan?"
+                    menu:
+                        "ja, graag":
+
+                            jump consentual
+
+                        "neuh, laten we de film afkijken":
+
+                            "jullie kijken de film af, maar de sfeer is weg"
+                            "jammer MetaRobbin... Volgende keer beter"
+
+                            jump randomcasus
+
 
 return
 
+label consentual:
+# blockchain ding voor consentual sex
+
+return
