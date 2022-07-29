@@ -498,7 +498,7 @@ label toekomstbaan:
     s "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
     m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk."
     s "Oh dat is slim... Wat mij betreft mag je daarmee bezig! Dan hoef je de komende tijd geen diploma's te checken. "
-    #nieuwe casus bouwen op de nieuwe manier!
+    #nieuwe casus bouwen op de nieuwe manier!f
 
     jump eventpicker
     return
