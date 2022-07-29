@@ -153,33 +153,49 @@ label intro:
 label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
-if toestemming == False:
-    $ rng = renpy.random.randint (1,3)
+    if toestemming == False:
+        $ rng = renpy.random.randint (1,3)
 
-    if rng < 3:
+        if rng < 3:
 
-        jump randomcasus
+            jump randomcasus
 
-    if rng == 3:
+        if rng == 3:
 
 
-        if lasteventnr == 1:
+            if lasteventnr == 1:
 
-            jump covidevent
+                jump covidevent
 
-        if lasteventnr == 2:
+            if lasteventnr == 2:
 
-            jump loverevent
+                jump loverevent
 
-        if lasteventnr == 3:
+            if lasteventnr == 3:
 
-            jump deavond
+                jump deavond
 
-        if lasteventnr == 4:
+            if lasteventnr == 4:
 
-            jump deechteavond
-else:
-    jump toekomstbaan
+                jump deechteavond
+
+
+
+    else:
+
+        if lasteventnr == 5:
+            jump toekomstbaan
+
+        # 6 metarobin neemt een hond
+        # 7 metarobin gaat samenwonen, huurtoeslag etc...
+        # 8 metarobin gaat huis kopen (hypotheek, verhuizen etc…)
+        # 9 metarobin gaat trouwen
+        # 10 metarobin krijgt kinderen
+        # 11 metarobin moet kinderen ophalen van kinderopvang
+        # 12 metarobin moet de begrafenis van metapapa regelen
+        # 13 metarobin gaat scheiden
+        # 14 metarobin kan kinderen niet meer ophalen
+
 
 return
 
@@ -412,7 +428,7 @@ label goedbezig:
 
     if score >= 10:
         if maandmedewerker == False:
-            s "Gefeliciteerd, MetaRobin!"
+            s "Gefeliciteerd, MetaRobbin!"
 
             s "Je bent de werknemer van de maand!"
 
@@ -424,10 +440,10 @@ label goedbezig:
             show win
             with fade
 
-            s "je hebt zulk goed werk gedaan hier MetaRobbin... "
-            s "je verdient een promotie!"
-            s "we gaan ook het systeem van diplomas een beetje veranderen"
-            s "hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
+            s "Je hebt zulk goed werk gedaan hier MetaRobbin... "
+            s "Je verdient een promotie!"
+            s "We gaan ook het systeem van diplomas een beetje veranderen"
+            s "Hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
             $ maandmedewerker = True
             jump toekomstbaan
 
@@ -467,8 +483,22 @@ label toekomstbaan:
     scene black
     with dissolve
 
-    #andere baan... en uitleg van het nieuwe systeem...
-    "moet nog worden ingebouwd... dus... we gaan rustig door met de casussen"
+    #andere baan...
+    "Je hebt het verder uitgedacht en denkt dat het werk een stuk simpeler kan worden door een blockchain"
+    "Zodra je op het werk bent plan je een overleg in met Sylvie"
+    m "Hoi Sylvie, ik heb een idee. Wil je dat met mij bespreken?"
+    s "Natuurlijk MetaRobbin, zeg het maar!"
+    m "Je weet dat we iedere keer die diplomas checken, terwijl veel van dat check werk makkelijker kan."
+    m "Als we die diplomas opvragen, via een wallet, die de personen hebben gekregen van de school."
+    m "Dan hoeven we een heleboel diplomas niet meer te controleren, alleen de moeilijke gevallen waarbij iemand de boel probeert te flessen"
+    s "Ik snapte niet helemaal hoe dat ging... maar denk je dat dit kan werken?"
+    m "Ja, ik kreeg het idee van de consentual-app"
+    m "Ehm... "
+    "MetaRobbin kleurt gelijk rood..."
+    s "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
+    m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk."
+    s "Oh dat is slim... Wat mij betreft mag je daarmee bezig! Dan hoef je de komende tijd geen diploma's te checken. "
+    #nieuwe casus bouwen op de nieuwe manier!
 
     jump eventpicker
     return
@@ -560,10 +590,13 @@ label covidevent:
                                 "je kijkt hem aan en zegt dat je die niet hebt"
                                 "de barman roept de uitsmijter waarop een kleine vechtpartij begint"
                                 "de volgende ochtend wordt je wakker in een politiecel"
-                                $ score -= 20
-                                s "je bent ontslagen!"
-
                                 scene gameover
+                                $ score -= 20
+                                "je komt niet door de poortjes op je werk..."
+                                "wat je niet wist is dat je VOG is ingetrokken..."
+                                s "sorry, maar je bent ontslagen! Als je niet op het werk kunt komen, hebben we niets aan je"
+                                s "bovendien heb je geen VOG meer, dus kunnen we je niet aan de slag laten gaan met deze privicy gevoelige gegevens"
+
                                 with fade
 
     if booster:
@@ -786,7 +819,7 @@ label consentual:
 return
 
 label toestemming:
-
+    $ lasteventnr += 1
     "Eindelijk is het zover, je beland in bed met deze prachtige vrouw"
     "Het begin van een mooie relatie"
     "Maar die toestemmingsapp zet je op een idee"

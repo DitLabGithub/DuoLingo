@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 178: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    show dip5
-    ^
+File "game/script.rpy", line 183: reached end of line when expecting ':'.
+    if lasteventnr == 5
+                       ^
 
-Ren'Py Version: Ren'Py 8.0.0.22062402
-Thu Jul  7 14:42:23 2022
+File "game/script.rpy", line 184: expected statement.
+    else:
+        ^
+
+Ren'Py Version: Ren'Py 8.0.1.22070801
+Fri Jul 29 17:11:24 2022
