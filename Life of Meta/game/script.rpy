@@ -1,7 +1,7 @@
 ﻿# Declare characters used by this game.
 define s = Character(_("Sylvie"), color="#c8ffc8")
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
-define v = Character(_("Metavriendin"), color="#a23af9")
+define v = Character(_("MetaMindy"), color="#a23af9")
 
 #random score die overal gebruikt kan worden
 default rng = 4
@@ -11,6 +11,8 @@ default score = 5
 default booster = False
 #score om te bepalen welk event je hebt afgerond zodat je doorgaat in het leven
 default lasteventnr = 1
+#score om de toekomst in te gaan
+default toestemming = False
 
 label start:
 
@@ -148,6 +150,38 @@ label intro:
 
     return
 
+label eventpicker:
+# de eventpicker voor activiteiten na meta's werkdag
+
+if toestemming == False:
+    $ rng = renpy.random.randint (1,3)
+
+    if rng < 3:
+
+        jump randomcasus
+
+    if rng == 3:
+
+
+        if lasteventnr == 1:
+
+            jump covidevent
+
+        if lasteventnr == 2:
+
+            jump loverevent
+
+        if lasteventnr == 3:
+
+            jump deavond
+
+        if lasteventnr == 4:
+
+            jump deechteavond
+else:
+    jump toekomstbaan
+
+return
 
 label randomcasus:
 
@@ -358,8 +392,6 @@ label casus5:
 
     return
 
-
-
 label goedbezig:
 
     scene black
@@ -379,25 +411,28 @@ label goedbezig:
         return
 
     if score >= 10:
+        if maandmedewerker == False:
+            s "Gefeliciteerd, MetaRobin!"
 
-        s "Gefeliciteerd, MetaRobin!"
+            s "Je bent de werknemer van de maand!"
 
-        s "Je bent de werknemer van de maand!"
+            scene duogroot
+            with fade
 
-        scene duogroot
-        with fade
+            s "Hulde!"
 
-        s "Hulde!"
+            show win
+            with fade
 
-        show win
-        with fade
+            s "je hebt zulk goed werk gedaan hier MetaRobbin... "
+            s "je verdient een promotie!"
+            s "we gaan ook het systeem van diplomas een beetje veranderen"
+            s "hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
+            $ maandmedewerker = True
+            jump toekomstbaan
 
-        s "je hebt zulk goed werk gedaan hier MetaRobbin... "
-        s "je verdient een promotie!"
-        s "we gaan ook het systeem van diplomas een beetje veranderen"
-        s "hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
-
-        jump toekomstbaan
+        else:
+            jump eventpicker
 
     return
 
@@ -433,36 +468,9 @@ label toekomstbaan:
     with dissolve
 
     #andere baan... en uitleg van het nieuwe systeem...
-    return
+    "moet nog worden ingebouwd... dus... we gaan rustig door met de casussen"
 
-label eventpicker:
-# de eventpicker voor activiteiten na meta's werkdag
-
-    $ rng = renpy.random.randint (1,3)
-
-    if rng < 3:
-
-        jump randomcasus
-
-    if rng == 3:
-
-
-        if lasteventnr == 1:
-
-            jump covidevent
-
-        if lasteventnr == 2:
-
-            jump loverevent
-
-        if lasteventnr == 3:
-
-            jump deavond
-
-        if lasteventnr == 4:
-
-            jump deechteavond
-
+    jump eventpicker
     return
 
 label covidevent:
@@ -482,7 +490,7 @@ label covidevent:
 
         menu:
 
-            "laat je testen":
+            "laat je testen en gaat":
 
                 "je hebt een fantastisch feestje tot laat in de nacht"
                 "helaas... kom je veel te laat op je werk"
@@ -752,4 +760,38 @@ return
 label consentual:
 # blockchain ding voor consentual sex
 
+    "jullie komen bij haar huis aan"
+    "na wat gezoen vraagt ze"
+    v "je gebruikt het toch wel?"
+    "je kijkt verward..."
+    m "ehm wat?"
+    v "je weet wel! de consentual app!"
+    m "de wat?"
+    v "gewoon even downloaden, in checken, akkoord geven voor de vrijpartij met toestemming en we kunnen"
+    "je download snel de app, logt in."
+    "je ziet gelijk al de vraag staan"
+    "er is iemand de een vrijpartij met je wil, wil jij ook?"
+
+    menu:
+        "geef geen toestemming":
+            "zucht... moeten we echt alles uitspellen... dit een een belangrijk onderdeel van het spel"
+            "af en toe moet je gewoon even meespelen anders heeft die arme MetaRobbin geen leven..."
+            "je besluit toestemming te geven"
+            jump toestemming
+
+        "geef toestemming":
+
+            jump toestemming
+
 return
+
+label toestemming:
+
+    "Eindelijk is het zover, je beland in bed met deze prachtige vrouw"
+    "Het begin van een mooie relatie"
+    "Maar die toestemmingsapp zet je op een idee"
+    "Dat met die diploma's kan ook makkelijker"
+    "Misschien op dezelfde manier..."
+    "Je besluit het eventjes te laten bezinken en later met Sylvie te bespreken"
+    $ toestemming = True
+    jump randomcasus
