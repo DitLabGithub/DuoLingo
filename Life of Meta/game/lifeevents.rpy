@@ -44,7 +44,7 @@ label eventpicker:
 return
 
 label covidevent:
-# eerste event voor na werk. uitgaan met de covid pass
+# eerste event voor na werk. uitgaan met de covid pass.
 # eventnr 1
 
     show win

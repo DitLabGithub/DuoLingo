@@ -38,7 +38,7 @@ label start:
 
 label born:
 
-    #geboorte van meta robin voorstellen van mama en papa meta...
+    #geboorte van meta robin voorstellen van ma en pa meta...
     #aangifte van meta robin bij de gemeente
     #inschrijven meta bij een school
     #àanmelden voor stex met beperking
