@@ -2,13 +2,13 @@ label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
     if toestemming == False:
-        $ rng = renpy.random.randint (1,3)
+        $ rng = renpy.random.randint (1,4)
 
         if rng < 3:
 
             jump randomcasus
 
-        if rng == 3:
+        else:
 
 
             if lasteventnr == 1:
@@ -228,6 +228,8 @@ label deavond:
 
             $ lasteventnr += 1
 
+            jump randomcasus
+
         "sluit af en ga naar bed":
 
             "jammer... zo wordt het nooit wat natuurlijk..."
@@ -368,3 +370,4 @@ label toestemming:
     "Je besluit het eventjes te laten bezinken en later met Sylvie te bespreken"
     $ toestemming = True
     jump randomcasus
+

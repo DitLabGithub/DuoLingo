@@ -13,6 +13,8 @@ default booster = False
 default lasteventnr = 1
 #score om de toekomst in te gaan
 default toestemming = False
+#score die bepaald of je maandmederker bent geweest
+default maandmedewerker = False
 
 label start:
 
@@ -73,6 +75,12 @@ label toekomstbaan:
     m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk aan ons."
     s "Oh dat is slim... Wil je dat verder uitwerken? Dan hoef je de komende tijd geen diploma's te checken. "
     #nieuwe casus bouwen op de nieuwe manier!
+
+    "Na een paar weken heb je het idee wat verder uitgewerkt."
+    "Als mensen nu digitaal hun diploma opsturen en we checken gelijk of de school door ons geregistreerd dan scheelt dat ons al veel werk"
+    "Als er dan ook nog gecontroleerd kan worden of dat diploma echt door die school is uitgegeven dan zijn we bijna klaar"
+
+
 
     jump eventpicker
     return
