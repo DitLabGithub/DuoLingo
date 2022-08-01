@@ -21,13 +21,13 @@ label start:
 
             jump werk
 
-        "begin metas leven":
+        "begin metas leven (nog mee bezig)":
 
             jump born
 
-        "naar de toekomst van meta":
+        "naar de toekomst van meta (nog mee bezig)":
 
-            jump toekomst
+            jump toekomstbaan
 
         "test events":
 
@@ -52,59 +52,12 @@ label born:
 
     return
 
-
-label afgestudeerd:
-
-    jump werk
-
-label toekomst:
-
-    # moet nog verder uitgewerkt worden...
-   scene gameover
-   with fade
-   return
-
-
-
-label werk:
-
-    # Start by playing some music.
-    # play music "illurock.opus"
-
-    scene duogroot
-    with fade
-    "Welkom bij Life of Meta!"
-
-    show metarobbinmedium at left
-    with dissolve
-
-    "Je eerste werkdag bij DUO start vandaag"
-
-    "In de verte zie je het DUO gebouw naderen"
-
-    scene duoingang
-    with fade
-
-    "Na een rondleiding en lunch is het tijd om je manager te ontmoeten"
-
-    scene duomanagergroot
-    with fade
-
-    "Je wordt begroet door je manager, Sylvie"
-
-    jump intro
-
-    return
-
-
-
-
 label toekomstbaan:
+#andere baan...
 
     scene black
     with dissolve
 
-    #andere baan...
     "Je hebt het verder uitgedacht en denkt dat het werk een stuk simpeler kan worden door een blockchain"
     "Zodra je op het werk bent plan je een overleg in met Sylvie"
     m "Hoi Sylvie, ik heb een idee. Wil je dat met mij bespreken?"
@@ -117,9 +70,9 @@ label toekomstbaan:
     m "Ehm... "
     "MetaRobbin kleurt gelijk rood..."
     s "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
-    m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk."
-    s "Oh dat is slim... Wat mij betreft mag je daarmee bezig! Dan hoef je de komende tijd geen diploma's te checken. "
-    #nieuwe casus bouwen op de nieuwe manier!f
+    m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk aan ons."
+    s "Oh dat is slim... Wil je dat verder uitwerken? Dan hoef je de komende tijd geen diploma's te checken. "
+    #nieuwe casus bouwen op de nieuwe manier!
 
     jump eventpicker
     return

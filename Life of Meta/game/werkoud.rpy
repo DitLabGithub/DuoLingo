@@ -1,4 +1,25 @@
-label intro:
+label werk:
+
+    scene duogroot
+    with fade
+    "Welkom bij Life of Meta!"
+
+    show metarobbinmedium at left
+    with dissolve
+
+    "Je eerste werkdag bij DUO start vandaag"
+
+    "In de verte zie je het DUO gebouw naderen"
+
+    scene duoingang
+    with fade
+
+    "Na een rondleiding en lunch is het tijd om je manager te ontmoeten"
+
+    scene duomanagergroot
+    with fade
+
+    "Je wordt begroet door je manager, Sylvie"
 
     "Je bent aangenomen bij Duo op de personeelszaken en je wordt rondgeleid door Sylvie"
 
