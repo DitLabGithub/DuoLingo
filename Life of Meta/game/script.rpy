@@ -85,3 +85,8 @@ label toekomstbaan:
     jump eventpicker
     return
 
+# nieuwe werk is TIR aanpassen of handmatig checken
+# rusland casus (boycot rusland, oplossen in TIR, je mist een belangrijke rus die in nederland zou kunnen werken, oplossen hand, DUO komt in tijdnood)
+# appenpokken in apeldoorn en we willen niemand uit apeldoorn accepteren (handmatig is enige oplossing)
+# in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
+# latenz ien verschil tussen oude casussen...
