@@ -2,13 +2,13 @@ label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
     if toestemming == False:
-        $ rng = renpy.random.randint (1,4)
+        #$ rng = renpy.random.randint (1,4)
 
-        if rng < 3:
+        #if rng < 3:
 
-            jump randomcasus
+         #   jump randomcasus
 
-        else:
+       # else:
 
 
             if lasteventnr == 1:
@@ -31,6 +31,7 @@ label eventpicker:
         if lasteventnr == 5:
             jump toekomstbaan
 
+        # 5,5 vriendin slaagt en krijgt diploma in wallet
         # 6 metarobin neemt een hond
         # 7 metarobin gaat samenwonen, huurtoeslag etc...
         # 8 metarobin gaat huis kopen (hypotheek, verhuizen etc…)
@@ -40,6 +41,7 @@ label eventpicker:
         # 12 metarobin moet de begrafenis van metapapa regelen
         # 13 metarobin gaat scheiden
         # 14 metarobin kan kinderen niet meer ophalen
+        # 15 metarobbin gaat naar museum met ponskaarten
 
 return
 

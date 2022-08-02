@@ -293,7 +293,7 @@ label goedbezig:
 
     if score < 10:
 
-        "Probeer de volgende!"
+        #"Probeer de volgende!"
 
         jump eventpicker
 
