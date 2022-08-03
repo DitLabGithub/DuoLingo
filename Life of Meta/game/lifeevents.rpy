@@ -31,6 +31,9 @@ label eventpicker:
         if lasteventnr == 5:
             jump toekomstbaan
 
+        else:
+            jump randomtoekomstcasus
+
         # 5,5 vriendin slaagt en krijgt diploma in wallet
         # 6 metarobin neemt een hond
         # 7 metarobin gaat samenwonen, huurtoeslag etc...

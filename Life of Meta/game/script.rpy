@@ -15,6 +15,15 @@ default lasteventnr = 1
 default toestemming = False
 #score die bepaald of je maandmederker bent geweest
 default maandmedewerker = False
+#score van de drukte op de afdeling waar je op werkt...
+default drukte = 1
+#score om te kijken waar in toekomstcasus de speler is
+default toekomstcas = 1
+
+default rus = False
+default hol = False
+default apel = False
+
 
 label start:
 
@@ -29,11 +38,12 @@ label start:
 
         "naar de toekomst van meta (nog mee bezig)":
 
+            $ toestemming = True
             jump toekomstbaan
 
         "test events":
 
-            jump covidevent
+            jump randomtoekomstcasus
     return
 
 label born:
@@ -79,22 +89,22 @@ label toekomstbaan:
     "Als mensen nu digitaal hun diploma opsturen via een wallet, dan we checken gelijk of de school door ons geregistreerd is betrouwbare school."
     "Het enige wat we dan moeten doen is een keuze maken tussen een register bijwerken of de lastige gevallen handmatig afhandelen"
 
-    M "Zullen we een voorbeeld doen, Sylvie?"
-    S "Ja, graag!"
-    M "Weet je nog dat gekochte diploma? waarbij ik werd bedreigd?"
-    S "Ja, natuurlijk... wat een ellende was dat..."
-    M "Kijk, we vragen niet meer om een copy van het diploma, maar alle diplomas van een persoon staan in z'n wallet"
-    S "Net zoiets als die consentual app?"
-    M "Precies zo.Op het moment dat iemand een diploma krijgt, dan kun je dat diploma in je wallet laden en kun je hem versturen."
-    M "wij krijgen dan die copy van het diploma bij ons binnen en zien gelijk of het diploma geldig is."
-    M "we moeten hiervoor wel een registratie bijhouden van betrouwbare scholen."
-    M "Maar iedere keer als er een diploma binnenkomt van een school die niet in de lijst staat moeten we daarover een beslissing nemen"
-    S "dus als er een onbekende school binnenkomt, moeten we onderzoeken of het een echte school is?"
-    M "Precies dat!"
-    S "Oh als dat alles is, gaat dat ons een een hoop werk schelen"
-    S "Goed gedaan MetaRobbin!"
-    S "Het lijkt mij een goed idee als jij die afdeling gaat runnen! Lijkt je dat wat?"
-    M "Oh echt? Dat is fantastisch!"
+    m "Zullen we een voorbeeld doen, Sylvie?"
+    s "Ja, graag!"
+    m "Weet je nog dat gekochte diploma? waarbij ik werd bedreigd?"
+    s "Ja, natuurlijk... wat een ellende was dat..."
+    m "Kijk, we vragen niet meer om een copy van het diploma, maar alle diplomas van een persoon staan in z'n wallet"
+    s "Net zoiets als die consentual app?"
+    m "Precies zo.Op het moment dat iemand een diploma krijgt, dan kun je dat diploma in je wallet laden en kun je hem versturen."
+    m "wij krijgen dan die copy van het diploma bij ons binnen en zien gelijk of het diploma geldig is."
+    m "we moeten hiervoor wel een registratie bijhouden van betrouwbare scholen."
+    m "Maar iedere keer als er een diploma binnenkomt van een school die niet in de lijst staat moeten we daarover een beslissing nemen"
+    s "dus als er een onbekende school binnenkomt, moeten we onderzoeken of het een echte school is?"
+    m "Precies dat!"
+    s "Oh als dat alles is, gaat dat ons een een hoop werk schelen"
+    s "Goed gedaan MetaRobbin!"
+    s "Het lijkt mij een goed idee als jij die afdeling gaat runnen! Lijkt je dat wat?"
+    m "Oh echt? Dat is fantastisch!"
 
     "De volgende dag ga je gelijk aan de slag, langzamerhand moet het register gevuld worden, maar gelukkig heb je een lijst met betrouwbare scholen"
     "Deze diplomas gaan vanaf nu automatisch door"
@@ -103,47 +113,143 @@ label toekomstbaan:
 
 #nieuwe casus bouwen op de nieuwe manier!
 
-
+    $ lasteventnr +=1
     jump eventpicker
     return
 
 # nieuwe werk is TIR aanpassen of handmatig checken
-# rusland casus (boycot rusland, oplossen in TIR, je mist een belangrijke rus die in nederland zou kunnen werken, oplossen hand, DUO komt in tijdnood)
-# appenpokken in apeldoorn en we willen niemand uit apeldoorn accepteren (handmatig is enige oplossing)
-# in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
+# x rusland casus (boycot rusland, oplossen in TIR, je mist een belangrijke rus die in nederland zou kunnen werken, oplossen hand, DUO komt in tijdnood)
+# x appenpokken in apeldoorn en we willen niemand uit apeldoorn accepteren (handmatig is enige oplossing)
+# x in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
 # latenz ien verschil tussen oude casussen...
 
 label randomtoekomstcasus:
 
-    $ rng = renpy.random.randint (1,5)
+    # $ rng = renpy.random.randint (1,3)
 
-    if rng == 1:
+
+    if toekomstcas == 1:
 
         jump toekomstcasus1
 
-    if rng == 2:
+    if toekomstcas == 2:
 
         jump toekomstcasus2
 
-    if rng == 3:
+    if toekomstcas == 3:
 
         jump toekomstcasus3
 
-    if rng == 4:
+    if drukte > 2:
 
         jump toekomstcasus4
-
-    if rng == 5:
-
-        jump toekomstcasus5
 
     return
 
 label toekomstcasus1:
 # rusland casus
+
+    $ toekomstcas += 1
     "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
     "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
     "Je hebt nu een paar keuzes..."
     "Wat wil je doen?"
 
     menu:
+        "Alle scholen uit Rusland uitsluiten in het register":
+            "vanaf nu worden alle scholen uit Rusland uitgesloten en de diplomas afgekeurd."
+            "Dit is een goede keuze. Het bespaard je enorm veel handmatig werk..."
+            "Maar 2 jaar later hoor je dat in Belgie er een briljante Estse is aangenomen die ook bij ons had gesolliciteerd"
+            "Wij hebben haar afgewezen omdat ze van een russische school kwam"
+
+            "maar laten we verder gaan!"
+
+            jump eventpicker
+
+        "Handmatig alle Russen uitsluiten":
+            "Vanaf nu komen alle Russen langs bij de handmatige beoordeling"
+            "Dit zorgt er in ieder geval voor dat je niet alle mensen van een Russische school zomaar uitsluit"
+            "Maar door de hoeveelheid extra werk krijgt je afdeling het ineens enorm druk"
+
+            $ drukte +=1
+            $ rus = True
+            "laten we verder gaan"
+
+            jump eventpicker
+
+    return
+
+label toekomstcasus2:
+#inhollandcasus
+
+    #newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
+        $ toekomstcas += 1
+        "je krijgt een bericht dat een school niet meer betrouwbaar is, wat wil je doen?"
+
+        menu:
+            "sluit de school gelijk uit via het register":
+                "je sluit alle diplomas van deze school uit. het gaat om circa een half miljoen diplomas terwijl er maar 100 ongeldig zijn"
+                "misschien is dit niet de beste keuze... , maar je kunt het herstellen"
+
+                menu:
+                    "je sluit tijdelijk alle leerlingen van deze school uit.":
+                        "Hierdoor mis je een aantal sollicitanten... maar je krijgt ook geen ongeldige diplomas binnen"
+                        "alle sollicitanten van de school kun je later opnieuw oproepen voor een sollicitatie"
+
+                        jump eventpicker
+
+                    "je besluit om alle leerlingen van deze school handmatig tegen te houden":
+                        "Je team controleert alle gevallen met de hand, maar je weet nog niet welke diploma's onterecht zijn uitgegeven"
+                        "dit levert veel extra handwerk op, misschien had je beter alle leerlingen van deze school tijdelijk uitgesloten"
+
+                        $ drukte +=1
+                        $ hol = True
+
+                        jump eventpicker
+
+            "wacht op het onderzoek dat persoonlijke diploma's uitsluit en sluit die handmatig uit":
+                "Tijdens het onderzoek sijpelen er langzaam een aantal diplomas door die onterecht zijn uitgegeven."
+                "Helaas kun je dit achteraf niet meer herstellen..."
+
+                jump eventpicker
+
+        return
+
+label toekomstcasus3:
+#appenpokken in apeldoorn
+
+    #newsflash over een appenpokken uitbraak in apeldoorn...lasteventnr
+    $ toekomstcas += 1
+    "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
+
+    menu:
+        "Wat wil je doen?"
+
+        "Haal alle scholen uit apeldoorn uit het register":
+
+            "dit lijkt me niet goed MetaRobbin"
+
+            return
+
+        "Controleer handmatig per persoon of ze uit Apeldoorn komen":
+            $ drukte +=1
+            $ apel = True
+            return
+
+label toekomstcasus4
+#te druk op de afdeling
+
+    "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
+    menu:
+        "beoordeel de russiche scholen automatisch" if rus:
+
+        "doe apeldoorn automatisch" if apel:
+
+        "stop met de handmatige afhandeling van de afgekeurde school" if hol:
+
+        #"meer informatie over de verschillen":
+
+
+
+
+
