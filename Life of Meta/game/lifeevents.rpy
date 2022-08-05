@@ -42,6 +42,7 @@ label eventpicker:
         # 10 metarobin krijgt kinderen
         # 11 metarobin moet kinderen ophalen van kinderopvang
         # 12 metarobin moet de begrafenis van metapapa regelen
+        # 13,5 SOA
         # 13 metarobin gaat scheiden
         # 14 metarobin kan kinderen niet meer ophalen
         # 15 metarobbin gaat naar museum met ponskaarten

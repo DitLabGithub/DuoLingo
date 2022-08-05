@@ -221,35 +221,54 @@ label toekomstcasus3:
     #newsflash over een appenpokken uitbraak in apeldoorn...lasteventnr
     $ toekomstcas += 1
     "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
-
+    "Wat wil je doen?"
     menu:
-        "Wat wil je doen?"
 
         "Haal alle scholen uit apeldoorn uit het register":
 
             "dit lijkt me niet goed MetaRobbin"
+            "het gaat om 500.000 diplomas waarvan er maar een paar ongeldig zijn..."
+            "maar je bespaard je afdeling een hoop handmatig werk"
+            jump eventpicker
 
-            return
 
         "Controleer handmatig per persoon of ze uit Apeldoorn komen":
             $ drukte +=1
             $ apel = True
-            return
+            "dit levert behoorlijk wat handmatig werk op, maar gelukkig krijg je wel de kans om alle sollicitaties te controleren"
+            jump eventpicker
 
 label toekomstcasus4
 #te druk op de afdeling
 
     "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
+
     menu:
         "beoordeel de russiche scholen automatisch" if rus:
+            "Je laat je afdeling nu 20.000 extra gevallen per maand minder doen"
+            "dat zal de druk op de afdeling zeker verlagen!"
+            $ drukte -=2
+            $ rus = False
+            jump eventpicker
 
         "doe apeldoorn automatisch" if apel:
+            "je laat ongeveer 5 sollicitaties per maand geautomatiseerd doen"
+            "dit levert helaas niets op qua drukte van de afdeling"
+            $ apel = False
+            jump eventpicker
 
         "stop met de handmatige afhandeling van de afgekeurde school" if hol:
+            "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
+            "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
+            $ drukte -=1
+            $ hol = False
+            jump eventpicker
 
-        #"meer informatie over de verschillen":
-
-
+        "meer informatie over de verschillen":
+            "aantal sollicitaties met een russiche nationaliteit zijn 20.000 per maand, en van Russische scholen 25.000"
+            "vanuit Apeldoorn zijn er 5 sollicitaties per maand en 600 die van een school in Apeldoorn een diploma hebben gekregen"
+            "De afgekeurde school heeft 500.000 diplomas uitgegeven en naar, verwachting, zijn er ca. 100 die ongeldig moeten worden"
+            jump toekomstcasus4
 
 
 
