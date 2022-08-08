@@ -2,13 +2,13 @@ label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
     if toestemming == False:
-        #$ rng = renpy.random.randint (1,4)
+        $ rng = renpy.random.randint (1,4)
 
-        #if rng < 3:
+        if rng < 3:
 
-         #   jump randomcasus
+           jump randomcasus
 
-       # else:
+        else:
 
 
             if lasteventnr == 1:
@@ -32,11 +32,24 @@ label eventpicker:
             jump toekomstbaan
 
         else:
-            jump randomtoekomstcasus
+            jump toekomsteventpicker
 
-        # 5,5 vriendin slaagt en krijgt diploma in wallet
-        # 6 metarobin neemt een hond
-        # 7 metarobin gaat samenwonen, huurtoeslag etc...
+return
+
+label toekomsteventpicker:
+
+    if toekomstevent == 1:
+        jump toekomstevent1
+
+    if toekomstevent == 2:
+        jump toekomstevent2
+
+    if toekomstevent == 3:
+        jump toekomstevent3
+
+    else:
+        jump randomtoekomstcasus
+
         # 8 metarobin gaat huis kopen (hypotheek, verhuizen etc…)
         # 9 metarobin gaat trouwen
         # 10 metarobin krijgt kinderen
@@ -47,7 +60,6 @@ label eventpicker:
         # 14 metarobin kan kinderen niet meer ophalen
         # 15 metarobbin gaat naar museum met ponskaarten
 
-return
 
 label covidevent:
 # eerste event voor na werk. uitgaan met de covid pass.
@@ -376,4 +388,66 @@ label toestemming:
     "Je besluit het eventjes te laten bezinken en later met Sylvie te bespreken"
     $ toestemming = True
     jump randomcasus
+
+label toekomstevent1:
+    $ toekomstevent +=1
+    "na lang zwoegen slaagt MetaMindy eindelijk voor haar diploma"
+    m "tijd voor een feestje MetaMindy!"
+    v "ja, maar eerst mijn diploma ophalen!"
+    v "ik heb de wallet al gedownload... nu nog het diploma"
+    "casus van wallet uit diplomaregister"
+    jump randomtoekomstcasus
+
+label toekomstevent2:
+    $ toekomstevent +=1
+    "het is datenight vanavond, dus je maakt je op voor een date met MetaMindy"
+    # samenwonen...
+
+    jump randomtoekomstcasus
+
+label toekomstevent3:
+    $ toekomstevent +=1
+    "#samen een huis komen, hypotheek en al die meuk..."
+    jump randomtoekomstcasus
+
+label toekomstevent4:
+    $ toekomstevent +=1
+    "trouwen"
+    jump randomtoekomstcasus
+
+label toekomstevent5:
+    $ toekomstevent +=1
+    "metarobin krijgt kinderen"
+    jump randomtoekomstcasus
+
+label toekomstevent6:
+    $ toekomstevent +=1
+    "kinderopvangcasus"
+    jump randomtoekomstcasus
+
+label toekomstevent7:
+    $ toekomstevent +=1
+    "kinderopvangcasus"
+    jump randomtoekomstcasus
+
+label toekomstevent8:
+    $ toekomstevent +=1
+    "begrafenis van metapapa"
+    jump randomtoekomstcasus
+
+label toekomstevent9:
+    $ toekomstevent +=1
+    "scheiden"
+    jump randomtoekomstcasus
+
+label toekomstevent10:
+    $ toekomstevent +=1
+    "robbin mag kids niet halen van kinderopvang"
+    jump randomtoekomstcasus
+
+label toekomstevent11:
+    $ toekomstevent +=1
+    "endgame, robbin gaat naar museum met ponskaarten en ziet waar we vandaan komen"
+    jump randomtoekomstcasus
+
 
