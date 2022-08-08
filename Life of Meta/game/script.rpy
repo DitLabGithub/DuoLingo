@@ -142,7 +142,7 @@ label randomtoekomstcasus:
 
         jump toekomstcasus3
 
-    if drukte > 2:
+    if drukte > 4:
 
         jump toekomstcasus4
 
@@ -176,7 +176,7 @@ label toekomstcasus1:
             "Dit zorgt er in ieder geval voor dat je niet alle mensen van een Russische school zomaar uitsluit"
             "Maar door de hoeveelheid extra werk krijgt je afdeling het ineens enorm druk"
 
-            $ drukte +=1
+            $ drukte +=3
             $ rus = True
             "laten we verder gaan"
 
@@ -207,7 +207,7 @@ label toekomstcasus2:
                         "Je team controleert alle gevallen met de hand, maar je weet nog niet welke diploma's onterecht zijn uitgegeven"
                         "dit levert veel extra handwerk op, misschien had je beter alle leerlingen van deze school tijdelijk uitgesloten"
 
-                        $ drukte +=1
+                        $ drukte +=2
                         $ hol = True
 
                         jump toekomsteventpicker
@@ -256,7 +256,7 @@ label toekomstcasus4:
         "beoordeel de russiche scholen automatisch" if rus:
             "Je laat je afdeling nu 20.000 extra gevallen per maand minder doen"
             "dat zal de druk op de afdeling zeker verlagen!"
-            $ drukte -=2
+            $ drukte -=3
             $ rus = False
             jump toekomsteventpicker
 
@@ -269,7 +269,7 @@ label toekomstcasus4:
         "stop met de handmatige afhandeling van de afgekeurde school" if hol:
             "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
             "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
-            $ drukte -=1
+            $ drukte -=2
             $ hol = False
             jump toekomsteventpicker
 
