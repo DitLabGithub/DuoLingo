@@ -146,6 +146,9 @@ label randomtoekomstcasus:
 
         jump toekomstcasus4
 
+    else:
+        jump toekomsteventpicker
+
     return
 
 label toekomstcasus1:

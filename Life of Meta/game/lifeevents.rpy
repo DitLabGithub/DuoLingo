@@ -47,18 +47,33 @@ label toekomsteventpicker:
     if toekomstevent == 3:
         jump toekomstevent3
 
-    else:
-        jump randomtoekomstcasus
+    if toekomstevent == 4:
+            jump toekomstevent4
 
-        # 8 metarobin gaat huis kopen (hypotheek, verhuizen etc…)
-        # 9 metarobin gaat trouwen
-        # 10 metarobin krijgt kinderen
-        # 11 metarobin moet kinderen ophalen van kinderopvang
-        # 12 metarobin moet de begrafenis van metapapa regelen
-        # 13,5 SOA
-        # 13 metarobin gaat scheiden
-        # 14 metarobin kan kinderen niet meer ophalen
-        # 15 metarobbin gaat naar museum met ponskaarten
+    if toekomstevent == 5:
+            jump toekomstevent5
+
+    if toekomstevent == 6:
+            jump toekomstevent6
+
+    if toekomstevent == 7:
+            jump toekomstevent7
+
+    if toekomstevent == 8:
+            jump toekomstevent8
+
+    if toekomstevent == 9:
+            jump toekomstevent9
+
+    if toekomstevent == 10:
+            jump toekomstevent10
+
+    if toekomstevent == 11:
+            jump toekomstevent11
+
+    else:
+        return
+        #jump randomtoekomstcasus
 
 
 label covidevent:
@@ -401,13 +416,13 @@ label toekomstevent1:
 label toekomstevent2:
     $ toekomstevent +=1
     "het is datenight vanavond, dus je maakt je op voor een date met MetaMindy"
-    # samenwonen...
+    "samenwonen..."
 
     jump randomtoekomstcasus
 
 label toekomstevent3:
     $ toekomstevent +=1
-    "#samen een huis komen, hypotheek en al die meuk..."
+    "samen een huis komen, hypotheek en al die meuk..."
     jump randomtoekomstcasus
 
 label toekomstevent4:
