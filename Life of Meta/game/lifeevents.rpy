@@ -2,9 +2,9 @@ label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
     if toestemming == False:
-        $ rng = renpy.random.randint (1,4)
+        $ rng1 = renpy.random.randint (1,4)
 
-        if rng < 3:
+        if rng1 < 3:
 
            jump randomcasus
 

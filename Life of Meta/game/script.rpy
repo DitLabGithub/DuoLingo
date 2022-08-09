@@ -4,7 +4,8 @@ define m = Character(_("MetaRobbin"), color="#c8c8ff")
 define v = Character(_("MetaMindy"), color="#a23af9")
 
 #random score die overal gebruikt kan worden
-default rng = 4
+default rng = 1
+default rng1 = 1
 #werkscore voor hoe goed je werk doet
 default score = 5
 #score om te bepalen of je een booster hebt of niet

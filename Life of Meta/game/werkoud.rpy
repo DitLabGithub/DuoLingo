@@ -74,8 +74,8 @@ label werk:
 
 label randomcasus:
 
-    $ rng = renpy.random.randint (1,5)
-
+    #$ rng = renpy.random.randint (1,5)
+    # uitgezet voor een doorloop van casussen ipv random bepaling van een casus
     if rng == 1:
 
         jump casus1
@@ -96,6 +96,9 @@ label randomcasus:
 
         jump casus5
 
+    else:
+        jump eventpicker
+
     return
 
 label casus1:
@@ -103,7 +106,7 @@ label casus1:
     # inholland casus
 
     "Hm.."
-
+    $ rng += 1
     show dip2
     with fade
 
@@ -126,7 +129,7 @@ label casus1:
 label casus2:
 
     # gewoon diploma
-
+    $ rng += 1
     scene black
     with dissolve
 
@@ -154,7 +157,7 @@ label casus2:
 label casus3:
 
     # chinees diploma
-
+    $ rng += 1
     scene black
     with dissolve
 
@@ -196,7 +199,7 @@ label casus3:
 label casus4:
 
     # gekocht diploma
-
+    $ rng += 1
     scene black
     with dissolve
 
@@ -242,7 +245,7 @@ label casus4:
 label casus5:
 
     # diploma van een onbekende school
-
+    $ rng += 1
     scene black
     with dissolve
 
