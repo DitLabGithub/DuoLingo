@@ -315,10 +315,9 @@ label goedbezig:
 
             s "Je hebt zulk goed werk gedaan hier MetaRobbin... "
             s "Je verdient een promotie!"
-            s "We gaan ook het systeem van diplomas een beetje veranderen"
-            s "Hoe dat werkt leggen we je later wel uit, eerst een feestje!!"
+            s "tijd voor een feestje!!"
             $ maandmedewerker = True
-            jump toekomstbaan
+            jump eventpicker
 
         else:
             jump eventpicker
