@@ -4,8 +4,8 @@ label eventpicker:
     if toestemming == False:
         $ rng1 = renpy.random.randint (1,4)
 
-        if rng1 < 3:
-
+        if rng1 < 3 or werk:
+            # na alle casussen toestemming op true?
            jump randomcasus
 
         else:
@@ -28,7 +28,7 @@ label eventpicker:
                 jump deechteavond
     else:
 
-        if lasteventnr == 5:
+        if lasteventnr == 5 or werk:
             jump toekomstbaan
 
         else:
@@ -237,7 +237,7 @@ label deavond:
             "je praat nog wat langer door aan de telefoon"
             "na een tijdje zegt ze dat ze nu toch echt moet gaan... "
             "dus jullie zeggen elkaar gedag en beloven weer te bellen"
-            jump raondomcasus
+            jump randomcasus
 
 
         "vraag haar uit":

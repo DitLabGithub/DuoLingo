@@ -272,15 +272,26 @@ label casus5:
 
                     "Je belt de persoon op en krijgt niemand te pakken... je besluit om deze sollicitatie af te keuren"
 
-                    jump goedbezig
+                    if werk:
+                        jump toekomstbaan
+
+                    else:
+                        jump goedbezig
 
                 "Keur de sollicitatie af":
 
-                    jump goedbezig
+                    if werk:
+                        jump toekomstbaan
+                    else:
+                        jump goedbezig
 
         "Weg ermee!":
 
-            jump badending
+            if werk:
+                s "dat is niet goed MetaRobbin... maar voor deze keer..."
+                jump toekomstbaan
+            else:
+                jump badending
 
     return
 
@@ -296,9 +307,9 @@ label goedbezig:
 
     if score < 10:
 
-        #"Probeer de volgende!"
 
         jump eventpicker
+
 
         return
 

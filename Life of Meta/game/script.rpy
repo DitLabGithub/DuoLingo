@@ -21,7 +21,8 @@ default maandmedewerker = False
 default drukte = 1
 #score om te kijken waar in toekomstcasus de speler is
 default toekomstcas = 1
-
+#werk variabele voor enkel werk casussen of niet
+default werk = False
 
 default rus = False
 default hol = False
@@ -31,13 +32,14 @@ default apel = False
 label start:
 
     menu:
-        "ga naar werk spel":
+        "ga naar spel":
 
             jump werk
 
-        "begin metas leven (nog mee bezig)":
+        "alleen de werkcasussen":
+            $ werk = True
 
-            jump born
+            jump werk
 
         "naar de toekomst van meta":
 
@@ -170,7 +172,10 @@ label toekomstcasus1:
 
             "maar laten we verder gaan!"
 
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
         "Handmatig alle Russen uitsluiten":
             "Vanaf nu komen alle Russen langs bij de handmatige beoordeling"
@@ -181,7 +186,11 @@ label toekomstcasus1:
             $ rus = True
             "laten we verder gaan"
 
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
 
     return
 
@@ -202,7 +211,10 @@ label toekomstcasus2:
                         "Hierdoor mis je een aantal sollicitanten... maar je krijgt ook geen ongeldige diplomas binnen"
                         "alle sollicitanten van de school kun je later opnieuw oproepen voor een sollicitatie"
 
-                        jump toekomsteventpicker
+                        if werk:
+                            jump randomtoekomstcasus
+                        else:
+                            jump toekomsteventpicker
 
                     "je besluit om alle leerlingen van deze school handmatig tegen te houden":
                         "Je team controleert alle gevallen met de hand, maar je weet nog niet welke diploma's onterecht zijn uitgegeven"
@@ -210,14 +222,19 @@ label toekomstcasus2:
 
                         $ drukte +=2
                         $ hol = True
-
-                        jump toekomsteventpicker
+                        if werk:
+                            jump randomtoekomstcasus
+                        else:
+                            jump toekomsteventpicker
 
             "wacht op het onderzoek dat persoonlijke diploma's uitsluit en sluit die handmatig uit":
                 "Tijdens het onderzoek sijpelen er langzaam een aantal diplomas door die onterecht zijn uitgegeven."
                 "Helaas kun je dit achteraf niet meer herstellen..."
 
-                jump toekomsteventpicker
+                if werk:
+                    jump randomtoekomstcasus
+                else:
+                    jump toekomsteventpicker
 
         return
 
@@ -235,14 +252,20 @@ label toekomstcasus3:
             "dit lijkt me niet goed MetaRobbin"
             "het gaat om 500.000 diplomas waarvan er maar een paar ongeldig zijn..."
             "maar je bespaard je afdeling een hoop handmatig werk"
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
 
         "Controleer handmatig per persoon of ze uit Apeldoorn komen":
             $ drukte +=1
             $ apel = True
             "dit levert wat handmatig werk op, maar gelukkig krijg je wel de kans om alle sollicitaties te controleren"
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
     return
 
@@ -259,20 +282,29 @@ label toekomstcasus4:
             "dat zal de druk op de afdeling zeker verlagen!"
             $ drukte -=3
             $ rus = False
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
         "doe apeldoorn automatisch" if apel:
             "je laat ongeveer 5 sollicitaties per maand geautomatiseerd doen"
             "dit levert helaas niets op qua drukte van de afdeling"
             $ apel = False
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
         "stop met de handmatige afhandeling van de afgekeurde school" if hol:
             "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
             "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
             $ drukte -=2
             $ hol = False
-            jump toekomsteventpicker
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
 
         "meer informatie over de verschillen":
             "aantal sollicitaties met een russiche nationaliteit zijn 20.000 per maand, en van Russische scholen 25.000"
@@ -282,7 +314,8 @@ label toekomstcasus4:
 
     return
 
-#oud casus niet meer random
+
+# toekomstbaan aanpassen via flow. als alle casussen en werk is waar -> toekomstcasus
 # bewaren van resultaten vna oude casus icm de nieuwe zien
 # flowchart
 # diploma via email
