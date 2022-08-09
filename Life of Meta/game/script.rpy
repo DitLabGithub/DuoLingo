@@ -315,9 +315,9 @@ label toekomstcasus4:
     return
 
 
-# toekomstbaan aanpassen via flow. als alle casussen en werk is waar -> toekomstcasus
+
 # bewaren van resultaten vna oude casus icm de nieuwe zien
 # flowchart
 # diploma via email
 # diploma legaliseren vragen naar casussen
-# scheiding maken tussen casus en live events
+
