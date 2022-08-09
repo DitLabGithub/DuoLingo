@@ -281,3 +281,9 @@ label toekomstcasus4:
 
     return
 
+#oud casus niet meer random
+# bewaren van resultaten vna oude casus icm de nieuwe zien
+# flowchart
+# diploma via email
+# diploma legaliseren vragen naar casussen
+# scheiding maken tussen casus en live events
