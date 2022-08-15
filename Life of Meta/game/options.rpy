@@ -149,7 +149,7 @@ define config.save_directory = "LifeofMeta-1657184745"
 ## veld voor het definen van autosave, aangeroepen in screens.rpy:
 ##  if config.has_autosave:
 ##                        textbutton _("{#auto_page}A") action FilePage("auto")
-define config.has_autosave = false
+define config.has_autosave = False
 
 
 ## Icon ########################################################################
