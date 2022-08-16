@@ -2,6 +2,9 @@
 define s = Character(_("Sylvie"), color="#c8ffc8")
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
 define v = Character(_("MetaMindy"), color="#a23af9")
+define pa = Character(_("MetaPapa"), color="FF5733")
+define ma = Character(_("MetaMama"), color="DA0CD1")
+define receptionist = Character(_("receptionist"), color="#c8ffc8")
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -41,10 +44,9 @@ label start:
 
             jump werk
 
-        "naar de toekomst van meta":
+        "start het metaleven van Robbin":
 
-            $ toestemming = True
-            jump toekomstbaan
+            jump born
 
         "test events":
 
@@ -53,7 +55,6 @@ label start:
 
 label born:
 
-    #geboorte van meta robin voorstellen van ma en pa meta...
     #aangifte van meta robin bij de gemeente
     #inschrijven meta bij een school
     #àanmelden voor stex met beperking
@@ -63,11 +64,75 @@ label born:
 
     "metamama staat op het punt om te bevallen en hiermee begint jouw leven."
 
-    "je vernoemen je naar je overgrootvader en vanaf nu heet je MetaRobin"
+    pa "dat is het liefste kind dat ik ooit heb gezien"
+    ma "hmm ja, hoe zullen we hem noemen?"
+    pa "zullen we hem vernoemen naar je grootvader? "
+    ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert?"
+    pa "wat denk je van robbin?"
+    ma "ja, dat is een leuke naam!"
+    pa "wat hebben we allemaal nodig voor die aangifte?"
+    ma "even checken... oh wat een ingewikkelde website is dit..."
+    ma "oh vandaag nog niet... want Robbin is vandaag geboren, morgen is het zaterdag, dan kan het ook niet"
+    ma "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag?"
+    ma "ehm... het staat er niet bij..."
+    pa "wat is dat voor onzin... zijn ze dinsdag dicht dan?"
+    ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete..."
+    pa "kan ik het dan niet online doen?"
+    ma "nee, niet hier... in sommige gemeentes wel..."
+    pa "okay woensdag dus... Wat moet ik meenemen?"
+    ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus.. "
+    ma "en verklaring van geboorte.. maar die is ook niet verplicht"
+    pa "wat onduidelijk allemaal... dus alleen mijn id bewijs"
+    ma "ja denk ik... "
 
-    "natuurlijk moet je eerst aangemeld worden bij de gemeente om je registraties op orde te maken... "
+    "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
+    "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
+    receptionist "heeft u een afspraak?"
+    pa "nee, kan dat?"
+    "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
+    receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
+    pa "oh, dan wacht ik toch eventjes"
+
+    "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
+    "nummer 13... oh dat is wel iets langer dan eventjes"
+    "3 uur later..."
+    "nummer 87"
+    pa "oh bijna aan de beurt..."
+    "nummer 88"
+    "ping! nummer 89"
+    pa "eindelijk..."
+    "metapapa loopt naar de balie"
+    s "hallo, wat kan ik voor je doen?"
+    pa "ik wil mijn zoon aangeven, die is vorige week geboren"
+    s "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
+    pa "ehm nee, er stond op de website dat dat niet hoefde..."
+    s "hmm oh... ja dat is wel wat lastiger dan... "
+    s "momentje... ik print even het formulier uit"
+    s "wilt u dit formulier invullen met blokletters?"
+    pa "tuurlijk"
+    s "heeft u ondertussen u id bewijs meegenomen"
+    "metapapa geeft zijn paspoort aan de ambtenaar"
+    s "dank je wel"
+    "na een tijdje heeft metapapa alle antwoorden ingevuld en geeft het formulier terug"
+    s "dank u wel... "
+    "de ambtenaar begint met invullen"
+    s "Robbin is dat correct? en vorige week vrijdag geboren?"
+    pa "ja met 2 b's "
+    s "ja ik zie het... en metamama is de moeder?"
+    pa "jazeker"
+    s "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
+    "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
+    s "wilt u het allemaal nog even controleren?"
+    pa "oh de naam van Robbin staat fout... "
+    s "oh ik zie het, 2 r's toch? momentje dan print ik een nieuwe geboorteakte uit"
+    "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en begint zijn digitale leven!"
+    jump school
 
     return
+
+label school:
+    return
+
 
 label toekomstbaan:
 #andere baan...
@@ -114,12 +179,8 @@ label toekomstbaan:
     "De volgende dag ga je gelijk aan de slag, langzamerhand moet het register gevuld worden, maar gelukkig heb je een lijst met betrouwbare scholen"
     "Deze diplomas gaan vanaf nu automatisch door"
 
-
-
-#nieuwe casus bouwen op de nieuwe manier!
-
     $ lasteventnr +=1
-    jump toekomsteventpicker
+    jump randomtoekomstcasus
     return
 
 # nieuwe werk is TIR aanpassen of handmatig checken
@@ -150,7 +211,10 @@ label randomtoekomstcasus:
         jump toekomstcasus4
 
     else:
-        jump toekomsteventpicker
+        if werk:
+            return
+        else:
+            jump toekomsteventpicker
 
     return
 
