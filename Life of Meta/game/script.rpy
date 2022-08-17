@@ -69,6 +69,8 @@ label born:
     show hospital
     "metamama staat op het punt om te bevallen."
 
+    play music "audio/woo_scary.ogg"
+
     pa "dat is het liefste kind dat ik ooit heb gezien "
     ma "hmm ja, hoe zullen we hem noemen? "
     pa "zullen we hem vernoemen naar je grootvader? "
@@ -91,6 +93,9 @@ label born:
     ma "ja denk ik... "
     scene
     show stadhuis
+
+    play music "audio/hope.ogg"
+
     "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
     "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
     receptionist "heeft u een afspraak?"
@@ -133,6 +138,9 @@ label born:
     s "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
     "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
     scene black
+
+    play music "audio/woo_scary.ogg"
+
     show text "Life of Meta" at truecenter
     ""
     show metarobbinmedium at top
