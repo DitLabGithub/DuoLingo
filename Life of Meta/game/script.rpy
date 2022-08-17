@@ -13,8 +13,6 @@ image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
 image hospital = im.Scale("aptcomplex05.png", 1920,1080)
 image stadhuis = im.Scale("school04.png", 1920,1080)
 image ditlablogo = im.Scale("46.png", 1920,500)
-image duobinnenkant = im.Scale("duomanagergroot.jpeg", 1920,1080)
-
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -37,27 +35,9 @@ default toekomstcas = 1
 #werk variabele voor enkel werk casussen of niet
 default werk = False
 
-#variableen voor de toekomst casussen
 default rus = False
 default hol = False
 default apel = False
-
-#clock for timer
-#default clock = 0
-
-#screen my_timer():
-#    text "[clock]" size 72 color "#FFF"
-#    if clock < 6:
-#        timer 1 repeat True action [
-#                SetVariable("clock", clock + 1),
-#                renpy.restart_interaction
-#            ]
-#    else:
-#        timer 1 action [
-#                Hide("my_timer"),
-#                Jump("time_out")
-#            ]
-
 
 
 label start:
@@ -65,20 +45,20 @@ label start:
     menu:
         "ga naar spel":
 
-            jump born
+            jump werk
 
         "alleen de werkcasussen":
             $ werk = True
 
             jump werk
 
-        #"start het metaleven van Robbin":
+        "start het metaleven van Robbin":
 
-            #jump born
+            jump born
 
-        #"test events":
+        "test events":
 
-        #    jump randomtoekomstcasus
+            jump randomtoekomstcasus
     return
 
 label born:
@@ -130,12 +110,12 @@ label born:
     "metapapa loopt naar de balie"
     s "hallo, wat kan ik voor je doen?"
     pa "ik wil mijn zoon aangeven, die is vorige week geboren"
-    s "Gefeliciteerd! heeft u een verklaring van geboorte bij u?"
+    s "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
     pa "ehm nee, er stond op de website dat dat niet hoefde..."
-    s "Hmm oh... ja dat is wel wat lastiger dan... "
-    s "Momentje... ik print even het formulier uit"
-    s "Wilt u dit formulier invullen met blokletters?"
-    pa "Maar natuurlijk"
+    s "hmm oh... ja dat is wel wat lastiger dan... "
+    s "momentje... ik print even het formulier uit"
+    s "wilt u dit formulier invullen met blokletters?"
+    pa "tuurlijk"
     s "heeft u ondertussen u id bewijs meegenomen"
     "metapapa geeft zijn paspoort aan de ambtenaar"
     s "dank je wel"
@@ -147,21 +127,21 @@ label born:
     s "ja ik zie het... en metamama is de moeder?"
     pa "jazeker"
     s "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
-    "metapapa krijgt de geboorteakte met alle gegevens"
+    "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
     s "wilt u het allemaal nog even controleren?"
     pa "oh de naam van Robbin staat fout... "
     s "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
     "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
     scene black
     show text "Life of Meta" at truecenter
-    #TODO timer om het automatisch door te laten gaan
     ""
-    show metarobbinmedium at truecenter
+    show metarobbinmedium at top
     ""
     scene black
     show ditlablogo at truecenter
-
-    "Een spel ontwikkeld door het Dit-Lab. Een samenwerking tussen de Hanzehogeschool en DUO"
+    ""
+    "Een spel ontwikkeld door het Dit-Lab."
+    "een samenwerking tussen de Hanzehogeschool en DUO"
 
     jump school
 
@@ -171,7 +151,7 @@ label school:
     #inschrijven meta bij een school
         #àanmelden voor stex met beperking
         #aanmelden stufi
-    jump werk
+
 
     return
 
