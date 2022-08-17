@@ -1,10 +1,18 @@
 ﻿# Declare characters used by this game.
-define s = Character(_("Sylvie"), color="#c8ffc8")
+define s = Character(_("Sylvie"), image="sylvie", color="#c8ffc8")
+image side sylvie = "sylvie blue normal.png"
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
 define v = Character(_("MetaMindy"), color="#a23af9")
-define pa = Character(_("MetaPapa"), color="FF5733")
-define ma = Character(_("MetaMama"), color="DA0CD1")
-define receptionist = Character(_("receptionist"), color="#c8ffc8")
+define pa = Character(_("MetaPapa"), image="metapapa", color="FF5733")
+image side metapapa = "metapapa.png"
+define ma = Character(_("MetaMama"), image="metamama", color="DA0CD1")
+image side metamama = "metamama.png"
+define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ffc8")
+image side sylvie1 = "sylvie green normal.png"
+
+image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
+image stadhuis = im.Scale("stadhuis.jpg", 1920,1080)
+image ditlablogo = im.Scale("46.png", 1920,1080)
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -55,36 +63,34 @@ label start:
 
 label born:
 
-    #aangifte van meta robin bij de gemeente
-    #inschrijven meta bij een school
-    #àanmelden voor stex met beperking
-    #aanmelden stufi
-
+    show metapapa at left
+    show metamama at right
     "dit zijn metapapa en metamama."
+    show hospital
+    "metamama staat op het punt om te bevallen."
 
-    "metamama staat op het punt om te bevallen en hiermee begint jouw leven."
-
-    pa "dat is het liefste kind dat ik ooit heb gezien"
-    ma "hmm ja, hoe zullen we hem noemen?"
+    pa "dat is het liefste kind dat ik ooit heb gezien "
+    ma "hmm ja, hoe zullen we hem noemen? "
     pa "zullen we hem vernoemen naar je grootvader? "
-    ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert?"
+    ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert? "
     pa "wat denk je van robbin?"
     ma "ja, dat is een leuke naam!"
     pa "wat hebben we allemaal nodig voor die aangifte?"
     ma "even checken... oh wat een ingewikkelde website is dit..."
     ma "oh vandaag nog niet... want Robbin is vandaag geboren, morgen is het zaterdag, dan kan het ook niet"
-    ma "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag?"
-    ma "ehm... het staat er niet bij..."
-    pa "wat is dat voor onzin... zijn ze dinsdag dicht dan?"
-    ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete..."
+    ma "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag? "
+    ma "ehm... het staat er niet bij... "
+    pa "wat is dat voor onzin... zijn ze dinsdag dicht dan? "
+    ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete... "
     pa "kan ik het dan niet online doen?"
-    ma "nee, niet hier... in sommige gemeentes wel..."
+    ma "nee, niet hier... in sommige gemeentes wel... "
     pa "okay woensdag dus... Wat moet ik meenemen?"
-    ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus.. "
-    ma "en verklaring van geboorte.. maar die is ook niet verplicht"
+    ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus..  "
+    ma "en verklaring van geboorte.. maar die is ook niet verplicht "
     pa "wat onduidelijk allemaal... dus alleen mijn id bewijs"
     ma "ja denk ik... "
-
+    scene
+    show stadhuis
     "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
     "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
     receptionist "heeft u een afspraak?"
@@ -124,13 +130,25 @@ label born:
     "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
     s "wilt u het allemaal nog even controleren?"
     pa "oh de naam van Robbin staat fout... "
-    s "oh ik zie het, 2 r's toch? momentje dan print ik een nieuwe geboorteakte uit"
-    "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en begint zijn digitale leven!"
+    s "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
+    "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
+    scene black
+    show ditlablogo at center
+    show metarobbinmedium at top
+    "Life of Meta, een spel ontwikkeld door het Dit-Lab."
+    hide metarobbinmedium
+    "een samenwerking tussen de Hanzehogeschool en DUO"
+
     jump school
 
     return
 
 label school:
+    #inschrijven meta bij een school
+        #àanmelden voor stex met beperking
+        #aanmelden stufi
+
+
     return
 
 
