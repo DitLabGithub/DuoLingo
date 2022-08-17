@@ -133,10 +133,14 @@ label born:
     s "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
     "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
     scene black
-    show ditlablogo at center
+    show text "Life of Meta" at truecenter
+    ""
     show metarobbinmedium at top
-    "Life of Meta, een spel ontwikkeld door het Dit-Lab."
-    hide metarobbinmedium
+    ""
+    scene black
+    show ditlablogo at center
+    ""
+    "Een spel ontwikkeld door het Dit-Lab."
     "een samenwerking tussen de Hanzehogeschool en DUO"
 
     jump school
