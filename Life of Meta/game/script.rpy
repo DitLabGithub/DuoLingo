@@ -154,7 +154,7 @@ label born:
     "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
     scene black
     show text "Life of Meta" at truecenter
-    #todo timer om het automatisch door te laten gaan
+    #TODO timer om het automatisch door te laten gaan
     ""
     show metarobbinmedium at truecenter
     ""
