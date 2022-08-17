@@ -1,0 +1,38 @@
+📝 Free Version License 📝
+
+"metropolis pixel images" by nabrappy
+
+2021
+
+The act of downloading this content, whether paid or free, means that the user is agreeing to abide by all terms outlined in this license agreement. 
+
+* If any of these terms are violated by the user, the licensing agreement is voided effective immediately.
+
+🆗 What you can do 🆗
+
+✔️ Use the images in non commercial projects / games.
+
+✔️ Use the images as title screens, in game splash ("show image"), tileset backgrounds / game enviroments, etc.
+
+✔️ Take in-game screenshots of your project that include the images, and use them as promotional content for your project's website / itch page.
+
+🛑 What you cannot do 🛑
+
+❌ Use the images in a commercial project / game.
+
+This means that you cannot use the images in any project that you have monetary gain from, including donation projects that do not require payment but allow optional donations.
+
+❌ Redistribute the images in any way, on any platform, for any reason OR re-sell the images / Alter and re-sell the images, or otherwise attempt to claim the work as your own.
+
+​❌ Alter the images in any way that is not simply adjusting the resolution, and use the altered images in your project.​
+
+For clarifiction, you are allowed to adjust the resolution / size of the images so that they are compatible with your project - but you may not edit anything else on the images, including color pallets.
+
+❌ Use images in a project without credit (somewhere) in your project, such as in the credits at the end of the game. 
+
+❌ Use screen shot images in your project's website / itch page as promotional content without credit.
+
+To be clear, you may not use these images as the main promotional content of your game. This means you cannot use the images as your project's website / itch page banner, background, or in any way attempt to pass the images off as your own branding.
+The only exception to this is the use of the images as in-game title screens, trailer footage showing gameplay, or screenshots of gameplay where the images are being used.
+
+*** If you have any questions regarding the license and what you can and can't do with the assets, please feel free to contact me @ nabrappy on itch.io.

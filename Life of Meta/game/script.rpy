@@ -4,14 +4,14 @@ image side sylvie = "sylvie blue normal.png"
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
 define v = Character(_("MetaMindy"), color="#a23af9")
 define pa = Character(_("MetaPapa"), image="metapapa", color="FF5733")
-image side metapapa = "metapapa.png"
+image side metapapa = im.Scale("s1-normal.png", 400, 700)
 define ma = Character(_("MetaMama"), image="metamama", color="DA0CD1")
-image side metamama = "metamama.png"
+image side metamama =  im.Scale("Codel9.png", 400, 700)
 define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ffc8")
-image side sylvie1 = "sylvie green normal.png"
+image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
 
-image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
-image stadhuis = im.Scale("stadhuis.jpg", 1920,1080)
+image hospital = im.Scale("aptcomplex05.png", 1920,1080)
+image stadhuis = im.Scale("school04.png", 1920,1080)
 image ditlablogo = im.Scale("46.png", 1920,500)
 image duobinnenkant = im.Scale("duomanagergroot.jpeg", 1920,1080)
 
