@@ -12,7 +12,7 @@ image side sylvie1 = "sylvie green normal.png"
 
 image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
 image stadhuis = im.Scale("stadhuis.jpg", 1920,1080)
-image ditlablogo = im.Scale("46.png", 1920,1080)
+image ditlablogo = im.Scale("46.png", 1920,500)
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -138,7 +138,7 @@ label born:
     show metarobbinmedium at top
     ""
     scene black
-    show ditlablogo at center
+    show ditlablogo at truecenter
     ""
     "Een spel ontwikkeld door het Dit-Lab."
     "een samenwerking tussen de Hanzehogeschool en DUO"
