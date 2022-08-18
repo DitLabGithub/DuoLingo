@@ -2,7 +2,6 @@ label werk:
 
     scene duogroot
     with fade
-    "Welkom bij Life of Meta!"
 
     show metarobbinmedium at left
     with dissolve

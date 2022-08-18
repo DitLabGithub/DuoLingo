@@ -10,9 +10,20 @@ image side metamama =  im.Scale("Codel9.png", 400, 700)
 define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ffc8")
 image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
 
-image hospital = im.Scale("aptcomplex05.png", 1920,1080)
-image stadhuis = im.Scale("school04.png", 1920,1080)
+#narrator
+define n = Character(None, what_style="centered_text", window_style="centered_window",
+                          window_xfill=True,
+                          window_yfill=True,
+                          window_background="images/n_bg.png",
+                          what_color="#ddd"
+    )
+
+image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
+image stadhuis = im.Scale("Stadhuis.jpg", 1920,1080)
 image ditlablogo = im.Scale("46.png", 1920,500)
+image ma = im.Scale("Codel9.png", 400, 700)
+image pa = im.Scale("s1-normal.png", 400, 700)
+image balie = im.Scale("balie.png", 1920,1080)
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -34,7 +45,7 @@ default drukte = 1
 default toekomstcas = 1
 #werk variabele voor enkel werk casussen of niet
 default werk = False
-
+#variabelen voor de toekomstcasussen
 default rus = False
 default hol = False
 default apel = False
@@ -45,7 +56,7 @@ label start:
     menu:
         "ga naar spel":
 
-            jump werk
+            jump born
 
         "alleen de werkcasussen":
             $ werk = True
@@ -56,18 +67,18 @@ label start:
 
             jump born
 
-        "test events":
+      #  "test events":
 
-            jump randomtoekomstcasus
+      #      jump randomtoekomstcasus
     return
 
 label born:
 
-    show metapapa at left
-    show metamama at right
-    "dit zijn metapapa en metamama."
+    show pa at left
+    show ma at right
+    n "dit zijn metapapa en metamama."
     show hospital
-    "metamama staat op het punt om te bevallen."
+    n "metamama staat op het punt om te bevallen."
 
     play music "audio/woo_scary.ogg"
 
@@ -94,24 +105,31 @@ label born:
     scene
     show stadhuis
 
-    play music "audio/hope.ogg"
+    n "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
+    n "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
 
-    "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
-    "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
+    play music "audio/crowd-talking-2.mp3"
     receptionist "heeft u een afspraak?"
     pa "nee, kan dat?"
-    "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
+    n "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
     receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
     pa "oh, dan wacht ik toch eventjes"
 
-    "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
-    "nummer 13... oh dat is wel iets langer dan eventjes"
-    "3 uur later..."
-    "nummer 87"
+    n "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
+    show nr13 at truecenter
+    pa "nummer 13... oh dat is wel iets langer dan eventjes"
+    scene black
+    show stadhuis
+    n "3 uur later..."
+    show nr87 at truecenter
     pa "oh bijna aan de beurt..."
-    "nummer 88"
-    "ping! nummer 89"
+    $ renpy.pause(4.0)
+    show nr88 at truecenter
+    $ renpy.pause(4.0)
+    show nr89 at truecenter
     pa "eindelijk..."
+    scene
+    show balie
     "metapapa loopt naar de balie"
     s "hallo, wat kan ik voor je doen?"
     pa "ik wil mijn zoon aangeven, die is vorige week geboren"
@@ -141,16 +159,16 @@ label born:
 
     play music "audio/woo_scary.ogg"
 
-    show text "Life of Meta" at truecenter
-    ""
+    show text "{b}Life of Meta{/b}" at truecenter with dissolve
+
+    $ renpy.pause(2.0)
     show metarobbinmedium at top
-    ""
+    $ renpy.pause(4.0)
     scene black
     show ditlablogo at truecenter
-    ""
-    "Een spel ontwikkeld door het Dit-Lab."
-    "een samenwerking tussen de Hanzehogeschool en DUO"
 
+    "{b}Een spel ontwikkeld door het Dit-Lab. Een samenwerking tussen de Hanzehogeschool en DUO{/b}"
+    $ renpy.pause(2.0)
     jump school
 
     return
@@ -160,7 +178,7 @@ label school:
         #àanmelden voor stex met beperking
         #aanmelden stufi
 
-
+    jump werk
     return
 
 
@@ -415,3 +433,5 @@ label toekomstcasus4:
 # diploma via email
 # diploma legaliseren vragen naar casussen
 
+label credits:
+    "sounds from soundjay.com"
