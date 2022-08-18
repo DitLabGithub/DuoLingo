@@ -1,5 +1,5 @@
 label werk:
-
+    stop music
     scene duogroot
     with fade
 

@@ -172,7 +172,11 @@ label school:
     #inschrijven meta bij een school
         #àanmelden voor stex met beperking
         #aanmelden stufi
-
+    scene black
+    play sound "audio/exp.mp3"
+    image exp = im.Scale("exp.jpg", 1920,1080)
+    show exp
+    $ renpy.pause(4.0)
     jump werk
     return
 
