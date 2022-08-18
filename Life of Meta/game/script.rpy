@@ -125,7 +125,7 @@ label born:
     pa "eindelijk..."
     scene
     show balie
-    stop sound
+    stop music
     "metapapa loopt naar de balie"
     s "hallo, wat kan ik voor je doen?"
     pa "ik wil mijn zoon aangeven, die is vorige week geboren"
