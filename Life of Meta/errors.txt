@@ -2,13 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 183: reached end of line when expecting ':'.
-    if lasteventnr == 5
-                       ^
-
-File "game/script.rpy", line 184: expected statement.
-    else:
+File "game/script.rpy", line 345: menu statement expects a non-empty block.
+    menu:
         ^
 
-Ren'Py Version: Ren'Py 8.0.1.22070801
-Fri Jul 29 17:11:24 2022
+File "game/script.rpy", line 347: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
+    "sluit de school gelijk uit via het register":
+    ^
+
+Ren'Py Version: Ren'Py 8.0.0.22062402
+Fri Aug 19 10:45:21 2022

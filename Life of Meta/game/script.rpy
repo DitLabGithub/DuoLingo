@@ -1,22 +1,56 @@
 ﻿# Declare characters used by this game.
+#sylvie
 define s = Character(_("Sylvie"), image="sylvie", color="#c8ffc8")
 image side sylvie = "sylvie blue normal.png"
+
+#metarobbin
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
-define v = Character(_("MetaMindy"), color="#a23af9")
+
+#metamindy en metamama
+define v = Character(_("MetaMindy"), image="mindy", color="#a23af9")
+define ma = Character(_("MetaMama"), image="mindy", color="DA0CD1")
+image side mindy =  im.Scale("mindy.png", 400, 700)
+image side mindy happy = im.Scale("mindy blush.png", 400, 700)
+image side mindy annoyed = im.Scale("mindy annoyed.png", 400, 700)
+image side mindy angry = im.Scale("mindy angry.png", 400, 700)
+image side mindy blush = im.Scale("mindy blush.png", 400, 700)
+image side mindy blush1 = im.Scale("mindy blush1.png", 400, 700)
+image side mindy cry = im.Scale("mindy cry.png", 400, 700)
+image side mindy sad = im.Scale("mindy sad.png", 400, 700)
+image side mindy tired = im.Scale("mindy tired.png", 400, 700)
+image side mindy upset = im.Scale("mindy upset.png", 400, 700)
+
+
+#metapapa
 define pa = Character(_("MetaPapa"), image="metapapa", color="FF5733")
 image side metapapa = im.Scale("s1-normal.png", 400, 700)
-define ma = Character(_("MetaMama"), image="metamama", color="DA0CD1")
-image side metamama =  im.Scale("Codel9.png", 400, 700)
+image side metapapa angry = im.Scale("s1-angry.png", 400, 700)
+image side metapapa derp = im.Scale("s1-derp.png", 400, 700)
+image side metapapa disgust = im.Scale("s1-disgust.png", 400, 700)
+image side metapapa happy = im.Scale("s1-grin.png", 400, 700)
+image side metapapa grin = im.Scale("s1-grin2.png", 400, 700)
+image side metapapa question = im.Scale("s1-maybe-not.png", 400, 700)
+image side metapapa n2 = im.Scale("s1-normal2.png", 400, 700)
+image side metapapa surprise = im.Scale("s1-surprise.png", 400, 700)
+image side metapapa blush = im.Scale("s1-surprise-blush.png", 400, 700)
+image side metapapa angry1 = im.Scale("s1-tsundere.png", 400, 700)
+
+
+
+#receptionist en Sylvie
 define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ffc8")
 image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
+define a = Character(_("Ambtenaar"), image="sylvie", color="#c8ffc8")
+image side sylvie = "sylvie blue normal.png"
 
 #narrator
 define n = Character(None, what_style="centered_text", window_style="centered_window", window_xfill=True, window_yfill=True, window_background="images/n_bg.png", what_color="#ddd")
 
+#images
 image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
 image stadhuis = im.Scale("Stadhuis.jpg", 1920,1080)
 image ditlablogo = im.Scale("46.png", 1920,500)
-image ma = im.Scale("Codel9.png", 400, 700)
+image ma = im.Scale("mindy.png", 400, 700)
 image pa = im.Scale("s1-normal.png", 400, 700)
 image balie = im.Scale("balie.png", 1920,1080)
 
@@ -71,32 +105,31 @@ label born:
 
     show pa at left
     show ma at right
-    n "dit zijn metapapa en metamama."
     show hospital
-    n "metamama staat op het punt om te bevallen."
+    play music "audio/hospital.mp3"
+    n "dit zijn metapapa en metamama."
 
-    play music "audio/woo_scary.ogg"
-
-    pa "dat is het liefste kind dat ik ooit heb gezien "
-    ma "hmm ja, hoe zullen we hem noemen? "
+    pa happy"dat is het liefste kind dat ik ooit heb gezien "
+    ma happy "hmm ja, hoe zullen we hem noemen? "
     pa "zullen we hem vernoemen naar je grootvader? "
     ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert? "
     pa "wat denk je van robbin?"
     ma "ja, dat is een leuke naam!"
-    pa "wat hebben we allemaal nodig voor die aangifte?"
-    ma "even checken... oh wat een ingewikkelde website is dit..."
+    pa n2 "wat hebben we allemaal nodig voor die aangifte?"
+    ma annoyed "even checken... oh wat een ingewikkelde website is dit..."
     ma "oh vandaag nog niet... want Robbin is vandaag geboren, morgen is het zaterdag, dan kan het ook niet"
-    ma "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag? "
+    ma angry "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag? "
     ma "ehm... het staat er niet bij... "
-    pa "wat is dat voor onzin... zijn ze dinsdag dicht dan? "
+    pa angry1 "wat is dat voor onzin... zijn ze dinsdag dicht dan? "
     ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete... "
     pa "kan ik het dan niet online doen?"
-    ma "nee, niet hier... in sommige gemeentes wel... "
-    pa "okay woensdag dus... Wat moet ik meenemen?"
+    ma annoyed "nee, niet hier... in sommige gemeentes wel... "
+    pa blush "okay woensdag dus... Wat moet ik meenemen?"
     ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus..  "
     ma "en verklaring van geboorte.. maar die is ook niet verplicht "
-    pa "wat onduidelijk allemaal... dus alleen mijn id bewijs"
-    ma "ja denk ik... "
+    pa disgust "wat onduidelijk allemaal... dus alleen mijn id bewijs"
+    ma -annoyed "ja denk ik... "
+    stop music
     scene
     show stadhuis
 
@@ -105,52 +138,62 @@ label born:
 
     play music "audio/crowd-talking-2.mp3"
     receptionist "heeft u een afspraak?"
-    pa "nee, kan dat?"
+    pa surprise"nee, kan dat?"
     n "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
     receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
-    pa "oh, dan wacht ik toch eventjes"
+    pa - surprise "oh, dan wacht ik toch eventjes"
 
     n "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
     show nr13 at truecenter
     pa "nummer 13... oh dat is wel iets langer dan eventjes"
     scene black
     show stadhuis
-    n "3 uur later..."
+    $ n ("Metapapa kijkt op zijn horloge... 9.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("10.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("11.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("Mededeling: het is nu 12 uur pause, dus de wachttijd wordt iets langer", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    n "12.45"
     show nr87 at truecenter
     pa "oh bijna aan de beurt..."
-    $ renpy.pause(4.0)
+    $ renpy.pause(2.0, hard=True)
     show nr88 at truecenter
-    $ renpy.pause(4.0)
+    $ renpy.pause(2.0, hard=True)
     show nr89 at truecenter
-    pa "eindelijk..."
+    pa angry1 "eindelijk..."
     scene
     show balie
     stop music
     "metapapa loopt naar de balie"
-    s "hallo, wat kan ik voor je doen?"
-    pa "ik wil mijn zoon aangeven, die is vorige week geboren"
-    s "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
+    a "hallo, wat kan ik voor je doen?"
+    pa happy "ik wil mijn zoon aangeven, die is vorige week geboren"
+    a "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
     pa "ehm nee, er stond op de website dat dat niet hoefde..."
-    s "hmm oh... ja dat is wel wat lastiger dan... "
-    s "momentje... ik print even het formulier uit"
-    s "wilt u dit formulier invullen met blokletters?"
-    pa "tuurlijk"
-    s "heeft u ondertussen u id bewijs meegenomen"
-    "metapapa geeft zijn paspoort aan de ambtenaar"
-    s "dank je wel"
-    "na een tijdje heeft metapapa alle antwoorden ingevuld en geeft het formulier terug"
-    s "dank u wel... "
-    "de ambtenaar begint met invullen"
-    s "Robbin is dat correct? en vorige week vrijdag geboren?"
+    a "hmm oh... ja dat is wel wat lastiger dan... "
+    a "momentje... ik print even het formulier uit"
+    a "wilt u dit formulier invullen met blokletters?"
+    pa grin "papier? ehm... natuurlijk"
+    a "heeft u ondertussen u ID bewijs meegenomen"
+    n "metapapa geeft zijn paspoort aan de ambtenaar"
+    a "dank je wel"
+    n "na een tijdje heeft metapapa alle antwoorden ingevuld en geeft het formulier terug"
+    a "dank u wel... "
+    n "de ambtenaar begint met invullen"
+    a "Robbin is dat correct? en vorige week vrijdag geboren?"
     pa "ja met 2 b's "
-    s "ja ik zie het... en metamama is de moeder?"
-    pa "jazeker"
-    s "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
-    "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
-    s "wilt u het allemaal nog even controleren?"
+    a "hij is geboren met 2 b's?"
+    pa angry "nee, de naam is met 2 b's"
+    a "ja ik zie het... en metamama is de moeder?"
+    pa - angry "jazeker"
+    a "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
+    n "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
+    a "wilt u het allemaal nog even controleren?"
     pa "oh de naam van Robbin staat fout... "
-    s "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
-    "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
+    a "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
+    n "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
     scene black
 
     play music "audio/woo_scary.ogg"
@@ -198,7 +241,7 @@ label toekomstbaan:
     s "Ik snapte niet helemaal hoe dat ging... maar denk je dat dit kan werken?"
     m "Ja, ik kreeg het idee van de consentual-app"
     m "Ehm... "
-    #TODO andere metarobbine plaatje
+    #TODO andere metarobbin plaatje
     n "MetaRobbin kleurt gelijk rood..."
     s "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
     m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk aan ons."
@@ -271,11 +314,13 @@ label toekomstcasus1:
 # rusland casus
 
     $ toekomstcas += 1
-    #TODO niewsflash inbouwen
-    "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
-    "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
-    "Je hebt nu een paar keuzes..."
-    "Wat wil je doen?"
+    image rus = im.Scale("nf rusland.png", 1920,1080)
+    show rus
+    play sound "audio/newsflash.mp3"
+    n "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
+    n "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
+    n "Je hebt nu een paar keuzes..."
+    n "Wat wil je doen?"
 
     menu:
         "Alle scholen uit Rusland uitsluiten in het register":
@@ -311,11 +356,15 @@ label toekomstcasus1:
 label toekomstcasus2:
 #inhollandcasus
 
-    #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
+        image fraude = im.Scale("nf fraude.png", 1920,1080)
+        show fraude
+        play sound "audio/newsflash.mp3"
+        #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
         $ toekomstcas += 1
-        "je krijgt een bericht dat een school niet meer betrouwbaar is, wat wil je doen?"
+        n "je krijgt een bericht dat een school niet meer betrouwbaar is. Eerste onderzoeken wijzen uit dat zeker 100 diplomas ongeldig zijn.  wat wil je doen?"
 
         menu:
+            "wat wil je doen?"
             "sluit de school gelijk uit via het register":
                 "je sluit alle diplomas van deze school uit. het gaat om circa een half miljoen diplomas terwijl er maar 100 ongeldig zijn"
                 "misschien is dit niet de beste keuze... , maar je kunt het herstellen"
@@ -354,6 +403,9 @@ label toekomstcasus2:
 
 label toekomstcasus3:
     #TODO appenpokken in apeldoorn
+    image apen = im.Scale("nf apen.png", 1920,1080)
+    show apen
+    play sound "audio/newsflash.mp3"
 
     #newsflash over een appenpokken uitbraak in apeldoorn...lasteventnr
     $ toekomstcas += 1
@@ -385,9 +437,9 @@ label toekomstcasus3:
 
 label toekomstcasus4:
 #te druk op de afdeling
-
-
-
+    image drukte = im.Scale("nf drukte.png", 1920,1080)
+    show drukte
+    play sound "audio/newsflash.mp3"
     menu:
 
         "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
@@ -436,4 +488,4 @@ label toekomstcasus4:
 # diploma legaliseren vragen naar casussen
 
 label credits:
-    "sounds from soundjay.com"
+    "sounds from soundjay.com and pixabay.com"
