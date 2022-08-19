@@ -94,6 +94,8 @@ label Alleenwerk:
 
             jump werk
 
+label test:
+    jump toekomstevent2
 
 
 return

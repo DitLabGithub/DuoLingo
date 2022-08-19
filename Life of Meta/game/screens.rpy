@@ -301,6 +301,8 @@ screen navigation():
 
             textbutton _("Werk Casussen") action Start("Alleenwerk")
 
+            textbutton _("test") action Start("test")
+
         else:
 
             #textbutton _("History") action ShowMenu("history")
