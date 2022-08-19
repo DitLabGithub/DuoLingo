@@ -5,6 +5,7 @@ image side sylvie = "sylvie blue normal.png"
 
 #metarobbin
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
+define kid = Character(_("[kidname]"), color="#c8c8ff")
 
 #metamindy en metamama
 define v = Character(_("MetaMindy"), image="mindy", color="#a23af9")
@@ -95,7 +96,7 @@ label Alleenwerk:
             jump werk
 
 label test:
-    jump toekomstevent2
+    jump toekomstevent5
 
 
 return
