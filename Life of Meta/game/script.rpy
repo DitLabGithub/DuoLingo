@@ -86,20 +86,25 @@ label start:
         "ga naar spel":
 
             jump born
+return
 
-        "alleen de werkcasussen":
+
+label Alleenwerk:
+
+        # "alleen de werkcasussen":
             $ werk = True
 
             jump werk
 
-        "start het metaleven van Robbin":
+#        "start het metaleven van Robbin":
 
-            jump born
+#            jump born
 
       #  "test events":
 
       #      jump randomtoekomstcasus
-    return
+
+return
 
 label born:
 
