@@ -417,7 +417,7 @@ label toekomstevent2:
     $ toekomstevent +=1
 
     # "het is datenight vanavond, dus je maakt je op voor een date met MetaMindy"
-    # "samenwonen..."
+    #TODO "samenwonen..."
 
     jump randomtoekomstcasus
 
