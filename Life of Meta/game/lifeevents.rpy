@@ -415,8 +415,73 @@ label toekomstevent1:
 
 label toekomstevent2:
     $ toekomstevent +=1
-    "het is datenight vanavond, dus je maakt je op voor een date met MetaMindy"
-    "samenwonen..."
+    #TODO tijdelijk event geboorte moet naar event 5
+    n "metamindy komt naar je toe en zegt"
+    v happy "ik moet je wat vertellen"
+    m "wat?"
+    n "ze laat je iets zien"
+    show zwanger
+    m "echt??"
+    v "ja..."
+    m "wat fantastisch!"
+    n "aangezien we geen maanden gaan wachten, springen we wat voorwaarts in de tijd"
+    show hospital
+    play music "audio/hospital.mp3"
+    m "dat is het liefste kind dat ik ooit heb gezien "
+    v happy "hmm ja, hoe zullen we hem noemen? "
+    m "wat denk je van metakind1?"
+    v "oh ja dat is een leuke naam!"
+    m "ugh... weet je nog wat pa vertelde over mijn aanmelding?"
+    v annoyed "ja... dat weet ik nog... laten we hopen dat het tegenwoordig wat makkelijker gaat... die lange wachttijden"
+    m "ja ik geloof dat het via mijn wallet kan tegenwoordig..."
+    v happy "oh dat zou fantastisch zijn"
+    m "even kijken... "
+    n "je kijkt op de website van de gemeente en ziet de digitale aanmelding staan"
+    menu:
+        "wil je je kind digitaal aanmelden?"
+        "ja":
+            #TODO plaatjes met werking in de toekomst maken
+            "digiale aanmelding"
+            jump randomtoekomstcasus
+        "nee":
+            n "ah je wilt dezelfde werkwijze hanteren als je vader..."
+            n "verstandig..."
+            play music "audio/crowd-talking-2.mp3"
+            receptionist "heeft u een afspraak?"
+            m "nee, kan dat?"
+            n "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
+            receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
+            m "oh, dan wacht ik toch eventjes"
+
+            n "je gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
+            show nr13 at truecenter
+            m "nummer 13... oh dat is wel iets langer dan eventjes"
+            scene black
+            show stadhuis
+            $ n ("MetaRobbin kijkt op zijn horloge... 9.14", interact=False)
+            $ renpy.pause (4.0, hard=True)
+            $ n ("10.14", interact=False)
+            $ renpy.pause (4.0, hard=True)
+            $ n ("11.14", interact=False)
+            $ renpy.pause (4.0, hard=True)
+            $ n ("Mededeling: het is nu 12 uur pause, dus de wachttijd wordt iets langer", interact=False)
+            $ renpy.pause (4.0, hard=True)
+            n "12.45"
+            show nr87 at truecenter
+            m "oh bijna aan de beurt..."
+            $ renpy.pause(2.0, hard=True)
+            show nr88 at truecenter
+            $ renpy.pause(2.0, hard=True)
+            show nr89 at truecenter
+            m "eindelijk..."
+            scene
+            show balie
+            n "ben je er al flauw van?"
+            n "laten we maar aannemen dat de aanmelding goed is gegaan... "
+            jump randomtoekomstcasus
+
+    # "het is datenight vanavond, dus je maakt je op voor een date met MetaMindy"
+    # "samenwonen..."
 
     jump randomtoekomstcasus
 
