@@ -82,8 +82,6 @@ default apel = False
 
 label start:
 
-    menu:
-        "ga naar spel":
 
             jump born
 return
@@ -96,13 +94,7 @@ label Alleenwerk:
 
             jump werk
 
-#        "start het metaleven van Robbin":
 
-#            jump born
-
-      #  "test events":
-
-      #      jump randomtoekomstcasus
 
 return
 

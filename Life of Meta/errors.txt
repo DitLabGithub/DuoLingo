@@ -2,13 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 345: menu statement expects a non-empty block.
-    menu:
-        ^
-
-File "game/script.rpy", line 347: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    "sluit de school gelijk uit via het register":
-    ^
+File "game/script.rpy", line 106: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.0.0.22062402
-Fri Aug 19 10:45:21 2022
+Fri Aug 19 12:05:08 2022
