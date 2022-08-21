@@ -402,17 +402,16 @@ label toekomstcasus2:
         return
 
 label toekomstcasus3:
-    #TODO appenpokken in apeldoorn
+    #TODO apenpokken in apeldoorn
     show Stentor krant
-    play sound "audio/newsflash.mp3"
+    play sound "audio/ontbijt.mp3"
 
-    #newsflash over een appenpokken uitbraak in apeldoorn...lasteventnr
     $ toekomstcas += 1
-    "tijdens het ontbijt lees je de krant"
-    "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
-    "Wat wil je doen?"
+    n "'s Ochtends, tijdens het ontbijt, lees je de krant"
+    m "Lockdown in apeldoorn... apenpokken..."
+    n "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
     menu:
-
+        "Wat wil je doen?"
         "Haal alle scholen uit apeldoorn uit het register":
 
             "dit lijkt me niet goed MetaRobbin"
