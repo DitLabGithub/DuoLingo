@@ -403,12 +403,12 @@ label toekomstcasus2:
 
 label toekomstcasus3:
     #TODO appenpokken in apeldoorn
-    image apen = im.Scale("nf apen.png", 1920,1080)
-    show apen
+    show Stentor krant
     play sound "audio/newsflash.mp3"
 
     #newsflash over een appenpokken uitbraak in apeldoorn...lasteventnr
     $ toekomstcas += 1
+    "tijdens het ontbijt lees je de krant"
     "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
     "Wat wil je doen?"
     menu:
