@@ -84,7 +84,7 @@ default apel = False
 label start:
 
 
-            jump born
+     jump born
 return
 
 
@@ -95,9 +95,9 @@ label Alleenwerk:
 
             jump werk
 
+
 label test:
     jump toekomstevent5
-
 
 return
 

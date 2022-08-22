@@ -304,6 +304,8 @@ screen navigation():
 
                 textbutton _("Test") action Start("test")
 
+                textbutton _("freeroam") action Start("oudwerknewstyle")
+
                 textbutton _("Load") action ShowMenu("load")
 
                 textbutton _("Preferences") action ShowMenu("preferences")
