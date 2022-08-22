@@ -103,12 +103,14 @@ return
 
 label born:
 
+    show hospital
     show pa at left
     show ma at right
-    show hospital
+
     play music "audio/hospital.mp3"
     n "dit zijn metapapa en metamama."
-
+    hide pa
+    hide ma
     pa happy"dat is het liefste kind dat ik ooit heb gezien "
     ma happy "hmm ja, hoe zullen we hem noemen? "
     pa "zullen we hem vernoemen naar je grootvader? "

@@ -287,52 +287,65 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
-        style_prefix "navigation"
-
-        xpos gui.navigation_xpos
-        yalign 0.5
-
-        spacing gui.navigation_spacing
 
         if main_menu:
+            hbox:
+                style_prefix "navigation"
 
-            textbutton _("Start") action Start()
+                #xpos gui.navigation_xpos
+                xalign 0.15
+                yalign 0.98
+                #align (0, 1000)
+                spacing gui.navigation_spacing
 
-            textbutton _("Werk Casussen") action Start("Alleenwerk")
+                textbutton _("Start") action Start()
 
-            textbutton _("test") action Start("test")
+                textbutton _("Alleen Werk") action Start("Alleenwerk")
+
+                textbutton _("Test") action Start("test")
+
+                textbutton _("Load") action ShowMenu("load")
+
+                textbutton _("Preferences") action ShowMenu("preferences")
+
+                textbutton _("About") action ShowMenu("about")
+
+                textbutton _("Quit") action Quit(confirm=not main_menu)
 
         else:
+            vbox:
+                    style_prefix "navigation"
+
+                    xpos gui.navigation_xpos
+                    yalign 0.50
+                    #align (0, 1000)
+                    spacing gui.navigation_spacing
 
             #textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+                    textbutton _("Save") action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+                    textbutton _("Load") action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+                    textbutton _("Preferences") action ShowMenu("preferences")
 
-        if _in_replay:
+                    textbutton _("Main Menu") action MainMenu()
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+                    textbutton _("Quit") action Quit(confirm=not main_menu)
 
-        elif not main_menu:
+       # if _in_replay:
 
-            textbutton _("Main Menu") action MainMenu()
+        #    textbutton _("End Replay") action EndReplay(confirm=True)
 
-        textbutton _("About") action ShowMenu("about")
 
-        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+        # textbutton _("About") action ShowMenu("about")
 
-            ## Help isn't necessary or relevant to mobile devices.
-            # textbutton _("Help") action ShowMenu("help")
 
-        if renpy.variant("pc"):
+        #if renpy.variant("pc"):
 
             ## The quit button is banned on iOS and unnecessary on Android and
             ## Web.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+         #   textbutton _("Quit") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -389,7 +402,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -563,7 +576,13 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
+            text _("Gemaakt door DIT-Lab, een samenwerking tussen de Hanzehogeschool en DUO")
+            text _("codering en dialogen: Remco")
+            text _("achtergrondhulp en setup git: Reimer")
+            text _("Red Team: Jan, Hennie, Thijs, Johann en Matthieu")
+            text _("")
+            text _("Gemaakt met {a=https://www.renpy.org/}Ren'Py{/a}")
+            text _("[renpy.version_only].\n\n[renpy.license!t]")
 
 
 style about_label is gui_label
