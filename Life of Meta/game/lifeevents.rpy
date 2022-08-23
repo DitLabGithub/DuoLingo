@@ -463,6 +463,8 @@ label toekomstevent5:
             "wil je je kind digitaal aanmelden?"
             "ja":
                 #TODO plaatjes met werking in de toekomst maken
+                v "hoe werkt dat eigenlijk die digitale aanmelding?"
+
                 "digiale aanmelding"
                 jump randomtoekomstcasus
             "nee":

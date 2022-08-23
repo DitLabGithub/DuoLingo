@@ -318,7 +318,7 @@ label toekomstcasus1:
     $ toekomstcas += 1
     image rus = im.Scale("nf rusland.png", 1920,1080)
     show rus
-    play sound "audio/newsflash.mp3"
+    #play sound "audio/newsflash.mp3"
     n "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
     n "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
     n "Je hebt nu een paar keuzes..."
@@ -360,7 +360,7 @@ label toekomstcasus2:
 
         image fraude = im.Scale("nf fraude.png", 1920,1080)
         show fraude
-        play sound "audio/newsflash.mp3"
+        #play sound "audio/newsflash.mp3"
         #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
         $ toekomstcas += 1
         n "je krijgt een bericht dat een school niet meer betrouwbaar is. Eerste onderzoeken wijzen uit dat zeker 100 diplomas ongeldig zijn.  wat wil je doen?"
