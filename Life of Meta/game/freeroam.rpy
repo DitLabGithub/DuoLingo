@@ -1,4 +1,74 @@
+
 label oudwerknewstyle:
+    default Location = "kantoor"
+    default gh = 1
+    n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
+    if Location == "kantoor":
+        text "je bent op kantoor"
+    if gh == 2:
+       text "blah22222"
+    if gh == 1:
+       text "blah22222"
+
+
+    $ GameRunning = True
+    while GameRunning:
+        $ Location_img = Location.lower()
+        if renpy.has_image(Location_img, exact=True):
+            scene expression Location_img
+        menu:
+            "je bent nu op [Location]"
+            "blahblah":
+                return
+            "Open Map":
+                $ Location = renpy.call_screen("MapScreen", _layer="screens")
+
+init python:
+
+    class Place(object):
+        def __init__(self, x, y, name, IsActive):
+            self.x = x
+            self.y = y
+            self.name = name
+            self.IsActive = IsActive
+        @property
+        def avatar(self):
+            icon = self.name.lower() + "_icon.png"
+            return(icon)
+
+    Places = []
+    t = 0
+
+    while t < 50:
+        Places.append(Place(0,0,"", False))
+        t += 1
+
+    Places[0] = Place(680,500, "archief", True)
+    Places[1] = Place(350,200, "koffieapparaat", True)
+    Places[2] = Place(900,225, "inkomende mail", True)
+    Places[3] = Place(1650,150, "telefoon", True)
+    Places[4] = Place(1900,800, "toilet", True)
+    Places[5] = Place(3000,1200, "kantoor", False)
+
+
+
+screen MapScreen():
+    frame:
+        xalign 0.0
+        yalign 0.0
+        xsize 1920
+        ysize 1000
+        background "kantoor.png"
+        for q in Places:
+            if q.IsActive:
+                imagebutton:
+                    xpos q.x
+                    ypos q.y
+                    #text q.name
+                    hover q.avatar
+                    idle q.avatar
+                    action Return(q.name)
+
 #     show desk
 #     default werkdag = 0
 #     default area = "club"
@@ -97,38 +167,3 @@ label oudwerknewstyle:
 #                textbutton ""
 #        else:
 #            pass
-
-init python:
-    class Place(object):
-        def __init__(self, x, y, name, IsActive):
-            self.x = x
-            self.y = y
-            self.name = name
-            self.IsActive = IsActive
-
-    Places = []
-
-    while t < 50:
-        Places.append(place(0,0,"", False)
-        t += 1
-
-    Places[0] = Place(1000,600, "archief", True)
-    Places[1] = Place(200,600, "koffieapparaat", True)
-    Places[2] = Place(600,200, "inkomende mail", True)
-    Places[3] = Place(200,200, "telefoon", True)
-
-screen MapScreen():
-    frame:
-        xalign 0.0
-        yalign 0.0
-        xsize 1920
-        ysize 1000
-        background "desk.png"
-        for q in Places:
-            if q.IsActive:
-                button:
-                    xpos q.x
-                    ypos q.y
-                    text q.name
-                    action Return(q.name)
-

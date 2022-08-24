@@ -46,6 +46,7 @@ image side sylvie = "sylvie blue normal.png"
 
 #narrator
 define n = Character(None, what_style="centered_text", window_style="centered_window", window_xfill=True, window_yfill=True, window_background="images/n_bg.png", what_color="#ddd")
+define text = Character(None, what_style="centered_text", window_style="centered_window", window_xfill=True, window_yfill=True, window_background="images/n_bg.png", what_color="#ddd")
 
 #images
 image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
@@ -97,7 +98,7 @@ label Alleenwerk:
 
 
 label test:
-    jump toekomstevent5
+    jump oudwerknewstyle
 
 return
 
@@ -219,8 +220,8 @@ label school:
         #àanmelden voor stex met beperking
         #aanmelden stufi
     scene black
-    play sound "audio/exp.mp3"
-    image exp = im.Scale("exp.jpg", 1920,1080)
+#     play sound "audio/exp.mp3"
+#     image exp = im.Scale("exp.jpg", 1920,1080)
     show exp
     $ renpy.pause(4.0)
     jump werk
