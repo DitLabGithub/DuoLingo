@@ -1,14 +1,14 @@
 
 label oudwerknewstyle:
     default Location = "kantoor"
-    default gh = 1
     n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
-    if Location == "kantoor":
-        text "je bent op kantoor"
-    if gh == 2:
-       text "blah22222"
-    if gh == 1:
-       text "blah22222"
+
+#     if Location == "kantoor":
+#         text "je bent op kantoor"
+#     if gh == 2:
+#        text "blah22222"
+#     if gh == 1:
+#        text "blah22222"
 
 
     $ GameRunning = True
@@ -16,8 +16,9 @@ label oudwerknewstyle:
         $ Location_img = Location.lower()
         if renpy.has_image(Location_img, exact=True):
             scene expression Location_img
+            #$ Location = renpy.call_screen("MapScreen", _layer="screens")
         menu:
-            "je bent nu op [Location]"
+            "je bent nu op [Location], waar wil je naar toe?"
             "blahblah":
                 return
             "Open Map":
