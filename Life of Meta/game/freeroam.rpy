@@ -1,3 +1,13 @@
+default tele1 = ""
+
+label archief:
+
+    menu:
+        "casus 1"
+            n "[tele1] [schoolinfo1] [schooldiploma1]"
+            jump archief
+        "terug naar kantoor"
+            jump
 
 label oudwerknewstyle:
     default Location = "kantoor"
