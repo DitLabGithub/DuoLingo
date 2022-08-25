@@ -80,6 +80,14 @@ default werk = False
 default rus = False
 default hol = False
 default apel = False
+#variabelen voor werkoud
+default tijd = 1
+default 1kan_bel = ""
+default 1kan_data = ""
+default 1school_bel = ""
+default 1school_data = ""
+default 1vertaling = ""
+default 1besluit = ""
 
 
 label start:

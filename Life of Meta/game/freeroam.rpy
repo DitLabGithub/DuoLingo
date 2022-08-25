@@ -1,10 +1,11 @@
 default tele1 = ""
 
+
 label archief:
 
     menu:
         "casus 1"
-            n "[tele1] [schoolinfo1] [schooldiploma1]"
+            n "[1kan_bel]\n[1kan_data]\n[1school_bel]\n[1school_data]\n[1vertaling]\n[1besluit] "
             jump archief
         "terug naar kantoor"
             jump
@@ -12,17 +13,16 @@ label archief:
 label oudwerknewstyle:
     default Location = "kantoor"
     n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
-
+    jump kantoor
 #     if Location == "kantoor":
 #         text "je bent op kantoor"
 #     if gh == 2:
 #        text "blah22222"
 #     if gh == 1:
 #        text "blah22222"
+label kantoor:
 
-
-    $ GameRunning = True
-    while GameRunning:
+    while tijd < 5:
         $ Location_img = Location.lower()
         if renpy.has_image(Location_img, exact=True):
             scene expression Location_img
