@@ -338,7 +338,7 @@ label goedbezig:
     return
 
 label badending:
-
+#TODO need to change this... with call something... maybe while? somewhere?
     scene black
     with dissolve
 
@@ -350,7 +350,9 @@ label badending:
 
         s "Voor deze keer zie ik het door de vingers..."
 
-        jump eventpicker
+        jump oudwerknewstyle
+
+        #jump eventpicker
 
     if score < 4:
 

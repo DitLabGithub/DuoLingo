@@ -2,6 +2,8 @@
 #sylvie
 define s = Character(_("Sylvie"), image="sylvie", color="#c8ffc8")
 image side sylvie = "sylvie blue normal.png"
+#TODO plaatje vertaler
+define v = Character(_("Vertaler"), image="sylvie", color="#c8ffc8")
 
 #metarobbin
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
@@ -60,7 +62,7 @@ image balie = im.Scale("balie.png", 1920,1080)
 default rng = 1
 default rng1 = 1
 #werkscore voor hoe goed je werk doet
-default score = 5
+default score = 15
 #score om te bepalen of je een booster hebt of niet
 default booster = False
 #score om te bepalen welk event je hebt afgerond zodat je doorgaat in het leven
@@ -82,13 +84,81 @@ default hol = False
 default apel = False
 #variabelen voor werkoud
 default tijd = 1
-default 1kan_bel = ""
-default 1kan_data = ""
-default 1school_bel = ""
-default 1school_data = ""
-default 1vertaling = ""
-default 1besluit = ""
+default cas1 = False
+default aanv_bel1 = "De aanvrager is nog niet gebeld"
+default aanv_bel1b = False
+default aanv_data1 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel1 = "De school is nog niet gebeld"
+default school_data1 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling1 = "Dit diploma is in het Nederlands"
+default besluit1 = "Je hebt nog geen besluit genomen"
+default vert1klaar = 100
+default school1info = False
+default res_used1 = 0
 
+default cas2 = False
+default aanv_bel2 = "De aanvrager is nog niet gebeld"
+default aanv_bel2b = False
+default aanv_data2 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel2 = "De school is nog niet gebeld"
+default school_data2 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling2 = "Dit diploma is niet in het Nederlands"
+default besluit2 = "Je hebt nog geen besluit genomen"
+default vert2klaar = 100
+default school2info = False
+default vert2 = False
+default res_used2 = 0
+
+default cas3 = False
+default aanv_bel3 = "De aanvrager is nog niet gebeld"
+default aanv_bel3b = False
+default aanv_data3 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel3 = "De school is nog niet gebeld"
+default school_data3 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling3 = "Dit diploma is in het Nederlands"
+default besluit3 = "Je hebt nog geen besluit genomen"
+default vert3klaar = 100
+default school3info = False
+default res_used3 = 0
+
+default cas4 = False
+default aanv_bel4 = "De aanvrager is nog niet gebeld"
+default aanv_bel4b = False
+default aanv_data4 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel4 = "De school is nog niet gebeld"
+default school_data4 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling4 = "Dit diploma is niet in het Nederlands"
+default besluit4 = "Je hebt nog geen besluit genomen"
+default vert4klaar = 100
+default school4info = False
+default vert4 = False
+default res_used4 = 0
+
+default cas5 = False
+default aanv_bel5 = "De aanvrager is nog niet gebeld"
+default aanv_bel5b = False
+default aanv_data5 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel5 = "De school is nog niet gebeld"
+default school_data5 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling5 = "Dit diploma is in het Nederlands"
+default besluit5 = "Je hebt nog geen besluit genomen"
+default vert5klaar = 100
+default school5info = False
+default res_used5 = 0
+
+default cas6 = False
+default aanv_bel6 = "De aanvrager is nog niet gebeld"
+default aanv_bel6b = False
+default aanv_data6 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+default school_bel6 = "De school is nog niet gebeld"
+default school_data6 = "Er zijn nog geen extra gegevens bekend van de school"
+default vertaling6 = "Dit diploma is in het Nederlands"
+default besluit6 = "Je hebt nog geen besluit genomen"
+default vert6klaar = 100
+default school6info = False
+default res_used6 = 0
+
+default dag = 0
 
 label start:
 
@@ -106,7 +176,7 @@ label Alleenwerk:
 
 
 label test:
-    jump oudwerknewstyle
+    jump archief
 
 return
 
