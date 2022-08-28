@@ -3,7 +3,7 @@
 define s = Character(_("Sylvie"), image="sylvie", color="#c8ffc8")
 image side sylvie = "sylvie blue normal.png"
 #TODO plaatje vertaler
-define v = Character(_("Vertaler"), image="sylvie", color="#c8ffc8")
+define ve = Character(_("Vertaler"), color="#c8ffc8")
 
 #metarobbin
 define m = Character(_("MetaRobbin"), color="#c8c8ff")
@@ -83,6 +83,7 @@ default rus = False
 default hol = False
 default apel = False
 #variabelen voor werkoud
+default laat = False
 default tijd = 1
 default cas1 = False
 default aanv_bel1 = "De aanvrager is nog niet gebeld"

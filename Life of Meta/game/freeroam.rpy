@@ -1,9 +1,83 @@
+#TODO teammeeting als resources te hoog worden, misschien een manier blokken? of geen info meer opvragenvoor 2 dagen wegens drukt?
+#TODO +1 tijd als je te laat komt, en toespraak van sylvie natuurlijk
+#TODO goedbezig label vervangen...
+
 label oudwerknewstyle:
-    default Location = "kantoor"
-    n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
-    $ tijd = 0
-    $ dag += 1
-    jump kantoor
+    #TODO scene breakfasttable
+    if laat:
+        n "Geen tijd voor ontbijt, je moet gaan..."
+        n "veel te laat kom je aan op werk en je ziet Sylvie al staan"
+        scene baas
+        with dissolve
+        s "Dat is niet goed MetaRobbin."
+        $ score -= 1
+        if score > 3:
+            s "Voor deze keer zie ik het door de vingers..."
+            $ tijd = 1
+            $ dag += 1
+            $ laat = False
+            jump kantoor
+
+        if score < 4:
+            s "Sorry MetaRobin, maar ik denk dat je te dom bent voor dit werk..."
+            s "Daar is de deur."
+            scene gameover
+            with fade
+
+            return
+    else:
+        default Location = "kantoor"
+        n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
+        $ tijd = 0
+        $ dag += 1
+        jump kantoor
+
+
+label badending:
+    jump oudwerknewstyle
+
+label goedbezig:
+
+    scene black
+    with dissolve
+    show duomanagergroot
+
+    s "Hulde!! dat was het goede antwoord."
+
+    $ score += 1
+
+    if score < 10:
+
+
+        jump eventpicker
+
+
+        return
+
+    if score >= 10:
+        if maandmedewerker == False:
+            s "Gefeliciteerd, MetaRobbin!"
+
+            s "Je bent de werknemer van de maand!"
+
+            scene duogroot
+            with fade
+
+            s "Hulde!"
+
+            show win
+            with fade
+
+            s "Je hebt zulk goed werk gedaan hier MetaRobbin... "
+            s "Je verdient een promotie!"
+            s "tijd voor een feestje!!"
+            $ maandmedewerker = True
+            jump eventpicker
+
+        else:
+            jump eventpicker
+
+    return
 
 
 label koffieapparaat:
@@ -25,7 +99,7 @@ label koffieapparaat:
         "neem een latte machiatto met lactosevrije amandelmelk en glutenvrije vanille creme":
             n "Sorry robbin. Maar eh. dit lijkt mij echt niet de bedoeling!"
             $ score = 0
-            jump badending
+            jump oudwerknewstyle
 
         "neem een warme chocolademelk":
             n "je neemt een warme chocolademelk. heerlijk..."
@@ -170,7 +244,7 @@ label mail:
             menu:
                 "zaak 1" if dag == vert1klaar:
                     n "je opent de mail van de vertaler"
-                    v "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
+                    ve "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
                     $ tijd += 1
                     $ vert1klaar = 1200
                     $ vertaling1 = "Dit diploma is in het Nederlands"
@@ -178,7 +252,7 @@ label mail:
 
                 "zaak 2" if dag == vert2klaar:
                     n "je opent de mail van de vertaler"
-                    v "Het was niet makkelijk, maar dit diploma is vertaald vanuit het Chinees. De school heet Zhengheng Middle School en het lijkt erop dat hij voor slager heeft geleerd "
+                    ve "Het was niet makkelijk, maar dit diploma is vertaald vanuit het Chinees. De school heet Zhengheng Middle School en het lijkt erop dat hij voor slager heeft geleerd "
                     $ tijd += 1
                     $ vert2klaar = 1200
                     $ vertaling2 = "Dit diploma is vertaald naar het Nederlands, afkomstig van de Zhengheng Middle School. Richting: Slager "
@@ -187,7 +261,7 @@ label mail:
 
                 "zaak 3" if dag == vert3klaar:
                     n "je opent de mail van de vertaler"
-                    v "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
+                    ve "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
                     $ tijd += 1
                     $ vert3klaar = 1200
                     $ vertaling3 = "Dit diploma is in het Nederlands"
@@ -195,7 +269,7 @@ label mail:
 
                 "zaak 4" if dag == vert4klaar:
                     n "je opent de mail van de vertaler"
-                    v "Dit diploma komt van Sun Yat Sen University en de richting is tekenen of kunst"
+                    ve "Dit diploma komt van Sun Yat Sen University en de richting is tekenen of kunst"
                     $ tijd += 1
                     $ vert4klaar = 1200
                     $ vertaling4 = "Dit diploma is vertaald naar het Nederlands, afkokmstig van Sun Yat-Sen University, en ze heeft tekenen of kunst afgerond"
@@ -204,7 +278,7 @@ label mail:
 
                 "zaak 5" if dag == vert5klaar:
                     n "je opent de mail van de vertaler"
-                    v "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
+                    ve "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
                     $ tijd += 1
                     $ vert5klaar = 1200
                     $ vertaling5 = "Dit diploma is in het Nederlands"
@@ -212,7 +286,7 @@ label mail:
 
                 "zaak 6" if dag == vert6klaar:
                     n "je opent de mail van de vertaler"
-                    v "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
+                    ve "misschien moet je nog een kop koffie nemen... want dit diploma was al in het Nederlands"
                     $ tijd += 1
                     $ vert6klaar = 1200
                     $ vertaling6 = "Dit diploma is in het Nederlands"
@@ -614,6 +688,7 @@ label baas:
                     s "ik zie je weer, als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used1 += 1
+                    $ cas1 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -622,6 +697,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used1 += 1
+                    $ cas1 = False
                     return
         "casus 2" if cas2:
             menu:
@@ -633,6 +709,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used2 += 1
+                    $ cas2 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -641,6 +718,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used2 += 1
+                    $ cas2 = False
                     return
         "casus 3" if cas3:
             menu:
@@ -652,6 +730,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used3 += 1
+                    $ cas3 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -660,6 +739,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used3 += 1
+                    $ cas3 = False
                     return
         "casus 4" if cas4:
             menu:
@@ -671,6 +751,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used4 += 1
+                    $ cas4 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -679,6 +760,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used4 += 1
+                    $ cas4 = False
                     return
         "casus 5" if cas5:
             menu:
@@ -690,6 +772,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used5 += 1
+                    $ cas5 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -698,6 +781,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used5 += 1
+                    $ cas5 = False
                     return
         "casus 6" if cas6:
             menu:
@@ -709,6 +793,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used6 += 1
+                    $ cas6 = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -717,6 +802,7 @@ label baas:
                     s "ik zie je weer als je een andere zaak wilt afhandelen!"
                     $ tijd += 1
                     $ res_used6 += 1
+                    $ cas6 = False
                     return
 
         "terug naar kantoor":
@@ -777,7 +863,7 @@ label kantoor:
             #TODO vrijmiddag
 
         call eventpicker
-    jump badending
+    jump oudwerknewstyle
 
 
 init python:

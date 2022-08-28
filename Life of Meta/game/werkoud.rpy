@@ -294,75 +294,7 @@ label casus5:
 
     return
 
-label goedbezig:
-
-    scene black
-    with dissolve
-    show duomanagergroot
-
-    s "Hulde!! dat was het goede antwoord."
-
-    $ score += 1
-
-    if score < 10:
 
 
-        jump eventpicker
-
-
-        return
-
-    if score >= 10:
-        if maandmedewerker == False:
-            s "Gefeliciteerd, MetaRobbin!"
-
-            s "Je bent de werknemer van de maand!"
-
-            scene duogroot
-            with fade
-
-            s "Hulde!"
-
-            show win
-            with fade
-
-            s "Je hebt zulk goed werk gedaan hier MetaRobbin... "
-            s "Je verdient een promotie!"
-            s "tijd voor een feestje!!"
-            $ maandmedewerker = True
-            jump eventpicker
-
-        else:
-            jump eventpicker
-
-    return
-
-label badending:
-#TODO need to change this... with call something... maybe while? somewhere?
-    scene black
-    with dissolve
-
-    s "Dat is niet goed MetaRobbin."
-
-    $ score -= 1
-
-    if score > 3:
-
-        s "Voor deze keer zie ik het door de vingers..."
-
-        jump oudwerknewstyle
-
-        #jump eventpicker
-
-    if score < 4:
-
-        s "Sorry MetaRobin, maar ik denk dat je te dom bent voor dit werk..."
-
-        s "Daar is de deur."
-
-        scene gameover
-        with fade
-
-    return
 
 
