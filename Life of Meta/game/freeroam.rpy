@@ -1,6 +1,7 @@
 #TODO teammeeting als resources te hoog worden, misschien een manier blokken? of geen info meer opvragenvoor 2 dagen wegens drukt?
 #TODO +1 tijd als je te laat komt, en toespraak van sylvie natuurlijk
 #TODO goedbezig label vervangen...
+#TODO liveevents plaatjes fixen
 
 label oudwerknewstyle:
     #TODO scene breakfasttable
