@@ -1,19 +1,65 @@
 #TODO teammeeting als resources te hoog worden, misschien een manier blokken? of geen info meer opvragenvoor 2 dagen wegens drukt?
-#TODO +1 tijd als je te laat komt, en toespraak van sylvie natuurlijk
 #TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
+#TODO fix werk met intro
+#TODO ikomende opdrachten goed afsluiten
+
+label werk:
+    stop music
+    scene duogroot
+    with fade
+
+    show metarobbinmedium at left
+    with dissolve
+
+    "Je eerste werkdag bij DUO start vandaag"
+
+    "In de verte zie je het DUO gebouw naderen"
+
+    scene duoingang
+    with fade
+
+    "Na een rondleiding en lunch is het tijd om je manager te ontmoeten"
+
+    scene duomanagergroot
+    with fade
+
+    "Je wordt begroet door je manager, Sylvie"
+
+    "Je bent aangenomen bij Duo op de personeelszaken en je wordt rondgeleid door Sylvie"
+
+    s "Hoi en welkom bij duo!"
+
+    s "Vandaag is je eerste dag hier en ik leid je rond."
+
+    s "De bedoeling is dat je diploma's controleert. je hebt uiteindelijk 2 keuzes, je kunt een aanvraag afwijzen of toewijzen"
+
+    s "Dat doe je door te kijken of de school een bekend is en actief was ten tijde van het diploma"
+    s "Daarnaast kun je de school bellen."
+    s "Voor wat betreft de aanvrager kun je bellen of extra informatie opvragen."
+    s "Je kunt altijd terugzoeken wat er over een casus is vastgelegd in het archief."
+    s "Als het diploma in een andere taal is, is het verstandig om even een vertaling op te vragen. Dat duurt wel eventjes"
+    s "En als je een beslissing wilt nemen, meldt dat even bij mij."
+    s "Denk er wel over na dat iedere activiteit tijd kost. "
+    s "je kunt meerdere casussen tegelijk doen natuurlijk"
+    s "succes MetaRobbin!"
+
+    jump kantoor
+    return
+
 
 label oudwerknewstyle:
-    #TODO scene breakfasttable
+    scene ontbijttafel
     if laat:
         n "Geen tijd voor ontbijt, je moet gaan..."
         n "veel te laat kom je aan op werk en je ziet Sylvie al staan"
         scene baas
         with dissolve
         s "Dat is niet goed MetaRobbin."
-        $ score -= 1
+        #$ score -= 1
         if score > 3:
             s "Voor deze keer zie ik het door de vingers..."
+            s "ik verwacht beter van je. nu snel aan het werk"
             $ tijd = 1
             $ dag += 1
             $ laat = False
@@ -33,51 +79,41 @@ label oudwerknewstyle:
         $ dag += 1
         jump kantoor
 
+label teamvergadering:
+    $ rng = renpy.random.randint (1,10)
+    $ rng1 = renpy.random.randint (1,2)
+    scene teammeeting
+    s "welkom allemaal op de teammeeting"
+    if rng = 5:
+        if rng1 = 1:
+            s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
+            s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
+            s "houdt er rekening mee met je werk"
+            s "Rondvraag..."
+            s "Niemand? okay, dan maar weer aan het werk!"
+            places[7].IsActive = False
+            $ zoektimer = dag + 3
+            #afdeling zoeken voor x dagen
+            jump kantoor
+        else:
+            #telefoon is dicht voor x dagen
+            s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
+            s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
+            s "houdt er rekening mee met je werk"
+            s "Rondvraag..."
+            s "Niemand? okay, dan maar weer aan het werk!"
+            places[3].IsActive = False
+            $ teltimer = dag + 3
+            jump kantoor
+    else:
+        # teveel gebruik van rss door speler
+        s "vandaag hebben we niets meer te bespreken"
+        jump kantoor
 
 label badending:
     jump oudwerknewstyle
 
 label goedbezig:
-
-    scene black
-    with dissolve
-    show duomanagergroot
-
-    s "Hulde!! dat was het goede antwoord."
-
-    $ score += 1
-
-    if score < 10:
-
-
-        jump eventpicker
-
-
-        return
-
-    if score >= 10:
-        if maandmedewerker == False:
-            s "Gefeliciteerd, MetaRobbin!"
-
-            s "Je bent de werknemer van de maand!"
-
-            scene duogroot
-            with fade
-
-            s "Hulde!"
-
-            show win
-            with fade
-
-            s "Je hebt zulk goed werk gedaan hier MetaRobbin... "
-            s "Je verdient een promotie!"
-            s "tijd voor een feestje!!"
-            $ maandmedewerker = True
-            jump eventpicker
-
-        else:
-            jump eventpicker
-
     return
 
 
@@ -809,8 +845,6 @@ label baas:
         "terug naar kantoor":
             return
 
-
-
 label archief:
     scene archief
     menu:
@@ -838,15 +872,12 @@ label archief:
             return
 
 
-label kantoor:
+label kantoor: #backbone van freeroam
+    scene black
     while dag < 10:
         while tijd < 5:
             "tijd:[tijd], dag:[dag]"
-            #$ Location_img = Location.lower()
             $ Location = renpy.call_screen("MapScreen", _layer="screens")
-            #if renpy.has_image(Location_img, exact=True):
-            #scene expression Location_img
-            #call expression Location_img
             if Location == "archief":
                 call archief
             if Location == "toilet":
@@ -861,7 +892,7 @@ label kantoor:
                 call baas
             if Location == "informatiepunt":
                 call informatiepunt
-            #TODO vrijmiddag
+            #TODO vrijemiddag
 
         call eventpicker
     jump oudwerknewstyle
@@ -897,7 +928,6 @@ init python:
     Places[7] = Place(25,375, "informatiepunt", True)
 
 
-
 screen MapScreen():
     frame:
         xalign 0.0
@@ -914,10 +944,4 @@ screen MapScreen():
                     hover q.avatar
                     idle q.avatar
                     action Return(q.name)
-
-
-
-
-
-
 
