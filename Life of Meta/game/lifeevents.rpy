@@ -451,7 +451,7 @@ label toekomstevent5:
     m "wat fantastisch!"
     n "aangezien we geen maanden gaan wachten, springen we wat voorwaarts in de tijd"
     show hospital
-    play music "audio/hospital.mp3"
+    play sound "audio/hospital.mp3"
     m "dat is het liefste kind dat ik ooit heb gezien "
     v happy "hmm ja, hoe zullen we hem noemen? "
     m "wat denk je van ehm..."
@@ -471,7 +471,7 @@ label toekomstevent5:
             "ja":
                 #TODO plaatjes met werking in de toekomst maken
                 v "hoe werkt dat eigenlijk die digitale aanmelding?"
-
+                stop sound
                 "digiale aanmelding"
                 jump randomtoekomstcasus
             "nee":
