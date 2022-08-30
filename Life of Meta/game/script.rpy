@@ -82,6 +82,9 @@ default werk = False
 default rus = False
 default hol = False
 default apel = False
+#variabelen voor teammeeting:
+default teltimer = 1000
+default zoektimer = 1000
 #variabelen voor werkoud
 default laat = False
 default tijd = 1
@@ -162,8 +165,6 @@ default res_used6 = 0
 default dag = 0
 
 label start:
-
-
      jump born
 return
 
@@ -177,7 +178,7 @@ label Alleenwerk:
 
 
 label test:
-    jump archief
+    jump toekomstevent5
 
 return
 
@@ -299,9 +300,6 @@ label school:
         #àanmelden voor stex met beperking
         #aanmelden stufi
     scene black
-#     play sound "audio/exp.mp3"
-#     image exp = im.Scale("exp.jpg", 1920,1080)
-    show exp
     $ renpy.pause(4.0)
     jump werk
     return
@@ -398,7 +396,7 @@ label toekomstcasus1:
     $ toekomstcas += 1
     image rus = im.Scale("nf rusland.png", 1920,1080)
     show rus
-    #play sound "audio/newsflash.mp3"
+    play sound "audio/newsflash.mp3"
     n "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
     n "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
     n "Je hebt nu een paar keuzes..."
@@ -440,7 +438,7 @@ label toekomstcasus2:
 
         image fraude = im.Scale("nf fraude.png", 1920,1080)
         show fraude
-        #play sound "audio/newsflash.mp3"
+        play sound "audio/newsflash.mp3"
         #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
         $ toekomstcas += 1
         n "je krijgt een bericht dat een school niet meer betrouwbaar is. Eerste onderzoeken wijzen uit dat zeker 100 diplomas ongeldig zijn.  wat wil je doen?"
@@ -485,7 +483,7 @@ label toekomstcasus2:
 
 label toekomstcasus3:
     #TODO apenpokken in apeldoorn
-    show Stentor krant
+    show stentor_krant
     play sound "audio/ontbijt.mp3"
 
     $ toekomstcas += 1
