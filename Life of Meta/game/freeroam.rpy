@@ -53,14 +53,17 @@ label werk:
 
 
 screen score_screen():
-    vbox:
-        xalign 1.0 ypos 0.1023
-       # add "gui/stats.png"
+    frame:
+        vbox:
+            xalign 1.0 ypos 0.1023
+           # add "gui/stats.png"
 
-        text "tijd: [dag]:[tijd]"
-        text "zaken afgerond: [aanv_bel1]"
-        text "resources: [aanv_data1]"
-        text "kosten: [school_bel1]"
+            text "tijd: [dag]:[tijd]"
+            text "zaken"
+            text "afgerond: [score]"
+            text "open [score]"
+            text "resources: [score]"
+            text "kosten: [score]"
 
 
 label oudwerknewstyle:
