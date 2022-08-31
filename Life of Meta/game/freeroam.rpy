@@ -1,10 +1,13 @@
 #TODO teammeeting als resources te hoog worden, misschien een manier blokken? of geen info meer opvragenvoor 2 dagen wegens drukt?
 #TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
-#TODO fix werk met intro
+#TODO plaatjes werk fixen
 #TODO ikomende opdrachten goed afsluiten
+#TODO nieuwe casussen in het oude stoppen
+#TODO score scherm
 
 label werk:
+# intro naar werk. alleen eerste keer
     stop music
     scene duogroot
     with fade
@@ -48,8 +51,22 @@ label werk:
     return
 
 
+
+
+screen score_screen():
+    frame:
+        vbox:
+            xalign 810.0 ypos 500
+            text "tijd: [dag]:[tijd]"
+            text "zaken afgerond: [score]"
+            text "resources: [score]"
+            text "kosten: [score]"
+
+
 label oudwerknewstyle:
     scene ontbijttafel
+    show screen score_screen()
+    "check score"
     if laat:
         n "Geen tijd voor ontbijt, je moet gaan..."
         n "veel te laat kom je aan op werk en je ziet Sylvie al staan"
@@ -77,38 +94,46 @@ label oudwerknewstyle:
         n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
         $ tijd = 0
         $ dag += 1
-        jump kantoor
+        n "na het ontbijt ga je naar kantoor"
+        $ rng = 5
+        $ rng1 = 1
+        if dag == teltimer:
+            $ Places[3] = Place(1650,550, "telefoon", False)
+        if dag == zoektimer:
+            $ Places[7] = Place(25,375, "informatiepunt", True)
 
-label teamvergadering:
-    $ rng = renpy.random.randint (1,10)
-    $ rng1 = renpy.random.randint (1,2)
-    scene teammeeting
-    s "welkom allemaal op de teammeeting"
-    if rng = 5:
-        if rng1 = 1:
-            s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
-            s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
-            s "houdt er rekening mee met je werk"
-            s "Rondvraag..."
-            s "Niemand? okay, dan maar weer aan het werk!"
-            places[7].IsActive = False
-            $ zoektimer = dag + 3
-            #afdeling zoeken voor x dagen
+        $ rng = renpy.random.randint (1,10)
+        $ rng1 = renpy.random.randint (1,2)
+        if rng == 5:
+            scene teammeeting
+            s "welkom allemaal op de teammeeting"
+
+            if rng1 == 1 and teltimmer >= 200:
+                 #afdeling zoeken voor x dagen
+                s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
+                s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
+                s "houdt er rekening mee met je werk"
+                s "Rondvraag..."
+                s "Niemand? okay, dan maar weer aan het werk!"
+                $ Places[7] = Place(25,375, "informatiepunt", False)
+                $ zoektimer = dag + 3
+
+                jump kantoor
+            elif rng1 == 2 and teltimmer >= 200:
+                #telefoon is dicht voor x dagen
+                s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
+                s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
+                s "houdt er rekening mee met je werk"
+                s "Rondvraag..."
+                s "Niemand? okay, dan maar weer aan het werk!"
+                $ Places[3] = Place(1650,550, "telefoon", False)
+                $ teltimer = dag + 3
+                jump kantoor
+            s "vandaag hebben we niets meer te bespreken"
             jump kantoor
         else:
-            #telefoon is dicht voor x dagen
-            s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
-            s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
-            s "houdt er rekening mee met je werk"
-            s "Rondvraag..."
-            s "Niemand? okay, dan maar weer aan het werk!"
-            places[3].IsActive = False
-            $ teltimer = dag + 3
+            # teveel gebruik van rss door speler
             jump kantoor
-    else:
-        # teveel gebruik van rss door speler
-        s "vandaag hebben we niets meer te bespreken"
-        jump kantoor
 
 label badending:
     jump oudwerknewstyle
@@ -147,10 +172,10 @@ label toilet:
     scene toilet
     menu:
         "[Location]"
-        "keuze1":
+        "kggrrrrgg":
             return
 
-        "kezue2":
+        "Doe een plasje en ga terug naar kantoor":
             return
 
 label mail:
@@ -876,8 +901,9 @@ label kantoor: #backbone van freeroam
     scene black
     while dag < 10:
         while tijd < 5:
-            "tijd:[tijd], dag:[dag]"
+
             $ Location = renpy.call_screen("MapScreen", _layer="screens")
+            show screen score_screen()
             if Location == "archief":
                 call archief
             if Location == "toilet":
