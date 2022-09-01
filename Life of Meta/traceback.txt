@@ -1,82 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While processing text tag {color=#00000} in '{color=#00000}Tijd: 1:0{/color}'.:
-  File "game/freeroam.rpy", line 897, in script
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "game/freeroam.rpy", line 897, in <module>
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-Exception: Color string '00000' must be 3, 4, 6, or 8 hex digits long.
+While running game code:
+  File "game/freeroam.rpy", line 129, in script
+    if rng1 == 1 and teltimmer >= 200:
+  File "game/freeroam.rpy", line 129, in <module>
+    if rng1 == 1 and teltimmer >= 200:
+NameError: name 'teltimmer' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/freeroam.rpy", line 897, in script
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\ast.py", line 1111, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\python.py", line 1049, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/freeroam.rpy", line 897, in <module>
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\exports.py", line 3161, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\core.py", line 3376, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs) # type: ignore
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\core.py", line 3905, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\core.py", line 2601, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\display\layout.py", line 1105, in render
-    surf = render(d, width - x, rh, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\text\text.py", line 2099, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\text\text.py", line 617, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\text\text.py", line 1185, in segment
-    push().color = renpy.easy.color(value)
-  File "C:\Users\Remco\renpy-8.0.0-sdk\renpy\color.py", line 167, in __new__
-    raise Exception("Color string {!r} must be 3, 4, 6, or 8 hex digits long.".format(c))
-Exception: Color string '00000' must be 3, 4, 6, or 8 hex digits long.
+  File "game/freeroam.rpy", line 129, in script
+    if rng1 == 1 and teltimmer >= 200:
+  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 2115, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1083, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1076, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/freeroam.rpy", line 129, in <module>
+    if rng1 == 1 and teltimmer >= 200:
+NameError: name 'teltimmer' is not defined
 
-Windows-10-10.0.19044 AMD64
-Ren'Py 8.0.0.22062402
+Windows-10-10.0.22000 AMD64
+Ren'Py 8.0.2.22081402
 Life of Meta 1.0
-Wed Aug 31 13:36:50 2022
+Thu Sep  1 11:45:58 2022

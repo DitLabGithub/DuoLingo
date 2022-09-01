@@ -2,17 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 56: expected statement.
-    <<<<<<< HEAD
-                ^
+File "game/freeroam.rpy", line 109: reached end of line when expecting ':'.
+    elif teveelinfo == True
+                           ^
 
-File "game/freeroam.rpy", line 69: expected statement.
-    =======
-          ^
-
-File "game/freeroam.rpy", line 71: expected statement.
-    >>>>>>> origin/develop
-                  ^
+File "game/freeroam.rpy", line 115: expected statement.
+    else:
+        ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Thu Sep  1 10:05:54 2022
+Thu Sep  1 11:22:55 2022

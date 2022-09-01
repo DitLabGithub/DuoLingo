@@ -50,12 +50,6 @@ label werk:
     jump kantoor
     return
 
-
-
-
-
-
-
 label oudwerknewstyle:
     scene ontbijttafel
     show screen score_screen()
@@ -93,51 +87,73 @@ label oudwerknewstyle:
             #functioneringsgesprek
             scene baas
             s "Hallo MetaRobbin, het is tijd voor je periodieke functioneringsgesprek"
-            if budget > kosten:
+            if budget < kosten and teveelinfo:
+                s "ik heb 2 dingen met je te bespreken"
+                s "De AIVD vraagt zich af waarom je extra informatie hebt opgevraagd over Cor van Hout"
+                s "Deze informatie heb jij niet nodig voor het bepalen van de geldigheid van een diploma..."
+                s "sorry MetaRobbin, maar dit levert een aantekening op in je dossier"
+                s "daarnaast lopen de kosten behoorlijk uit de hand."
+                s "je moet echt snellere beslissingen nemen door minder resources te gebruiken. probeer wat slimmere keuzes te maken"
+                s "gelukkig heb ik nog een beetje budget kunnen krijgen, maar gebruik het niet allemaal gelijk"
+                $ budget += 5
+                $ teveelinfo == False
+            elif budget < kosten:
                 s "we moeten echt bezuinigen..."
-                s "ik verwacht dat je snellere beslissingen neemt"
+                s "de kosten rijzen de pan uit"
                 s "gelukkig heb ik een beetje extra budget kunnen krijgen... maar die is niet eindeloos"
                 $ budget += 5
+            elif teveelinfo:
+                s "Ik werd gebeld door de AIVD over een informatieverzoek"
+                s "waarom heb je extra informatie opgevraagd?"
+                s "dit is duidelijk niet nodig voor het bepalen van de geldigheid van een diploma..."
+                s "dit kan echt niet MetaRobbin.."
+                s "ik moet hiervan een aantekening maken in je dossier"
+                $ teveelinfo == False
+            else:
+                s "het gaat goed zo MetaRobbin! ik geen geen opmerkingen over je werk"
 
-        $ rng = 5
-        $ rng1 = 1
-        if dag == teltimer:
-            $ Places[3] = Place(1650,550, "telefoon", False)
-        if dag == zoektimer:
-            $ Places[7] = Place(25,375, "informatiepunt", True)
-
-        $ rng = renpy.random.randint (1,10)
-        $ rng1 = renpy.random.randint (1,2)
-        if rng == 5:
-            scene teammeeting
-            s "welkom allemaal op de teammeeting"
-
-            if rng1 == 1 and teltimmer >= 200:
-                 #afdeling zoeken voor x dagen
-                s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
-                s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
-                s "houdt er rekening mee met je werk"
-                s "Rondvraag..."
-                s "Niemand? okay, dan maar weer aan het werk!"
-                $ Places[7] = Place(25,375, "informatiepunt", False)
-                $ zoektimer = dag + 3
-
-                jump kantoor
-            elif rng1 == 2 and teltimmer >= 200:
-                #telefoon is dicht voor x dagen
-                s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
-                s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
-                s "houdt er rekening mee met je werk"
-                s "Rondvraag..."
-                s "Niemand? okay, dan maar weer aan het werk!"
-                $ Places[3] = Place(1650,550, "telefoon", False)
-                $ teltimer = dag + 3
-                jump kantoor
-            s "vandaag hebben we niets meer te bespreken"
-            jump kantoor
         else:
-            # teveel gebruik van rss door speler
-            jump kantoor
+            #$ rng = 5
+            #$ rng1 = 1
+            if dag == teltimer:
+                $ Places[3].IsActive = True
+            if dag == zoektimer:
+                $ Places[7].IsActive = True
+
+            $ rng = renpy.random.randint (1,10)
+            $ rng1 = renpy.random.randint (1,2)
+            if rng == 5:
+                scene teammeeting
+                s "welkom allemaal op de teammeeting"
+
+                if rng1 == 1 and teltimer >= 200:
+                     #afdeling zoeken voor x dagen
+                    s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
+                    s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
+                    s "houdt er rekening mee met je werk"
+                    s "Rondvraag..."
+                    s "Niemand? okay, dan maar weer aan het werk!"
+                    #$ Places[7] = Place(25,375, "informatiepunt", False)
+                    $ Places[7].IsActive = False
+                    $ zoektimer = dag + 3
+
+                    jump kantoor
+                elif rng1 == 2 and teltimer >= 200:
+                    #telefoon is dicht voor x dagen
+                    s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
+                    s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
+                    s "houdt er rekening mee met je werk"
+                    s "Rondvraag..."
+                    s "Niemand? okay, dan maar weer aan het werk!"
+                    #$ Places[3] = Place(1650,550, "telefoon", False)
+                    $ Places[3].IsActive = False
+                    $ teltimer = dag + 3
+                    jump kantoor
+                s "vandaag hebben we niets meer te bespreken"
+                jump kantoor
+            else:
+                # teveel gebruik van rss door speler
+                jump kantoor
 
 label badending:
     jump oudwerknewstyle
@@ -739,6 +755,7 @@ label informatiepunt:
                     $ aanv_data5 = "Cor heeft een enorm strafblad"
                     $ res_used5 += 1
                     $ informatie += 5
+                    $ teveelinfo = True
                     return
                 "Nee":
                     $ aanv_data5 = "Cor heeft een vlag bij zijn naam"
@@ -1006,6 +1023,15 @@ init python:
     Places[6] = Place(1650,75, "baas", True)
     Places[7] = Place(25,375, "informatiepunt", True)
 
+init -1 python:
+    class Casus:
+        def __init__(self):
+            self.cas = False
+            self.aanv_bel = "Default text"
+            self.aanv_belb =  "Default text"
+            # ...
+
+
 
 screen MapScreen():
     frame:
@@ -1047,3 +1073,6 @@ screen score_screen():
                 text "{color=#000000}budget: [budget]"
                 text "{color=#000000}kosten: [kosten]"
                 text "{color=#000000}gebruikt: [resuse]"
+
+
+

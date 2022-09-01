@@ -86,6 +86,7 @@ default apel = False
 default teltimer = 1000
 default zoektimer = 1000
 #variabelen voor werkoud
+default teveelinfo = False
 default laat = False
 default tijd = 1
 default cas1 = False
@@ -171,6 +172,8 @@ default resuse = 0
 default budget = 15
 default vert = 0
 default informatie = 0
+
+default casus1 = None
 
 label start:
      jump born
