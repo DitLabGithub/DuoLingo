@@ -163,6 +163,14 @@ default school6info = False
 default res_used6 = 0
 
 default dag = 0
+#variabelen voor de score
+default open = 0
+default afgerond = 0
+default kosten = 0
+default resuse = 0
+default budget = 15
+default vert = 0
+default informatie = 0
 
 label start:
      jump born

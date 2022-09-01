@@ -4,6 +4,7 @@
 #TODO plaatjes werk fixen
 #TODO ikomende opdrachten goed afsluiten
 #TODO nieuwe casussen in het oude stoppen
+#TODO functioneringsgesprek
 
 label werk:
 # intro naar werk. alleen eerste keer
@@ -52,18 +53,7 @@ label werk:
 
 
 
-screen score_screen():
-    frame:
-        vbox:
-            xalign 1.0 ypos 0.1023
-           # add "gui/stats.png"
 
-            text "tijd: [dag]:[tijd]"
-            text "zaken"
-            text "afgerond: [score]"
-            text "open [score]"
-            text "resources: [score]"
-            text "kosten: [score]"
 
 
 label oudwerknewstyle:
@@ -86,7 +76,7 @@ label oudwerknewstyle:
             jump kantoor
 
         if score < 4:
-            s "Sorry MetaRobin, maar ik denk dat je te dom bent voor dit werk..."
+            s "Sorry MetaRobbin, maar ik denk dat je te dom bent voor dit werk..."
             s "Daar is de deur."
             scene gameover
             with fade
@@ -98,6 +88,17 @@ label oudwerknewstyle:
         $ tijd = 0
         $ dag += 1
         n "na het ontbijt ga je naar kantoor"
+
+        if dag == 3 or dag == 6 or dag == 9 or dag == 12:
+            #functioneringsgesprek
+            scene baas
+            s "Hallo MetaRobbin, het is tijd voor je periodieke functioneringsgesprek"
+            if budget > kosten:
+                s "we moeten echt bezuinigen..."
+                s "ik verwacht dat je snellere beslissingen neemt"
+                s "gelukkig heb ik een beetje extra budget kunnen krijgen... maar die is niet eindeloos"
+                $ budget += 5
+
         $ rng = 5
         $ rng1 = 1
         if dag == teltimer:
@@ -195,6 +196,7 @@ label mail:
                     $ cas1 = True
                     $ tijd += 1
                     hide dip1
+                    $ open += 1
                     return
                 "zaak 2" if cas2 == False:
                     show dip2
@@ -203,6 +205,7 @@ label mail:
                     $ cas2 = True
                     $ tijd += 1
                     hide dip2
+                    $ open += 1
                     return
                 "zaak 3" if cas3 == False:
                     show dip3
@@ -211,6 +214,7 @@ label mail:
                     $ cas3 = True
                     $ tijd += 1
                     hide dip3
+                    $ open += 1
                     return
                 "zaak 4" if cas4 == False:
                     show dip4
@@ -219,6 +223,7 @@ label mail:
                     $ cas4 = True
                     $ tijd += 1
                     hide dip4
+                    $ open += 1
                     return
                 "zaak 5" if cas5 == False:
                     show dip5
@@ -226,6 +231,7 @@ label mail:
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
                     $ cas5 = True
                     $ tijd += 1
+                    $ open += 1
                     hide dip5
                     return
                 "zaak 6" if cas6 == False:
@@ -234,6 +240,7 @@ label mail:
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
                     $ cas6 = True
                     $ tijd += 1
+                    $ open += 1
                     hide dip6
                     return
 
@@ -249,6 +256,7 @@ label mail:
                     $ tijd += 1
                     $ vert1klaar = dag + 1
                     $ res_used1 += 1
+                    $ vert += 1
                     return
                 "zaak 2" if cas2:
                     show dip2
@@ -258,6 +266,7 @@ label mail:
                     $ tijd += 1
                     $ vert2klaar = dag + 1
                     $ res_used2 += 1
+                    $ vert += 1
                     return
                 "zaak 3" if cas3:
                     show dip3
@@ -268,6 +277,7 @@ label mail:
                     $ tijd += 1
                     $ vert3klaar = dag + 1
                     $ res_used3 += 1
+                    $ vert += 1
                     return
                 "zaak 4" if cas4:
                     show dip4
@@ -278,6 +288,7 @@ label mail:
                     hide dip4
                     $ vert4klaar = dag + 1
                     $ res_used4 += 1
+                    $ vert += 1
                     return
                 "zaak 5" if cas5:
                     show dip5
@@ -288,6 +299,7 @@ label mail:
                     hide dip5
                     $ vert5klaar = dag + 1
                     $ res_used5 += 1
+                    $ vert += 1
                     return
                 "zaak 6" if cas6:
                     show dip6
@@ -298,6 +310,7 @@ label mail:
                     hide dip6
                     $ vert6klaar = dag + 1
                     $ res_used6 += 1
+                    $ vert += 1
                     return
 
         "spam":
@@ -642,6 +655,7 @@ label informatiepunt:
             $ res_used1 += 1
             n "het systeem kan deze school niet vinden"
             $ school_data1 = "De school kan niet gevonden worden door het systeem"
+            $ informatie += 1
             return
 
         "B. Botje van zaak 1" if cas1:
@@ -649,6 +663,7 @@ label informatiepunt:
             $ res_used1 += 1
             n "Er is niet bijzonders te vinden over deze persoon"
             $ aanv_data1 = "Er is niet bijzonders te vinden over B. Botje"
+            $ informatie += 1
             return
 
         "Zhengheng Middle School van zaak 2" if cas2:
@@ -656,6 +671,7 @@ label informatiepunt:
             $ res_used2 += 1
             n "het systeem  heeft deze school gevonden en bestond ook toen het diploma is uitgegeven"
             $ school_data2 = "De school bestaat en kan het diploma hebben uitgegeven"
+            $ informatie += 1
             return
 
         "Yang Xinhai van zaak 2" if cas2:
@@ -663,6 +679,7 @@ label informatiepunt:
             $ res_used2 += 1
             n "Deze persoon komt niet voor in onze database"
             $ aanv_data2 = "Er is niet te vinden over Yang Xinhai"
+            $ informatie += 1
             return
 
         "Rood College van zaak 3" if cas3:
@@ -670,6 +687,7 @@ label informatiepunt:
             $ res_used3 += 1
             n "Deze school bestond in de periode dat het diploma is uitgegeven"
             $ school_data3 = "De school bestaat en bestond toen het diploma werd uitgegeven"
+            $ informatie += 1
             return
 
         "Marco B. van zaak 3" if cas3:
@@ -679,6 +697,7 @@ label informatiepunt:
             n "hij heeft op dit moment geen VoG"
             n "er loopt een onderzoek voor geweld tegen een ander persoon"
             $ aanv_data3 = "Marco B. heeft geen VoG en er loopt een onderzoek voor geweld"
+            $ informatie += 1
             return
 
         "San Yat-Sen University van zaak 4" if cas4:
@@ -686,6 +705,7 @@ label informatiepunt:
             $ res_used4 += 1
             n "Het systeem kan niets vinden over deze school"
             $ school_data4 = "De school bestaat niet"
+            $ informatie += 1
             return
 
         "Lin Shanshan van zaak 4" if cas4:
@@ -693,6 +713,7 @@ label informatiepunt:
             $ res_used4 += 1
             n "Deze persoon komt niet voor in onze database"
             $ aanv_data4 = "Er is niet te vinden over Lin Shanshan"
+            $ informatie += 1
             return
 
         "Flipper College van zaak 5" if cas5:
@@ -700,6 +721,7 @@ label informatiepunt:
             $ res_used5 += 1
             n "De school bestaat, maar kan het diploma niet hebben uitgegeven"
             $ school_data5 = "De school bestaat, maar niet tijdens het moment van diploma uitgifte"
+            $ informatie += 1
             return
 
         "Cor van Hout van zaak 5" if cas5:
@@ -707,6 +729,7 @@ label informatiepunt:
             $ res_used5 += 1
             n "Deze persoon komt voor in onze database"
             n "Er staat een vlag bij, maar kunnen niets meer vinden"
+            $ informatie += 1
 
             menu:
                 "wil je meet informatie opvragen over deze persoon?"
@@ -715,6 +738,7 @@ label informatiepunt:
                     n "je vraagt de gegevens op van de AIVD en krijgt het gehele strafblad te zien van Cor"
                     $ aanv_data5 = "Cor heeft een enorm strafblad"
                     $ res_used5 += 1
+                    $ informatie += 5
                     return
                 "Nee":
                     $ aanv_data5 = "Cor heeft een vlag bij zijn naam"
@@ -726,6 +750,7 @@ label informatiepunt:
             $ res_used6 += 1
             n "Deze school bestond in de periode dat het diploma is uitgegeven"
             $ school_data6 = "De school bestond ten tijde van uitgifte van het diploma"
+            $ informatie += 1
             return
 
         "Willem van Eijk van zaak 6" if cas6:
@@ -733,6 +758,7 @@ label informatiepunt:
             $ res_used6 += 1
             n "Er is niet bijzonders te vinden over deze persoon"
             $ aanv_data6 = "Er is niet bijzonders te vinden over Willem van Eijk"
+            $ informatie += 1
             return
 
         "terug naar kantoor":
@@ -754,6 +780,8 @@ label baas:
                     $ tijd += 1
                     $ res_used1 += 1
                     $ cas1 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -763,6 +791,8 @@ label baas:
                     $ tijd += 1
                     $ res_used1 += 1
                     $ cas1 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
         "casus 2" if cas2:
             menu:
@@ -775,6 +805,8 @@ label baas:
                     $ tijd += 1
                     $ res_used2 += 1
                     $ cas2 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -784,6 +816,8 @@ label baas:
                     $ tijd += 1
                     $ res_used2 += 1
                     $ cas2 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
         "casus 3" if cas3:
             menu:
@@ -796,6 +830,8 @@ label baas:
                     $ tijd += 1
                     $ res_used3 += 1
                     $ cas3 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -805,6 +841,8 @@ label baas:
                     $ tijd += 1
                     $ res_used3 += 1
                     $ cas3 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
         "casus 4" if cas4:
             menu:
@@ -817,6 +855,8 @@ label baas:
                     $ tijd += 1
                     $ res_used4 += 1
                     $ cas4 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -826,6 +866,8 @@ label baas:
                     $ tijd += 1
                     $ res_used4 += 1
                     $ cas4 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
         "casus 5" if cas5:
             menu:
@@ -838,6 +880,8 @@ label baas:
                     $ tijd += 1
                     $ res_used5 += 1
                     $ cas5 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -847,6 +891,8 @@ label baas:
                     $ tijd += 1
                     $ res_used5 += 1
                     $ cas5 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
         "casus 6" if cas6:
             menu:
@@ -859,6 +905,8 @@ label baas:
                     $ tijd += 1
                     $ res_used6 += 1
                     $ cas6 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -868,6 +916,8 @@ label baas:
                     $ tijd += 1
                     $ res_used6 += 1
                     $ cas6 = False
+                    $ afgerond += 1
+                    $ open -= 1
                     return
 
         "terug naar kantoor":
@@ -904,9 +954,9 @@ label kantoor: #backbone van freeroam
     scene black
     while dag < 10:
         while tijd < 5:
-
+            $ resuse = res_used1 + res_used2 + res_used3 + res_used4 + res_used5 + res_used6
+            $ kosten = informatie + (vert * 5)
             $ Location = renpy.call_screen("MapScreen", _layer="screens")
-            show screen score_screen()
             if Location == "archief":
                 call archief
             if Location == "toilet":
@@ -959,11 +1009,22 @@ init python:
 
 screen MapScreen():
     frame:
-        xalign 0.0
-        yalign 0.0
-        xsize 1920
-        ysize 1000
+        #xalign 0.0
+        #yalign 0.0
+        #xsize 1920
+        #ysize 1080
         background "kantoor.png"
+        frame:
+            background Solid("#C0C0C0")
+            vbox:
+                    text "{color=#000000}Tijd: [dag]:[tijd]{/color}"
+                    text "{color=#000000}{b}Zaken{/b}"
+                    text "{color=#000000}open: [open]"
+                    text "{color=#000000}afgerond: [afgerond]"
+                    text "{color=#000000}{b}Resources{/b} "
+                    text "{color=#000000}budget: [budget]"
+                    text "{color=#000000}kosten: [kosten]"
+                    text "{color=#000000}gebruikt: [resuse]"
         for q in Places:
             if q.IsActive:
                 imagebutton:
@@ -974,3 +1035,15 @@ screen MapScreen():
                     idle q.avatar
                     action Return(q.name)
 
+screen score_screen():
+    frame:
+        background Solid("#C0C0C0")
+        vbox:
+                text "{color=#000000}Tijd: [dag]:[tijd]{/color}"
+                text "{color=#000000}{b}Zaken{/b}"
+                text "{color=#000000}open: [open]"
+                text "{color=#000000}afgerond: [afgerond]"
+                text "{color=#000000}{b}Resources{/b} "
+                text "{color=#000000}budget: [budget]"
+                text "{color=#000000}kosten: [kosten]"
+                text "{color=#000000}gebruikt: [resuse]"
