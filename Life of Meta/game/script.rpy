@@ -89,79 +89,79 @@ default zoektimer = 1000
 default teveelinfo = False
 default laat = False
 default tijd = 1
-default cas1 = False
-default aanv_bel1 = "De aanvrager is nog niet gebeld"
-default aanv_bel1b = False
-default aanv_data1 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel1 = "De school is nog niet gebeld"
-default school_data1 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling1 = "Dit diploma is in het Nederlands"
-default besluit1 = "Je hebt nog geen besluit genomen"
-default vert1klaar = 100
-default school1info = False
-default res_used1 = 0
-
-default cas2 = False
-default aanv_bel2 = "De aanvrager is nog niet gebeld"
-default aanv_bel2b = False
-default aanv_data2 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel2 = "De school is nog niet gebeld"
-default school_data2 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling2 = "Dit diploma is niet in het Nederlands"
-default besluit2 = "Je hebt nog geen besluit genomen"
-default vert2klaar = 100
-default school2info = False
-default vert2 = False
-default res_used2 = 0
-
-default cas3 = False
-default aanv_bel3 = "De aanvrager is nog niet gebeld"
-default aanv_bel3b = False
-default aanv_data3 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel3 = "De school is nog niet gebeld"
-default school_data3 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling3 = "Dit diploma is in het Nederlands"
-default besluit3 = "Je hebt nog geen besluit genomen"
-default vert3klaar = 100
-default school3info = False
-default res_used3 = 0
-
-default cas4 = False
-default aanv_bel4 = "De aanvrager is nog niet gebeld"
-default aanv_bel4b = False
-default aanv_data4 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel4 = "De school is nog niet gebeld"
-default school_data4 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling4 = "Dit diploma is niet in het Nederlands"
-default besluit4 = "Je hebt nog geen besluit genomen"
-default vert4klaar = 100
-default school4info = False
-default vert4 = False
-default res_used4 = 0
-
-default cas5 = False
-default aanv_bel5 = "De aanvrager is nog niet gebeld"
-default aanv_bel5b = False
-default aanv_data5 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel5 = "De school is nog niet gebeld"
-default school_data5 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling5 = "Dit diploma is in het Nederlands"
-default besluit5 = "Je hebt nog geen besluit genomen"
-default vert5klaar = 100
-default school5info = False
-default res_used5 = 0
-
-default cas6 = False
-default aanv_bel6 = "De aanvrager is nog niet gebeld"
-default aanv_bel6b = False
-default aanv_data6 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-default school_bel6 = "De school is nog niet gebeld"
-default school_data6 = "Er zijn nog geen extra gegevens bekend van de school"
-default vertaling6 = "Dit diploma is in het Nederlands"
-default besluit6 = "Je hebt nog geen besluit genomen"
-default vert6klaar = 100
-default school6info = False
-default res_used6 = 0
+# default cas1 = False
+# default aanv_bel1 = "De aanvrager is nog niet gebeld"
+# default aanv_bel1b = False
+# default aanv_data1 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel1 = "De school is nog niet gebeld"
+# default school_data1 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling1 = "Dit diploma is in het Nederlands"
+# default besluit1 = "Je hebt nog geen besluit genomen"
+# default vert1klaar = 100
+# default school1info = False
+# default res_used1 = 0
+#
+# default cas2 = False
+# default aanv_bel2 = "De aanvrager is nog niet gebeld"
+# default aanv_bel2b = False
+# default aanv_data2 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel2 = "De school is nog niet gebeld"
+# default school_data2 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling2 = "Dit diploma is niet in het Nederlands"
+# default besluit2 = "Je hebt nog geen besluit genomen"
+# default vert2klaar = 100
+# default school2info = False
+# default vert2 = False
+# default res_used2 = 0
+#
+# default cas3 = False
+# default aanv_bel3 = "De aanvrager is nog niet gebeld"
+# default aanv_bel3b = False
+# default aanv_data3 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel3 = "De school is nog niet gebeld"
+# default school_data3 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling3 = "Dit diploma is in het Nederlands"
+# default besluit3 = "Je hebt nog geen besluit genomen"
+# default vert3klaar = 100
+# default school3info = False
+# default res_used3 = 0
+#
+# default cas4 = False
+# default aanv_bel4 = "De aanvrager is nog niet gebeld"
+# default aanv_bel4b = False
+# default aanv_data4 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel4 = "De school is nog niet gebeld"
+# default school_data4 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling4 = "Dit diploma is niet in het Nederlands"
+# default besluit4 = "Je hebt nog geen besluit genomen"
+# default vert4klaar = 100
+# default school4info = False
+# default vert4 = False
+# default res_used4 = 0
+#
+# default cas5 = False
+# default aanv_bel5 = "De aanvrager is nog niet gebeld"
+# default aanv_bel5b = False
+# default aanv_data5 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel5 = "De school is nog niet gebeld"
+# default school_data5 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling5 = "Dit diploma is in het Nederlands"
+# default besluit5 = "Je hebt nog geen besluit genomen"
+# default vert5klaar = 100
+# default school5info = False
+# default res_used5 = 0
+#
+# default cas6 = False
+# default aanv_bel6 = "De aanvrager is nog niet gebeld"
+# default aanv_bel6b = False
+# default aanv_data6 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
+# default school_bel6 = "De school is nog niet gebeld"
+# default school_data6 = "Er zijn nog geen extra gegevens bekend van de school"
+# default vertaling6 = "Dit diploma is in het Nederlands"
+# default besluit6 = "Je hebt nog geen besluit genomen"
+# default vert6klaar = 100
+# default school6info = False
+# default res_used6 = 0
 
 default dag = 0
 #variabelen voor de score
@@ -173,10 +173,18 @@ default budget = 15
 default vert = 0
 default informatie = 0
 
-default casus1 = None
+default casus1 = Casus()
+default casus2 = Casus()
+default casus3 = Casus()
+default casus4 = Casus()
+default casus5 = Casus()
+default casus6 = Casus()
+
+
 
 label start:
-     jump born
+
+    jump born
 return
 
 
@@ -493,7 +501,6 @@ label toekomstcasus2:
         return
 
 label toekomstcasus3:
-    #TODO apenpokken in apeldoorn
     show stentor_krant
     play sound "audio/ontbijt.mp3"
 

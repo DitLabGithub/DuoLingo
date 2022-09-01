@@ -1,28 +1,34 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/freeroam.rpy", line 129, in script
-    if rng1 == 1 and teltimmer >= 200:
-  File "game/freeroam.rpy", line 129, in <module>
-    if rng1 == 1 and teltimmer >= 200:
-NameError: name 'teltimmer' is not defined
+  File "game/freeroam.rpy", line 987, in script call
+    call telefoon
+  File "game/freeroam.rpy", line 409, in script
+    menu:
+  File "game/freeroam.rpy", line 432, in <module>
+    "vraag naar de school" if school1info == False:
+NameError: name 'school1info' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/freeroam.rpy", line 129, in script
-    if rng1 == 1 and teltimmer >= 200:
-  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 2115, in execute
-    if renpy.python.py_eval(condition):
+  File "game/freeroam.rpy", line 987, in script call
+    call telefoon
+  File "game/freeroam.rpy", line 409, in script
+    menu:
+  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1903, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "C:\renpy-8.0.2-sdk\renpy\exports.py", line 976, in menu
+    condition = renpy.python.py_eval(condition)
   File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1083, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1076, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/freeroam.rpy", line 129, in <module>
-    if rng1 == 1 and teltimmer >= 200:
-NameError: name 'teltimmer' is not defined
+  File "game/freeroam.rpy", line 432, in <module>
+    "vraag naar de school" if school1info == False:
+NameError: name 'school1info' is not defined
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.2.22081402
 Life of Meta 1.0
-Thu Sep  1 11:45:58 2022
+Thu Sep  1 15:45:48 2022

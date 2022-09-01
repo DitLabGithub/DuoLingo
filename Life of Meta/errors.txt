@@ -2,13 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 109: reached end of line when expecting ':'.
-    elif teveelinfo == True
-                           ^
+File "game/freeroam.rpy", line 108: reached end of line when expecting ':'.
+    elif afgerond < 2 and dag > 10
+                                  ^
 
-File "game/freeroam.rpy", line 115: expected statement.
+File "game/freeroam.rpy", line 112: expected statement.
     else:
         ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Thu Sep  1 11:22:55 2022
+Thu Sep  1 15:35:23 2022
