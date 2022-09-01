@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 959: expected a keyword argument, colon, or end of line.
-    text color "#000000"
-               ^
+File "game/freeroam.rpy", line 56: expected statement.
+    <<<<<<< HEAD
+                ^
 
-Ren'Py Version: Ren'Py 8.0.0.22062402
-Wed Aug 31 13:30:11 2022
+File "game/freeroam.rpy", line 69: expected statement.
+    =======
+          ^
+
+File "game/freeroam.rpy", line 71: expected statement.
+    >>>>>>> origin/develop
+                  ^
+
+Ren'Py Version: Ren'Py 8.0.2.22081402
+Thu Sep  1 10:05:54 2022
