@@ -2,13 +2,25 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 108: reached end of line when expecting ':'.
-    elif afgerond < 2 and dag > 10
-                                  ^
+File "game/casus.rpy", line 20: expected statement.
+    def start_translating(self, dag):
+                         ^
 
-File "game/freeroam.rpy", line 112: expected statement.
-    else:
-        ^
+File "game/casus.rpy", line 23: expected statement.
+    def started_translating(self):
+                           ^
+
+File "game/casus.rpy", line 26: expected statement.
+    def is_translated(self, current_dag):
+                     ^
+
+File "game/casus.rpy", line 31: expected statement.
+    def view_translation(self):
+                        ^
+
+File "game/casus.rpy", line 34: expected statement.
+    def has_viewed_translation(self):
+                              ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Thu Sep  1 15:35:23 2022
+Fri Sep  2 13:04:53 2022

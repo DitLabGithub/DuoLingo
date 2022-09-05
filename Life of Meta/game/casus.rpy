@@ -14,6 +14,25 @@ init -1 python:
             self.vert = False
             self.res_used = 0
 
+    self.started_translating = None
+    self.saw_translation = False
+
+# def start_translating(self, dag):
+#     self.started_translating = dag
+#
+# def started_translating(self):
+#     return self.started_translating is not None
+#
+# def is_translated(self, current_dag):
+#     if self.started_translating is None:
+#         return False
+#     return self.started_translating > current_dag
+#
+# def view_translation(self):
+#     self.saw_translation = True
+#
+# def has_viewed_translation(self):
+#     return self.saw_translation
 
 init python:
     config.developer = True

@@ -6,6 +6,7 @@
 #TODO nieuwe casussen in het oude stoppen
 #TODO functioneringsgesprek
 #TODO botje over school... school bestaat niet...
+#TODO beperkte tijd voor een open casus...
 
 label werk:
 # intro naar werk. alleen eerste keer
@@ -52,7 +53,7 @@ label werk:
     return
 
 label oudwerknewstyle:
-
+    default Location = "kantoor"
     scene ontbijttafel
     show screen score_screen()
     if laat:
@@ -69,11 +70,24 @@ label oudwerknewstyle:
         jump kantoor
 
     else:
-        default Location = "kantoor"
-        n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
-        $ tijd = 0
-        $ dag += 1
-        n "na het ontbijt ga je naar kantoor"
+        $ rng = renpy.random.randint (1,3)
+        if dag > 3 and rng == 1:
+             if toekomstcas == 1:
+                jump toekomstcasus1
+             if toekomstcas == 2:
+                jump toekomstcasus2
+             if toekomstcas == 3:
+                jump toekomstcasus3
+#
+#                 if drukte > 4:
+#
+#                     jump toekomstcasus4
+
+        else:
+            n "tijd om op te staan. Koffie en ontbijt en je favoriete krant terwijl op de achtergrond het nieuws aanstaat"
+            $ tijd = 0
+            $ dag += 1
+            n "na het ontbijt ga je naar kantoor"
 
         #if dag == 3 or dag == 6 or dag == 9 or dag == 12:
         if dag > 0 and dag % 3 == 0:
@@ -970,8 +984,8 @@ label archief:
 
 label kantoor: #backbone van freeroam
     scene black
-    while dag < 10:
-        while tijd < 5:
+    while dag < 15:
+        while tijd < tijdperdag:
             $ resuse = casus1.res_used + casus2.res_used + casus3.res_used + casus4.res_used + casus5.res_used + casus6.res_used
             $ kosten = informatie + (vert * 5)
             $ Location = renpy.call_screen("MapScreen", _layer="screens")
@@ -994,6 +1008,157 @@ label kantoor: #backbone van freeroam
         call eventpicker
     jump oudwerknewstyle
 
+label toekomstcasus1:
+#TODO rusland casus, 2 russische casussen in bouwen (revocation?)
+#TODO gevolgen rusland inbouwen (minder werk...)
+
+    $ toekomstcas += 1
+    image rus = im.Scale("nf rusland.png", 1920,1080)
+    show rus
+    play sound "audio/newsflash.mp3"
+    n "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
+    stop sound
+    n "maar als je op het werk komt: "
+    scene teammeeting
+    s "welkom allemaal op deze ingelaste teammeeting"
+    s "zoals jullie misschien hebben gehoord, moeten we alle aanvragen vanuit rusland blokeren op dit moment."
+    s "Ik wil dat jullie halve dagen hieraan besteden totdat het klaar is"
+    "betekent dit alle diplomas van scholen uit rusland? of alle russen?"
+    s "dat is een goede vraag MetaRobbin!"
+    s "als we alle diplomas blokkeren hebben we de kans dat we mensen onterecht uitsluiten"
+    s "als we alle diplomas handmatig gaan controlen betekent dat een force extra werkdruk"
+    menu:
+        s "wat stel je voor?"
+        "alle diploma's van scholen uit rusland blokeren":
+            $ tijdperdag -= 1
+            s "laten we dat maar doen dan. Vanaf nu besteden jullie allemaal 1 tijd per dag aan rusland"
+            jump kantoor
+        "alle russen blokeren":
+            $ tijdperdag -= 2
+            s "laten we dat maar doen dan. Vanaf nu besteden jullie allemaal 2 tijd per dag aan rusland"
+            $ rus = True
+            jump kantoor
+    return
+
+label toekomstcasus2:
+#inhollandcasus
+
+        image fraude = im.Scale("nf fraude.png", 1920,1080)
+        show fraude
+        play sound "audio/newsflash.mp3"
+        #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
+        $ toekomstcas += 1
+        n "Hogeschool heeft onterecht diplomas uitgegeven. Eerste onderzoeken wijzen uit dat zeker 100 diplomas ongeldig zijn."
+        n "Gevolgen onbekend en DUO is nog niet bereikbaar"
+        m "dat zal wel weer een teamoverleg worden..."
+        stop sound
+        scene teammeeting
+        s "welkom allemaal op deze ingelaste teammeeting"
+        s "zoals jullie misschien hebben gehoord, is er een school die onterecht diplomas heeft uitgekeerdkeren op dit moment."
+        s "voor nu houden we alle aanvragen van deze school tegen. maar we moeten ook kijken naar de oude aanvragen"
+        s "iemand een idee hoe we dit het beste op kunnen lossen?"
+        menu:
+            "alle aanvragen opnieuw bekijken":
+                s "dat kan. betekent wel een enorme bak extra werk..."
+                menu:
+                    "weet je het zeker?"
+                    "Ja":
+                    $ tijdperdag -= 1
+                    jump kantoor
+                    "Nee, we kunnen beter wachten op de ongeldige diploma's":
+                    $ foutediplomas = True
+                    jump kantoor
+
+            "voorlopig niets en wachten op de ongeldige diplomas":
+                s "ja dat klinkt goed... alleen wat als iemand dat ongeldige diploma gebruikt?"
+                s "dat gaat ons problemen opleveren..."
+                menu:
+                    "weet je het zeker?"
+                    "Ja":
+                    $ foutediplomas = True
+                    jump kantoor
+                    "Nee, we kunnen beter alles checken":
+                    $ tijdperdag -= 1
+                    jump kantoor
+        return
+
+label toekomstcasus3:
+#TODO casus vernieuwen
+    show stentor_krant
+    play sound "audio/ontbijt.mp3"
+
+    $ toekomstcas += 1
+    n "'s Ochtends, tijdens het ontbijt, lees je de krant"
+    m "Lockdown in apeldoorn... apenpokken..."
+    n "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
+    menu:
+        "Wat wil je doen?"
+        "Haal alle scholen uit apeldoorn uit het register":
+
+            "dit lijkt me niet goed MetaRobbin"
+            "het gaat om 500.000 diplomas waarvan er maar een paar ongeldig zijn..."
+            "maar je bespaard je afdeling een hoop handmatig werk"
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
+
+        "Controleer handmatig per persoon of ze uit Apeldoorn komen":
+            $ drukte +=1
+            $ apel = True
+            "dit levert wat handmatig werk op, maar gelukkig krijg je wel de kans om alle sollicitaties te controleren"
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
+    return
+
+label toekomstcasus4:
+#te druk op de afdeling
+    image drukte = im.Scale("nf drukte.png", 1920,1080)
+    show drukte
+    play sound "audio/newsflash.mp3"
+    menu:
+
+        "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
+        "beoordeel de russiche scholen automatisch" if rus:
+            "Je laat je afdeling nu 20.000 extra gevallen per maand minder doen"
+            "dat zal de druk op de afdeling zeker verlagen!"
+            $ drukte -=3
+            $ rus = False
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
+        "doe apeldoorn automatisch" if apel:
+            "je laat ongeveer 5 sollicitaties per maand geautomatiseerd doen"
+            "dit levert helaas niets op qua drukte van de afdeling"
+            $ apel = False
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
+        "stop met de handmatige afhandeling van de afgekeurde school" if hol:
+            "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
+            "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
+            $ drukte -=2
+            $ hol = False
+            if werk:
+                jump randomtoekomstcasus
+            else:
+                jump toekomsteventpicker
+
+        "meer informatie over de verschillen":
+            "aantal sollicitaties met een russiche nationaliteit zijn 20.000 per maand, en van Russische scholen 25.000"
+            "vanuit Apeldoorn zijn er 5 sollicitaties per maand en 600 die van een school in Apeldoorn een diploma hebben gekregen"
+            "De afgekeurde school heeft 500.000 diplomas uitgegeven en naar, verwachting, zijn er ca. 100 die ongeldig moeten worden"
+            jump toekomstcasus4
+
+    return
 
 
 
@@ -1008,7 +1173,7 @@ screen MapScreen():
         frame:
             background Solid("#C0C0C0")
             vbox:
-                    text "{color=#000000}Tijd: [dag]:[tijd]{/color}"
+                    text "{color=#000000}Tijd: [dag]:[tijd]/[tijdperdag]{/color}"
                     text "{color=#000000}{b}Zaken{/b}"
                     text "{color=#000000}open: [open]"
                     text "{color=#000000}afgerond: [afgerond]"
@@ -1030,7 +1195,7 @@ screen score_screen():
     frame:
         background Solid("#C0C0C0")
         vbox:
-                text "{color=#000000}Tijd: [dag]:[tijd]{/color}"
+                text "{color=#000000}Tijd: [dag]:[tijd]/[tijdperdag]{/color}"
                 text "{color=#000000}{b}Zaken{/b}"
                 text "{color=#000000}open: [open]"
                 text "{color=#000000}afgerond: [afgerond]"

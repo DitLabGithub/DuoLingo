@@ -89,6 +89,7 @@ default zoektimer = 1000
 default teveelinfo = False
 default laat = False
 default tijd = 1
+default tijdperdag = 5
 # default cas1 = False
 # default aanv_bel1 = "De aanvrager is nog niet gebeld"
 # default aanv_bel1b = False
@@ -172,6 +173,7 @@ default resuse = 0
 default budget = 15
 default vert = 0
 default informatie = 0
+default foutediplomas = False
 
 default casus1 = Casus()
 default casus2 = Casus()
@@ -189,7 +191,7 @@ return
 
 
 label Alleenwerk:
-
+#TODO weer opnieuw inbouwen na nieuwe werkwijze
         # "alleen de werkcasussen":
             $ werk = True
 
@@ -409,173 +411,6 @@ label randomtoekomstcasus:
 
     return
 
-label toekomstcasus1:
-# rusland casus
-
-    $ toekomstcas += 1
-    image rus = im.Scale("nf rusland.png", 1920,1080)
-    show rus
-    play sound "audio/newsflash.mp3"
-    n "Je hoort in de ochtend op het nieuws dat alles uit Rusland geboycot moet worden. Je denkt nog, dat heeft met mij niet zoveel te maken"
-    n "Halverwege de ochtend krijg je een opdracht vanuit het ministerie. Wil je erover zorgen dat iedere rus tegen gehouden wordt, zodat ze niet per ongeluk worden aangenomen?"
-    n "Je hebt nu een paar keuzes..."
-    n "Wat wil je doen?"
-
-    menu:
-        "Alle scholen uit Rusland uitsluiten in het register":
-            "vanaf nu worden alle scholen uit Rusland uitgesloten en de diplomas afgekeurd."
-            "Dit is een goede keuze. Het bespaard je enorm veel handmatig werk..."
-            "Maar 2 jaar later hoor je dat in Belgie er een briljante Estse is aangenomen die ook bij ons had gesolliciteerd"
-            "Wij hebben haar afgewezen omdat ze van een russische school kwam"
-
-            "maar laten we verder gaan!"
-
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-        "Handmatig alle Russen uitsluiten":
-            "Vanaf nu komen alle Russen langs bij de handmatige beoordeling"
-            "Dit zorgt er in ieder geval voor dat je niet alle mensen van een Russische school zomaar uitsluit"
-            "Maar door de hoeveelheid extra werk krijgt je afdeling het ineens enorm druk"
-
-            $ drukte +=3
-            $ rus = True
-            "laten we verder gaan"
-
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-
-    return
-
-label toekomstcasus2:
-#inhollandcasus
-
-        image fraude = im.Scale("nf fraude.png", 1920,1080)
-        show fraude
-        play sound "audio/newsflash.mp3"
-        #TODO newsflash hoge school is niet betrouwbaar meer... zeker 100 diplomas ongeldig
-        $ toekomstcas += 1
-        n "je krijgt een bericht dat een school niet meer betrouwbaar is. Eerste onderzoeken wijzen uit dat zeker 100 diplomas ongeldig zijn.  wat wil je doen?"
-
-        menu:
-            "wat wil je doen?"
-            "sluit de school gelijk uit via het register":
-                "je sluit alle diplomas van deze school uit. het gaat om circa een half miljoen diplomas terwijl er maar 100 ongeldig zijn"
-                "misschien is dit niet de beste keuze... , maar je kunt het herstellen"
-
-                menu:
-                    "je sluit tijdelijk alle leerlingen van deze school uit.":
-                        "Hierdoor mis je een aantal sollicitanten... maar je krijgt ook geen ongeldige diplomas binnen"
-                        "alle sollicitanten van de school kun je later opnieuw oproepen voor een sollicitatie"
-
-                        if werk:
-                            jump randomtoekomstcasus
-                        else:
-                            jump toekomsteventpicker
-
-                    "je besluit om alle leerlingen van deze school handmatig tegen te houden":
-                        "Je team controleert alle gevallen met de hand, maar je weet nog niet welke diploma's onterecht zijn uitgegeven"
-                        "dit levert veel extra handwerk op, misschien had je beter alle leerlingen van deze school tijdelijk uitgesloten"
-
-                        $ drukte +=2
-                        $ hol = True
-                        if werk:
-                            jump randomtoekomstcasus
-                        else:
-                            jump toekomsteventpicker
-
-            "wacht op het onderzoek dat persoonlijke diploma's uitsluit en sluit die handmatig uit":
-                "Tijdens het onderzoek sijpelen er langzaam een aantal diplomas door die onterecht zijn uitgegeven."
-                "Helaas kun je dit achteraf niet meer herstellen..."
-
-                if werk:
-                    jump randomtoekomstcasus
-                else:
-                    jump toekomsteventpicker
-
-        return
-
-label toekomstcasus3:
-    show stentor_krant
-    play sound "audio/ontbijt.mp3"
-
-    $ toekomstcas += 1
-    n "'s Ochtends, tijdens het ontbijt, lees je de krant"
-    m "Lockdown in apeldoorn... apenpokken..."
-    n "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
-    menu:
-        "Wat wil je doen?"
-        "Haal alle scholen uit apeldoorn uit het register":
-
-            "dit lijkt me niet goed MetaRobbin"
-            "het gaat om 500.000 diplomas waarvan er maar een paar ongeldig zijn..."
-            "maar je bespaard je afdeling een hoop handmatig werk"
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-
-        "Controleer handmatig per persoon of ze uit Apeldoorn komen":
-            $ drukte +=1
-            $ apel = True
-            "dit levert wat handmatig werk op, maar gelukkig krijg je wel de kans om alle sollicitaties te controleren"
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-    return
-
-label toekomstcasus4:
-#te druk op de afdeling
-    image drukte = im.Scale("nf drukte.png", 1920,1080)
-    show drukte
-    play sound "audio/newsflash.mp3"
-    menu:
-
-        "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
-        "beoordeel de russiche scholen automatisch" if rus:
-            "Je laat je afdeling nu 20.000 extra gevallen per maand minder doen"
-            "dat zal de druk op de afdeling zeker verlagen!"
-            $ drukte -=3
-            $ rus = False
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-        "doe apeldoorn automatisch" if apel:
-            "je laat ongeveer 5 sollicitaties per maand geautomatiseerd doen"
-            "dit levert helaas niets op qua drukte van de afdeling"
-            $ apel = False
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-        "stop met de handmatige afhandeling van de afgekeurde school" if hol:
-            "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
-            "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
-            $ drukte -=2
-            $ hol = False
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-        "meer informatie over de verschillen":
-            "aantal sollicitaties met een russiche nationaliteit zijn 20.000 per maand, en van Russische scholen 25.000"
-            "vanuit Apeldoorn zijn er 5 sollicitaties per maand en 600 die van een school in Apeldoorn een diploma hebben gekregen"
-            "De afgekeurde school heeft 500.000 diplomas uitgegeven en naar, verwachting, zijn er ca. 100 die ongeldig moeten worden"
-            jump toekomstcasus4
-
-    return
 
 
 
