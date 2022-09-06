@@ -2,25 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/casus.rpy", line 20: expected statement.
-    def start_translating(self, dag):
-                         ^
+File "game/freeroam.rpy", line 1066: choice menuitem expects a non-empty block.
+    "Ja":
+         ^
 
-File "game/casus.rpy", line 23: expected statement.
-    def started_translating(self):
-                           ^
-
-File "game/casus.rpy", line 26: expected statement.
-    def is_translated(self, current_dag):
-                     ^
-
-File "game/casus.rpy", line 31: expected statement.
-    def view_translation(self):
-                        ^
-
-File "game/casus.rpy", line 34: expected statement.
-    def has_viewed_translation(self):
-                              ^
+File "game/freeroam.rpy", line 1079: choice menuitem expects a non-empty block.
+    "Ja":
+         ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Fri Sep  2 13:04:53 2022
+Tue Sep  6 12:49:05 2022

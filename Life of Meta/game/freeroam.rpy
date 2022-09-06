@@ -1032,6 +1032,7 @@ label toekomstcasus1:
         "alle diploma's van scholen uit rusland blokeren":
             $ tijdperdag -= 1
             s "laten we dat maar doen dan. Vanaf nu besteden jullie allemaal 1 tijd per dag aan rusland"
+            $ rus = True
             jump kantoor
         "alle russen blokeren":
             $ tijdperdag -= 2
@@ -1063,11 +1064,12 @@ label toekomstcasus2:
                 menu:
                     "weet je het zeker?"
                     "Ja":
-                    $ tijdperdag -= 1
-                    jump kantoor
+                        $ tijdperdag -= 1
+                        $ hol = True
+                        jump kantoor
                     "Nee, we kunnen beter wachten op de ongeldige diploma's":
-                    $ foutediplomas = True
-                    jump kantoor
+                        $ foutediplomas = True
+                        jump kantoor
 
             "voorlopig niets en wachten op de ongeldige diplomas":
                 s "ja dat klinkt goed... alleen wat als iemand dat ongeldige diploma gebruikt?"
@@ -1075,44 +1077,29 @@ label toekomstcasus2:
                 menu:
                     "weet je het zeker?"
                     "Ja":
-                    $ foutediplomas = True
-                    jump kantoor
+                        $ foutediplomas = True
+                        jump kantoor
                     "Nee, we kunnen beter alles checken":
-                    $ tijdperdag -= 1
-                    jump kantoor
+                        $ tijdperdag -= 1
+                        jump kantoor
         return
 
 label toekomstcasus3:
 #TODO casus vernieuwen
     show stentor_krant
     play sound "audio/ontbijt.mp3"
-
     $ toekomstcas += 1
     n "'s Ochtends, tijdens het ontbijt, lees je de krant"
     m "Lockdown in apeldoorn... apenpokken..."
-    n "Je krijgt opdracht van de directie om niemand meer uit te nodigen uit apeldoorn"
-    menu:
-        "Wat wil je doen?"
-        "Haal alle scholen uit apeldoorn uit het register":
-
-            "dit lijkt me niet goed MetaRobbin"
-            "het gaat om 500.000 diplomas waarvan er maar een paar ongeldig zijn..."
-            "maar je bespaard je afdeling een hoop handmatig werk"
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
-
-        "Controleer handmatig per persoon of ze uit Apeldoorn komen":
-            $ drukte +=1
-            $ apel = True
-            "dit levert wat handmatig werk op, maar gelukkig krijg je wel de kans om alle sollicitaties te controleren"
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
-
+    m "zal wel niets met ons te maken hebben... "
+    stop sound
+    scene teammeeting
+    s "welkom allemaal op deze ingelaste teammeeting"
+    s "zoals jullie misschien hebben gehoord, is er een apenpokken uitbraak in Apeldoorn."
+    s "nou kregen wij het verzoek om zo snel mogelijk te impact te bepalen van dit virus"
+    s "MetaRobbin, wil jij snel uitzoeken of dit impact heeft en wat voor impact?"
+    $ apel = True
+    jump kantoor
     return
 
 label toekomstcasus4:

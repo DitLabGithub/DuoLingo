@@ -1,6 +1,6 @@
 init -1 python:
     class Casus:
-        def __init__(self):
+        def __init__(self):   #, cas, aanv_bel, aanv_belb, aanv_data, school_bel, school_data, vertaling, besluit, vertklaar, schoolinfo, vert, res_used
             self.cas = False
             self.aanv_bel = "De aanvrager is nog niet gebeld"
             self.aanv_belb = False
@@ -14,8 +14,8 @@ init -1 python:
             self.vert = False
             self.res_used = 0
 
-    self.started_translating = None
-    self.saw_translation = False
+#    self.started_translating = None
+#    self.saw_translation = False
 
 # def start_translating(self, dag):
 #     self.started_translating = dag

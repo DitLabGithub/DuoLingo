@@ -1,34 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/freeroam.rpy", line 987, in script call
-    call telefoon
-  File "game/freeroam.rpy", line 409, in script
-    menu:
-  File "game/freeroam.rpy", line 432, in <module>
-    "vraag naar de school" if school1info == False:
-NameError: name 'school1info' is not defined
+  File "renpy/common/00start.rpy", line 192, in script
+    python:
+  File "renpy/common/00start.rpy", line 193, in <module>
+    renpy.execute_default_statement(True)
+  File "game/screens.rpy", line 267, in set_default
+    default quick_menu = True
+Exception: store.quick_menu is being given a default a second time.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/freeroam.rpy", line 987, in script call
-    call telefoon
-  File "game/freeroam.rpy", line 409, in script
-    menu:
-  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1903, in execute
-    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
-  File "C:\renpy-8.0.2-sdk\renpy\exports.py", line 976, in menu
-    condition = renpy.python.py_eval(condition)
-  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1083, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1076, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/freeroam.rpy", line 432, in <module>
-    "vraag naar de school" if school1info == False:
-NameError: name 'school1info' is not defined
+  File "renpy/common/00start.rpy", line 192, in script
+    python:
+  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1131, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1052, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00start.rpy", line 193, in <module>
+    renpy.execute_default_statement(True)
+  File "C:\renpy-8.0.2-sdk\renpy\exports.py", line 3790, in execute_default_statement
+    i.set_default(start)
+  File "game/screens.rpy", line 267, in set_default
+    default quick_menu = True
+Exception: store.quick_menu is being given a default a second time.
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.2.22081402
 Life of Meta 1.0
-Thu Sep  1 15:45:48 2022
+Tue Sep  6 13:06:47 2022
