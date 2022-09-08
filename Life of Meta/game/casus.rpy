@@ -9,6 +9,7 @@ init python:
             self.school_data = "Er zijn nog geen extra gegevens bekend van de school"
             self.vertaling = "Dit diploma is nog niet vertaald"
             self.besluit = "Je hebt nog geen besluit genomen"
+            self.nogniet = True
             self.vertklaar = 100
             self.schoolinfo = False
             self.vert = False

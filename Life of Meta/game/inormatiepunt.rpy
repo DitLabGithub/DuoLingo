@@ -22,7 +22,7 @@ label informatiepunt:
             $ informatie += 1
             return
 
-        "Zhengheng Middle School van zaak 2" if casus2.cas:
+        "Zhengheng Middle School van zaak 2" if casus2.cas and casus2.vert:
             $ tijd += 1
             $ casus2.res_used += 1
             n "het systeem  heeft deze school gevonden en bestond ook toen het diploma is uitgegeven"
@@ -56,7 +56,7 @@ label informatiepunt:
             $ informatie += 1
             return
 
-        "San Yat-Sen University van zaak 4" if casus4.cas:
+        "San Yat-Sen University van zaak 4" if casus4.cas and casus2.vert:
             $ tijd += 1
             $ casus4.res_used += 1
             n "Het systeem kan niets vinden over deze school"

@@ -90,79 +90,6 @@ default teveelinfo = False
 default laat = False
 default tijd = 1
 default tijdperdag = 5
-# default cas1 = False
-# default aanv_bel1 = "De aanvrager is nog niet gebeld"
-# default aanv_bel1b = False
-# default aanv_data1 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel1 = "De school is nog niet gebeld"
-# default school_data1 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling1 = "Dit diploma is in het Nederlands"
-# default besluit1 = "Je hebt nog geen besluit genomen"
-# default vert1klaar = 100
-# default school1info = False
-# default res_used1 = 0
-#
-# default cas2 = False
-# default aanv_bel2 = "De aanvrager is nog niet gebeld"
-# default aanv_bel2b = False
-# default aanv_data2 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel2 = "De school is nog niet gebeld"
-# default school_data2 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling2 = "Dit diploma is niet in het Nederlands"
-# default besluit2 = "Je hebt nog geen besluit genomen"
-# default vert2klaar = 100
-# default school2info = False
-# default vert2 = False
-# default res_used2 = 0
-#
-# default cas3 = False
-# default aanv_bel3 = "De aanvrager is nog niet gebeld"
-# default aanv_bel3b = False
-# default aanv_data3 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel3 = "De school is nog niet gebeld"
-# default school_data3 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling3 = "Dit diploma is in het Nederlands"
-# default besluit3 = "Je hebt nog geen besluit genomen"
-# default vert3klaar = 100
-# default school3info = False
-# default res_used3 = 0
-#
-# default cas4 = False
-# default aanv_bel4 = "De aanvrager is nog niet gebeld"
-# default aanv_bel4b = False
-# default aanv_data4 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel4 = "De school is nog niet gebeld"
-# default school_data4 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling4 = "Dit diploma is niet in het Nederlands"
-# default besluit4 = "Je hebt nog geen besluit genomen"
-# default vert4klaar = 100
-# default school4info = False
-# default vert4 = False
-# default res_used4 = 0
-#
-# default cas5 = False
-# default aanv_bel5 = "De aanvrager is nog niet gebeld"
-# default aanv_bel5b = False
-# default aanv_data5 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel5 = "De school is nog niet gebeld"
-# default school_data5 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling5 = "Dit diploma is in het Nederlands"
-# default besluit5 = "Je hebt nog geen besluit genomen"
-# default vert5klaar = 100
-# default school5info = False
-# default res_used5 = 0
-#
-# default cas6 = False
-# default aanv_bel6 = "De aanvrager is nog niet gebeld"
-# default aanv_bel6b = False
-# default aanv_data6 = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-# default school_bel6 = "De school is nog niet gebeld"
-# default school_data6 = "Er zijn nog geen extra gegevens bekend van de school"
-# default vertaling6 = "Dit diploma is in het Nederlands"
-# default besluit6 = "Je hebt nog geen besluit genomen"
-# default vert6klaar = 100
-# default school6info = False
-# default res_used6 = 0
 
 default dag = 0
 #variabelen voor de score
@@ -174,6 +101,8 @@ default budget = 15
 default vert = 0
 default informatie = 0
 default foutediplomas = False
+default aantekening = 0
+default evil = 0
 
 default casus1 = Casus()
 default casus2 = Casus()
@@ -181,8 +110,6 @@ default casus3 = Casus()
 default casus4 = Casus()
 default casus5 = Casus()
 default casus6 = Casus()
-
-
 
 label start:
 
@@ -203,127 +130,6 @@ label test:
 
 return
 
-label born:
-
-    show hospital
-    show pa at left
-    show ma at right
-
-    play music "audio/hospital.mp3"
-    n "dit zijn metapapa en metamama."
-    hide pa
-    hide ma
-    pa happy"dat is het liefste kind dat ik ooit heb gezien "
-    ma happy "hmm ja, hoe zullen we hem noemen? "
-    pa "zullen we hem vernoemen naar je grootvader? "
-    ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert? "
-    pa "wat denk je van robbin?"
-    ma "ja, dat is een leuke naam!"
-    pa n2 "wat hebben we allemaal nodig voor die aangifte?"
-    ma annoyed "even checken... oh wat een ingewikkelde website is dit..."
-    ma "oh vandaag nog niet... want Robbin is vandaag geboren, morgen is het zaterdag, dan kan het ook niet"
-    ma angry "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag? "
-    ma "ehm... het staat er niet bij... "
-    pa angry1 "wat is dat voor onzin... zijn ze dinsdag dicht dan? "
-    ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete... "
-    pa "kan ik het dan niet online doen?"
-    ma annoyed "nee, niet hier... in sommige gemeentes wel... "
-    pa blush "okay woensdag dus... Wat moet ik meenemen?"
-    ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus..  "
-    ma "en verklaring van geboorte.. maar die is ook niet verplicht "
-    pa disgust "wat onduidelijk allemaal... dus alleen mijn id bewijs"
-    ma -annoyed "ja denk ik... "
-    stop music
-    scene
-    show stadhuis
-
-    n "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
-    n "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
-
-    play music "audio/crowd-talking-2.mp3"
-    receptionist "heeft u een afspraak?"
-    pa surprise"nee, kan dat?"
-    n "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
-    receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
-    pa - surprise "oh, dan wacht ik toch eventjes"
-
-    n "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
-    show nr13 at truecenter
-    pa "nummer 13... oh dat is wel iets langer dan eventjes"
-    scene black
-    show stadhuis
-    $ n ("Metapapa kijkt op zijn horloge... 9.14", interact=False)
-    $ renpy.pause (4.0, hard=True)
-    $ n ("10.14", interact=False)
-    $ renpy.pause (4.0, hard=True)
-    $ n ("11.14", interact=False)
-    $ renpy.pause (4.0, hard=True)
-    $ n ("Mededeling: het is nu 12 uur pause, dus de wachttijd wordt iets langer", interact=False)
-    $ renpy.pause (4.0, hard=True)
-    n "12.45"
-    show nr87 at truecenter
-    pa "oh bijna aan de beurt..."
-    $ renpy.pause(2.0, hard=True)
-    show nr88 at truecenter
-    $ renpy.pause(2.0, hard=True)
-    show nr89 at truecenter
-    pa angry1 "eindelijk..."
-    scene
-    show balie
-    stop music
-    "metapapa loopt naar de balie"
-    a "hallo, wat kan ik voor je doen?"
-    pa happy "ik wil mijn zoon aangeven, die is vorige week geboren"
-    a "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
-    pa "ehm nee, er stond op de website dat dat niet hoefde..."
-    a "hmm oh... ja dat is wel wat lastiger dan... "
-    a "momentje... ik print even het formulier uit"
-    a "wilt u dit formulier invullen met blokletters?"
-    pa grin "papier? ehm... natuurlijk"
-    a "heeft u ondertussen u ID bewijs meegenomen"
-    n "metapapa geeft zijn paspoort aan de ambtenaar"
-    a "dank je wel"
-    n "na een tijdje heeft metapapa alle antwoorden ingevuld en geeft het formulier terug"
-    a "dank u wel... "
-    n "de ambtenaar begint met invullen"
-    a "Robbin is dat correct? en vorige week vrijdag geboren?"
-    pa "ja met 2 b's "
-    a "hij is geboren met 2 b's?"
-    pa angry "nee, de naam is met 2 b's"
-    a "ja ik zie het... en metamama is de moeder?"
-    pa - angry "jazeker"
-    a "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
-    n "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
-    a "wilt u het allemaal nog even controleren?"
-    pa "oh de naam van Robbin staat fout... "
-    a "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
-    n "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
-    scene black
-
-    play music "audio/woo_scary.ogg"
-
-    show text "{b}Life of Meta{/b}" at truecenter with dissolve
-
-    $ renpy.pause(2.0)
-    show metarobbinmedium at top
-    $ renpy.pause(4.0)
-    scene black
-    show ditlablogo at truecenter
-
-    "{b}Een spel ontwikkeld door het Dit-Lab. Een samenwerking tussen de Hanzehogeschool en DUO{/b}"
-    $ renpy.pause(2.0)
-    jump school
-
-    return
-
-label school:
-    #inschrijven meta bij een school
-        #àanmelden voor stex met beperking
-        #aanmelden stufi
-    scene black
-    $ renpy.pause(4.0)
-    jump werk
-    return
 
 
 label toekomstbaan:
@@ -382,34 +188,6 @@ label toekomstbaan:
 # x in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
 # latenz ien verschil tussen oude casussen...
 
-label randomtoekomstcasus:
-
-    # $ rng = renpy.random.randint (1,3)
-
-
-    if toekomstcas == 1:
-
-        jump toekomstcasus1
-
-    if toekomstcas == 2:
-
-        jump toekomstcasus2
-
-    if toekomstcas == 3:
-
-        jump toekomstcasus3
-
-    if drukte > 4:
-
-        jump toekomstcasus4
-
-    else:
-        if werk:
-            return
-        else:
-            jump toekomsteventpicker
-
-    return
 
 
 

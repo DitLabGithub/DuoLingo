@@ -2,12 +2,9 @@
 #TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
 #TODO plaatjes werk fixen
-#TODO ikomende opdrachten goed afsluiten, niet meer openen (misschien volgende opdracht kiezen ipv een nummer)
 #TODO nieuwe casussen in het oude stoppen
 #TODO beperkte tijd voor een open casus...
 #TODO bug: samenvallen van te laat en functioneringsgesprek...
-#TODO bug: vertaling is al te zien in gegevens opvragen...
-#TODO bug: te laat werk niet goed...
 #TODO lifeevents even checken op uitgangen waarheen te jumpen en $ laat = True ertussen proppen
 #TODO bug: informatie weg als zaak gesloten is
 
@@ -16,9 +13,6 @@ label werk:
     stop music
     scene duogroot
     with fade
-
-    show metarobbinmedium at left
-    with dissolve
 
     "Je eerste werkdag bij DUO start vandaag"
 
@@ -29,7 +23,6 @@ label werk:
 
     "Na een rondleiding en lunch is het tijd om je manager te ontmoeten"
     "Je wordt begroet door je manager, Sylvie"
-    show image sylvie blue normal.png
     s "Hoi en welkom bij duo!"
 
     s "Vandaag is je eerste dag hier en ik leid je rond."
@@ -58,13 +51,22 @@ label oudwerknewstyle:
         n "veel te laat kom je aan op werk en je ziet Sylvie al staan"
         scene baas
         with dissolve
-        s "Dat is niet goed MetaRobbin."
-        s "Voor deze keer zie ik het door de vingers..."
-        s "Ik verwacht beter van je. Nu snel aan het werk"
-        $ tijd = 1
-        $ dag += 1
-        $ laat = False
-        jump kantoor
+        if dag % 3 == 0:
+            s "Wat een slechte timing om te laat te komen MetaRobbin... het is tijd voor je functioneringsgesprek"
+
+            $ tijd = 1
+            $ dag += 1
+            $ laat = False
+            jump functioneringsgesprek
+
+        else:
+            s "Dat is niet goed MetaRobbin."
+            s "Voor deze keer zie ik het door de vingers..."
+            s "Ik verwacht beter van je. Nu snel aan het werk"
+            $ tijd = 1
+            $ dag += 1
+            $ laat = False
+            jump kantoor
 
     else:
         $ rng = renpy.random.randint (1,3)
@@ -89,48 +91,10 @@ label oudwerknewstyle:
 
         if dag > 0 and dag % 3 == 0:
             #functioneringsgesprek
-            scene baas
             s "Hallo MetaRobbin, het is tijd voor je periodieke functioneringsgesprek"
-            if budget < kosten and teveelinfo:
-                s "ik heb 2 dingen met je te bespreken"
-                s "De AIVD vraagt zich af waarom je extra informatie hebt opgevraagd over Cor van Hout"
-                s "Deze informatie heb jij niet nodig voor het bepalen van de geldigheid van een diploma..."
-                s "sorry MetaRobbin, maar dit levert een aantekening op in je dossier"
-                s "daarnaast lopen de kosten behoorlijk uit de hand."
-                s "je moet echt snellere beslissingen nemen door minder resources te gebruiken. probeer wat slimmere keuzes te maken"
-                s "gelukkig heb ik nog een beetje budget kunnen krijgen, maar gebruik het niet allemaal gelijk"
-                $ budget += 5
-                $ teveelinfo == False
-                jump kantoor
-            elif budget < kosten:
-                s "we moeten echt bezuinigen..."
-                s "de kosten rijzen de pan uit"
-                s "gelukkig heb ik een beetje extra budget kunnen krijgen... maar die is niet eindeloos"
-                $ budget += 5
-                jump kantoor
-            elif teveelinfo:
-                s "Ik werd gebeld door de AIVD over een informatieverzoek"
-                s "waarom heb je extra informatie opgevraagd?"
-                s "dit is duidelijk niet nodig voor het bepalen van de geldigheid van een diploma..."
-                s "dit kan echt niet MetaRobbin.."
-                s "ik moet hiervan een aantekening maken in je dossier"
-                $ teveelinfo == False
-                jump kantoor
-            elif afgerond < 2 and dag > 10:
-                s "MetaRobbin... ik zie te weinig progressie in je werk... "
-                s "ik zie geen andere optie dan je te ontslaan... "
-                s "het spijt me "
-            else:
-                s "het gaat goed zo MetaRobbin! ik geen geen opmerkingen over je werk"
-                jump kantoor
-
+            jump functioneringsgesprek
         elif dag > 0:
-            #$ rng = 5
-            #$ rng1 = 1
-            if dag == teltimer:
-                $ Places[3].IsActive = True
-            if dag == zoektimer:
-                $ Places[7].IsActive = True
+            # teamoverleg
 
             $ rng = renpy.random.randint (1,10)
             $ rng1 = renpy.random.randint (1,2)
@@ -139,13 +103,12 @@ label oudwerknewstyle:
                 s "welkom allemaal op de teammeeting"
 
                 if rng1 == 1 and teltimer >= 200:
-                     #afdeling zoeken voor x dagen
+                    #afdeling zoeken dicht voor x dagen
                     s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
                     s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
                     s "houdt er rekening mee met je werk"
                     s "Rondvraag..."
                     s "Niemand? okay, dan maar weer aan het werk!"
-                    #$ Places[7] = Place(25,375, "informatiepunt", False)
                     $ Places[7].IsActive = False
                     $ zoektimer = dag + 3
 
@@ -157,7 +120,6 @@ label oudwerknewstyle:
                     s "houdt er rekening mee met je werk"
                     s "Rondvraag..."
                     s "Niemand? okay, dan maar weer aan het werk!"
-                    #$ Places[3] = Place(1650,550, "telefoon", False)
                     $ Places[3].IsActive = False
                     $ teltimer = dag + 3
                     jump kantoor
@@ -170,8 +132,43 @@ label oudwerknewstyle:
 label badending:
     jump oudwerknewstyle
 
-label goedbezig:
-    return
+label functioneringsgesprek:
+    scene baas
+    if budget < kosten and teveelinfo:
+        s "ik heb 2 dingen met je te bespreken"
+        s "De AIVD vraagt zich af waarom je extra informatie hebt opgevraagd over Cor van Hout"
+        s "Deze informatie heb jij niet nodig voor het bepalen van de geldigheid van een diploma..."
+        s "dit levert je een aantekening op in je dossier"
+        s "daarnaast lopen de kosten behoorlijk uit de hand."
+        s "je moet echt snellere beslissingen nemen door minder resources te gebruiken. probeer wat slimmere keuzes te maken"
+        s "gelukkig heb ik nog een beetje budget kunnen krijgen, maar gebruik het niet allemaal gelijk"
+        $ budget += 5
+        $ teveelinfo == False
+        $ aantekening += 1
+        jump kantoor
+    elif budget < kosten:
+        s "we moeten echt bezuinigen..."
+        s "de kosten rijzen de pan uit"
+        s "gelukkig heb ik een beetje extra budget kunnen krijgen... maar die is niet eindeloos"
+        $ budget += 5
+        jump kantoor
+    elif teveelinfo:
+        s "Ik werd gebeld door de AIVD over een informatieverzoek"
+        s "waarom heb je extra informatie opgevraagd?"
+        s "dit is duidelijk niet nodig voor het bepalen van de geldigheid van een diploma..."
+        s "dit kan echt niet MetaRobbin.."
+        s "ik moet hiervan een aantekening maken in je dossier"
+        $ teveelinfo == False
+        jump kantoor
+    elif afgerond < 2 and dag > 10:
+        s "MetaRobbin... ik zie te weinig progressie in je werk... "
+        s "ik zie geen andere optie dan je te ontslaan... "
+        s "het spijt me "
+
+    else:
+        s "het gaat goed zo MetaRobbin! ik geen geen opmerkingen over je werk"
+        jump kantoor
+
 
 
 label koffieapparaat:
@@ -229,6 +226,7 @@ label baas:
                     $ casus1.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus1.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -240,6 +238,7 @@ label baas:
                     $ casus1.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus1.nogniet = False
                     return
         "casus 2" if casus2.cas:
             menu:
@@ -254,6 +253,7 @@ label baas:
                     $ casus2.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus2.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -265,6 +265,7 @@ label baas:
                     $ casus2.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus2.nogniet = False
                     return
         "casus 3" if casus3.cas:
             menu:
@@ -279,6 +280,7 @@ label baas:
                     $ casus3.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus3.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -290,6 +292,7 @@ label baas:
                     $ casus3.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus3.nogniet = False
                     return
         "casus 4" if casus4.cas:
             menu:
@@ -304,6 +307,7 @@ label baas:
                     $ casus4.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus4.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -315,6 +319,7 @@ label baas:
                     $ casus4.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus4.nogniet = False
                     return
         "casus 5" if casus5.cas:
             menu:
@@ -329,6 +334,7 @@ label baas:
                     $ casus5.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus5.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -340,6 +346,7 @@ label baas:
                     $ casus5.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus5.nogniet = False
                     return
         "casus 6" if casus6.cas:
             menu:
@@ -354,6 +361,7 @@ label baas:
                     $ casus6.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus6.nogniet = False
                     return
                 "verzoek toewijzen":
                     s "okay, dan wijzen we dit verzoek toe"
@@ -365,6 +373,7 @@ label baas:
                     $ casus6.cas = False
                     $ afgerond += 1
                     $ open -= 1
+                    $ casus6.nogniet = False
                     return
 
         "terug naar kantoor":
@@ -397,7 +406,12 @@ label archief:
             return
 
 
-label kantoor: #backbone van freeroam
+label kantoor:
+    #backbone van freeroam. kantoormap
+    if dag == teltimer:
+        $ Places[3].IsActive = True
+    if dag == zoektimer:
+        $ Places[7].IsActive = True
     scene black
     while dag < 15:
         while tijd < tijdperdag:
@@ -422,6 +436,31 @@ label kantoor: #backbone van freeroam
 
         call eventpicker
     jump oudwerknewstyle
+
+label randomtoekomstcasus:
+
+    # $ rng = renpy.random.randint (1,3)
+    if toekomstcas == 1:
+        jump toekomstcasus1
+
+    if toekomstcas == 2:
+        jump toekomstcasus2
+
+    if toekomstcas == 3:
+        jump toekomstcasus3
+
+    if drukte > 4:
+        jump toekomstcasus4
+
+    else:
+        if werk:
+            return
+        else:
+            jump toekomsteventpicker
+
+    return
+
+
 
 label toekomstcasus1:
 #TODO rusland casus, 2 russische casussen in bouwen (revocation?)

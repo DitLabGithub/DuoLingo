@@ -1,3 +1,116 @@
+label born:
+
+    show hospital
+    show pa at left
+    show ma at right
+
+    play music "audio/hospital.mp3"
+    n "dit zijn metapapa en metamama."
+    hide pa
+    hide ma
+    pa happy"dat is het liefste kind dat ik ooit heb gezien "
+    ma happy "hmm ja, hoe zullen we hem noemen? "
+    pa "zullen we hem vernoemen naar je grootvader? "
+    ma "ik vind robbertinus wel een beetje een ouderwetse naam, misschien robbert? "
+    pa "wat denk je van robbin?"
+    ma "ja, dat is een leuke naam!"
+    pa n2 "wat hebben we allemaal nodig voor die aangifte?"
+    ma annoyed "even checken... oh wat een ingewikkelde website is dit..."
+    ma "oh vandaag nog niet... want Robbin is vandaag geboren, morgen is het zaterdag, dan kan het ook niet"
+    ma angry "zondag niet... maandag is het toch pasen? en dinsdag bevrijdingsdag? "
+    ma "ehm... het staat er niet bij... "
+    pa angry1 "wat is dat voor onzin... zijn ze dinsdag dicht dan? "
+    ma "weet ik niet... maar het moet wel op tijd anders krijgen we een boete... "
+    pa "kan ik het dan niet online doen?"
+    ma annoyed "nee, niet hier... in sommige gemeentes wel... "
+    pa blush "okay woensdag dus... Wat moet ik meenemen?"
+    ma "ehm hier... je id bewijs, naamkeuze? van te voren... nee dus..  "
+    ma "en verklaring van geboorte.. maar die is ook niet verplicht "
+    pa disgust "wat onduidelijk allemaal... dus alleen mijn id bewijs"
+    ma -annoyed "ja denk ik... "
+    stop music
+    scene
+    show stadhuis
+
+    n "Die woensdag gaat MetaPapa gaat op pad naar het gemeentehuis"
+    n "Metapapa meld zich bij de balie en zegt dat hij zn baby wil aangeven"
+
+    play music "audio/crowd-talking-2.mp3"
+    receptionist "heeft u een afspraak?"
+    pa surprise"nee, kan dat?"
+    n "de receptionist drukt op een aantal knoppen en er komt een kaartje uit, met nummer 89"
+    receptionist "de wachttijd vandaag is wat langer dan normaal wegens paspoorten die ongeldig zijn"
+    pa - surprise "oh, dan wacht ik toch eventjes"
+
+    n "pa gaat zitten en kijkt om zich heen... op zoek naar de nummer melder"
+    show nr13 at truecenter
+    pa "nummer 13... oh dat is wel iets langer dan eventjes"
+    scene black
+    show stadhuis
+    $ n ("Metapapa kijkt op zijn horloge... 9.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("10.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("11.14", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    $ n ("Mededeling: het is nu 12 uur pause, dus de wachttijd wordt iets langer", interact=False)
+    $ renpy.pause (4.0, hard=True)
+    n "12.45"
+    show nr87 at truecenter
+    pa "oh bijna aan de beurt..."
+    $ renpy.pause(2.0, hard=True)
+    show nr88 at truecenter
+    $ renpy.pause(2.0, hard=True)
+    show nr89 at truecenter
+    pa angry1 "eindelijk..."
+    scene
+    show balie
+    stop music
+    "metapapa loopt naar de balie"
+    a "hallo, wat kan ik voor je doen?"
+    pa happy "ik wil mijn zoon aangeven, die is vorige week geboren"
+    a "gefeliciteerd! heeft u een verklaring van geboorte bij u?"
+    pa "ehm nee, er stond op de website dat dat niet hoefde..."
+    a "hmm oh... ja dat is wel wat lastiger dan... "
+    a "momentje... ik print even het formulier uit"
+    a "wilt u dit formulier invullen met blokletters?"
+    pa grin "papier? ehm... natuurlijk"
+    a "heeft u ondertussen u ID bewijs meegenomen"
+    n "metapapa geeft zijn paspoort aan de ambtenaar"
+    a "dank je wel"
+    n "na een tijdje heeft metapapa alle antwoorden ingevuld en geeft het formulier terug"
+    a "dank u wel... "
+    n "de ambtenaar begint met invullen"
+    a "Robbin is dat correct? en vorige week vrijdag geboren?"
+    pa "ja met 2 b's "
+    a "hij is geboren met 2 b's?"
+    pa angry "nee, de naam is met 2 b's"
+    a "ja ik zie het... en metamama is de moeder?"
+    pa - angry "jazeker"
+    a "dan heb ik nu alles in het systeem staan, momentje nog dat krijgt u de geboorteakte"
+    n "metapapa krijgt een papier waarop groot staat geboorteakte en alle gegevens"
+    a "wilt u het allemaal nog even controleren?"
+    pa "oh de naam van Robbin staat fout... "
+    a "oh ik zie het, 2 b's toch? momentje dan print ik een nieuwe geboorteakte uit"
+    n "de nieuwe geboorteakte lijkt allemaal in orde en MetaRobbin is eindelijk ingeschreven en daarmee begint het digitale leven!"
+    scene black
+
+    play music "audio/woo_scary.ogg"
+
+    show text "{b}Life of Meta{/b}" at truecenter with dissolve
+
+    $ renpy.pause(2.0)
+    show metarobbinmedium at top
+    $ renpy.pause(4.0)
+    scene black
+    show ditlablogo at truecenter
+
+    "{b}Een spel ontwikkeld door het Dit-Lab. Een samenwerking tussen de Hanzehogeschool en DUO{/b}"
+    $ renpy.pause(2.0)
+    jump werk
+
+    return
+
 label eventpicker:
 # de eventpicker voor activiteiten na meta's werkdag
 
@@ -14,7 +127,7 @@ label eventpicker:
             if lasteventnr == 1:
 
                 # eerste event voor na werk. uitgaan met de covid pass.
-                    show win
+                    image fraude = im.Scale("win.png", 1920,1080)
 
                     if booster == False:
 
@@ -137,7 +250,7 @@ label eventpicker:
             jump toekomstbaan
 
         else:
-            jump toekomsteventpicker
+            jump oudwerknewstyle
 
 return
 
@@ -325,14 +438,14 @@ label deechteavond:
                     "Na 3 minuten film rennen jullie de bioscoopzaal uit"
                     "Dit is geen goed idee voor een avondje uit met haar"
                     "Volgende keer beter!"
-                    #jump randomcasus
+                    jump oudwerknewstyle
                     return
 
                 "The Titanic":
                     "Hoewel de film haar erg aanspreekt, val jij langzaam in slaap"
                     "Als je wakker wordt is ze verdwenen..."
                     "Volgende keer beter!"
-                    #jump randomcasus
+                    jump oudwerknewstyle
                     return
 
                 "The Postman met Kevin Costner!":
@@ -341,7 +454,7 @@ label deechteavond:
                     "Als ze wakker wordt zegt ze"
                     v "Ik denk dat ik maar ga..."
                     "Volgende keer beter!"
-                    #jump randomcasus
+                    jump oudwerknewstyle
                     return
 
                 "cocktail":
@@ -365,7 +478,7 @@ label deechteavond:
                             "Jullie kijken de film af, maar de sfeer is weg"
                             "Jammer MetaRobbin... Volgende keer beter"
 
-                            #jump randomcasus
+                            jump oudwerknewstyle
                             return
 
 
@@ -408,7 +521,7 @@ label toestemming:
     "Misschien op dezelfde manier..."
     "Je besluit het eventjes te laten bezinken en later met Sylvie te bespreken"
     $ toestemming = True
-    #jump randomcasus
+    jump oudwerknewstyle
     return
 
 label toekomstevent1:
@@ -473,7 +586,7 @@ label toekomstevent5:
                 v "hoe werkt dat eigenlijk die digitale aanmelding?"
                 stop sound
                 "digiale aanmelding"
-                jump randomtoekomstcasus
+                jump oudwerknewstyle
             "nee":
                 n "ah je wilt dezelfde werkwijze hanteren als je vader..."
                 n "verstandig..."

@@ -11,7 +11,7 @@ label mail:
         "inkomende opdrachten":
             menu:
                 "welke zaak wil je openen?"
-                "zaak 1" if casus1.cas == False:
+                "zaak 1" if casus1.cas == False and casus1.nogniet:
                     show dip1
                     n "je krijgt een diploma in handen van aanvrager B. Botje. Hij is van een Nederlandsche school Danzig"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
@@ -20,7 +20,7 @@ label mail:
                     hide dip1
                     $ open += 1
                     return
-                "zaak 2" if casus2.cas == False:
+                "zaak 2" if casus2.cas == False and casus2.nogniet:
                     show dip2
                     n "je krijgt een diploma in handen van aanvrager Yang Xinhai. Je kunt het diploma niet lezen"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
@@ -29,7 +29,7 @@ label mail:
                     hide dip2
                     $ open += 1
                     return
-                "zaak 3" if casus3.cas == False:
+                "zaak 3" if casus3.cas == False and casus3.nogniet:
                     show dip3
                     n "je krijgt een diploma in handen van aanvrager Marco B.. Hij is van Rood, een Nederlandsche school"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
@@ -38,7 +38,7 @@ label mail:
                     hide dip3
                     $ open += 1
                     return
-                "zaak 4" if casus4.cas == False:
+                "zaak 4" if casus4.cas == False and casus4.nogniet:
                     show dip4
                     n "je krijgt een diploma in handen van aanvrager Lin Shanshan. Je kunt het diploma niet lezen"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
@@ -47,7 +47,7 @@ label mail:
                     hide dip4
                     $ open += 1
                     return
-                "zaak 5" if casus5.cas == False:
+                "zaak 5" if casus5.cas == False and casus5.nogniet:
                     show dip5
                     n "je krijgt een diploma in handen van aanvrager Cor van Hout. Het diploma komt van het Flipper college, een Nederlandsche school"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
@@ -56,7 +56,7 @@ label mail:
                     $ open += 1
                     hide dip5
                     return
-                "zaak 6" if casus6.cas == False:
+                "zaak 6" if casus6.cas == False and casus6.nogniet:
                     show dip6
                     n "je krijgt een diploma in handen van aanvrager Willem van Eijk. Hij is van de Driespan en in het Nederlands"
                     n "vanaf nu kun je informatie vergaren over deze aanvraag"
