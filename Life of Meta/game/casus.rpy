@@ -1,4 +1,4 @@
-init -1 python:
+init python:
     class Casus:
         def __init__(self):   #, cas, aanv_bel, aanv_belb, aanv_data, school_bel, school_data, vertaling, besluit, vertklaar, schoolinfo, vert, res_used
             self.cas = False

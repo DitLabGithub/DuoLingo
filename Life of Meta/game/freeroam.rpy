@@ -2,11 +2,15 @@
 #TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
 #TODO plaatjes werk fixen
-#TODO ikomende opdrachten goed afsluiten
+#TODO ikomende opdrachten goed afsluiten, niet meer openen (misschien volgende opdracht kiezen ipv een nummer)
 #TODO nieuwe casussen in het oude stoppen
-#TODO functioneringsgesprek
 #TODO botje over school... school bestaat niet...
 #TODO beperkte tijd voor een open casus...
+#TODO bug: samenvallen van te laat en functioneringsgesprek...
+#TODO bug: vertaling is al te zien in gegevens opvragen...
+#TODO bug: te laat werk niet goed...
+#TODO lifeevents even checken op uitgangen waarheen te jumpen en $ laat = True ertussen proppen
+#TODO bug: informatie weg als zaak gesloten is
 
 label werk:
 # intro naar werk. alleen eerste keer
@@ -88,8 +92,8 @@ label oudwerknewstyle:
             $ tijd = 0
             $ dag += 1
             n "na het ontbijt ga je naar kantoor"
+            jump kantoor
 
-        #if dag == 3 or dag == 6 or dag == 9 or dag == 12:
         if dag > 0 and dag % 3 == 0:
             #functioneringsgesprek
             scene baas
@@ -127,7 +131,7 @@ label oudwerknewstyle:
                 s "het gaat goed zo MetaRobbin! ik geen geen opmerkingen over je werk"
                 jump kantoor
 
-        else:
+        elif dag > 0:
             #$ rng = 5
             #$ rng1 = 1
             if dag == teltimer:
@@ -166,9 +170,9 @@ label oudwerknewstyle:
                     jump kantoor
                 s "vandaag hebben we niets meer te bespreken"
                 jump kantoor
-            else:
-                # teveel gebruik van rss door speler
-                jump kantoor
+        else:
+            # teveel gebruik van rss door speler
+            jump kantoor
 
 label badending:
     jump oudwerknewstyle
@@ -685,6 +689,7 @@ label informatiepunt:
             $ casus1.res_used += 1
             n "het systeem kan deze school niet vinden"
             $ casus1.school_data = "De school kan niet gevonden worden door het systeem"
+            $ casus1.schoolinfo = True
             $ informatie += 1
             return
 

@@ -31,7 +31,7 @@ label eventpicker:
 
                                 "je hebt een fantastisch feestje tot laat in de nacht"
                                 "helaas... kom je veel te laat op je werk"
-
+                                $ laat = True
                                 jump badending
 
                             "je besluit niet te gaan en een nieuwe booster aan te vragen":
@@ -88,7 +88,7 @@ label eventpicker:
 
                                                 "je hebt een fantastisch feestje tot laat in de nacht"
                                                 "helaas... kom je veel te laat op je werk"
-
+                                                $ laat = True
                                                 jump badending
 
                                             "je gaat gewoon bestellen":
@@ -116,7 +116,7 @@ label eventpicker:
 
                         "helaas kom je veel te laat op je werk..."
                         $ lasteventnr += 1
-
+                        $ laat = True
                         jump badending
                     return
 
@@ -200,7 +200,7 @@ label loverevent:
                 "je loopt op haar af en begint te praten"
                 "het wordt een hele leuk avond en je komt veel te laat thuis, maar wel met een telefoonnummer"
                 "helaas kom je wel te laat op je werk..."
-
+                $ laat = True
                 $ lasteventnr += 1
 
                 jump badending
@@ -210,7 +210,7 @@ label loverevent:
                 "je besteld nog een biertje en gaat daarna over op vodka"
                 "het wordt een lange avond en wordt wakker naar de kroeg"
                 "helaas, ga je vandaag je werk niet halen..."
-
+                $ laat = True
                 jump badending
 
             "je besluit maar naar huis te gaan...":
