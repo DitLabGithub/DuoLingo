@@ -135,9 +135,25 @@ label mail:
                     return
 
         "spam":
-            n "moet nog worden uitgewerkt"
-            #TODO spam uitwerken
-            return
+            n "je opent je mail en ziet een aantal berichten"
+            menu:
+                "welke wil je openen?"
+                "bestel nu vi a gra!":
+                    "je klikt het mailtje open en zit een wazig verhaal met resulaten om de beste liefde te bedrijven"
+                    "na al deze onzin te hebben gelezen klik je het mailtje weg"
+                    $ tijd +=1
+                "nu, messen voor de halve prijs!" if mes == False:
+                    "je ziet een mooie aanbieding voor messen in een mooi lederen rol"
+                    "je besluit deze messen te kopen"
+                    $ evil += 1
+                    $ mes = True
+                "gratis nu! een winnen vakantie MetaRobbin!!!":
+                    "serieus? wil je dit mailtje openen? je weet dat er zoiets is als phissing toch?"
+                    "misschien toch even wat bijleren..."
+                    "tis maar goed dat Sylvie dit niet ziet..."
+                    $ tijd += 1
+                "terug naar kantoor":
+                    return
 
         "vertalingen inzien":
             menu:

@@ -80,8 +80,12 @@ default toekomstcas = 1
 default werk = False
 #variabelen voor de toekomstcasussen
 default rus = False
+default rusblock = False
+default rusnot = False
 default hol = False
+default holnot = False
 default apel = False
+default apelnot = False
 #variabelen voor teammeeting:
 default teltimer = 1000
 default zoektimer = 1000
@@ -103,6 +107,7 @@ default informatie = 0
 default foutediplomas = False
 default aantekening = 0
 default evil = 0
+default mes = False
 
 default casus1 = Casus()
 default casus2 = Casus()

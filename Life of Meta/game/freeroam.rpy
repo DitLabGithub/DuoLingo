@@ -2,11 +2,10 @@
 #TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
 #TODO plaatjes werk fixen
-#TODO nieuwe casussen in het oude stoppen
 #TODO beperkte tijd voor een open casus...
 #TODO bug: samenvallen van te laat en functioneringsgesprek...
 #TODO lifeevents even checken op uitgangen waarheen te jumpen en $ laat = True ertussen proppen
-#TODO bug: informatie weg als zaak gesloten is
+#TODO casus rusland (omkoping evil +1)
 
 label werk:
 # intro naar werk. alleen eerste keer
@@ -201,10 +200,34 @@ label toilet:
     scene toilet
     menu:
         "[Location]"
-        "kggrrrrgg":
+        "kggrrrrgg" if evil > 3:
             return
 
         "Doe een plasje en ga terug naar kantoor":
+            return
+
+        "klaag over het toilet":
+            scene baas
+            m "die toilet is echt niet te harden..."
+            s "welke gebruik je dan?"
+            n "je wijst de toilet aan"
+            s "oh... deze zou op slot moeten zijn... er zijn hier vroeger rare dingen gebeurd..."
+            s "wij gebruiken altijd die andere wc... die is iets beter"
+            $ Places[8].IsActive = True
+
+
+label toilet1:
+    scene toilet1
+    menu:
+        "[Location]"
+        "kggrrrrgg" if evil > 3:
+            return
+
+        "Doe een plasje en ga terug naar kantoor":
+            n "dit toilet is veel te relaxed..."
+            n "je pakt rustig je telefoon erbij en begint te gamen"
+            n "na een tijdje... is het genoeg"
+            $ tijd += 1
             return
 
 
@@ -376,6 +399,10 @@ label baas:
                     $ casus6.nogniet = False
                     return
 
+        "aangeven dat je teveel werk hebt":
+            m "Hallo baas, ik kom nauwelijks aan mijn werk toe, ik moet echt werk laten vallen"
+            s "goed dat je dat aangeeft MetaRobbin! wat wil je laten vallen?"
+            jump minderwerk
         "terug naar kantoor":
             return
 
@@ -408,6 +435,8 @@ label archief:
 
 label kantoor:
     #backbone van freeroam. kantoormap
+    if tijdperdag < 1:
+        jump timereset
     if dag == teltimer:
         $ Places[3].IsActive = True
     if dag == zoektimer:
@@ -432,6 +461,8 @@ label kantoor:
                 call baas
             if Location == "informatiepunt":
                 call informatiepunt
+            if Location == "toilet1":
+                call toilet1
             #TODO vrijemiddag
 
         call eventpicker
@@ -492,6 +523,7 @@ label toekomstcasus1:
             $ tijdperdag -= 2
             s "laten we dat maar doen dan. Vanaf nu besteden jullie allemaal 2 tijd per dag aan rusland"
             $ rus = True
+            $ rusblock = True
             jump kantoor
     return
 
@@ -553,51 +585,60 @@ label toekomstcasus3:
     s "nou kregen wij het verzoek om zo snel mogelijk te impact te bepalen van dit virus"
     s "MetaRobbin, wil jij snel uitzoeken of dit impact heeft en wat voor impact?"
     $ apel = True
+    $ tijdperdag -= 1
     jump kantoor
     return
 
-label toekomstcasus4:
+label timereset:
 #te druk op de afdeling
     image drukte = im.Scale("nf drukte.png", 1920,1080)
     show drukte
     play sound "audio/newsflash.mp3"
+    n "nog voor je bent begonnen met de dag voelt het al alsof de dag voorbij is..."
+    n "de drukte wordt te groot met al die zaken die je moet afhandelen"
+    scene baas
+    s "wat wil je doen, MetaRobbin?"
+    s "volgens mij heb je teveel op je bordje liggen..."
+
+label minderwerk:
     menu:
-
-        "De druk op je afdeling wordt veel te hoog... Je moet echt dingen automatisch doen"
-        "beoordeel de russiche scholen automatisch" if rus:
-            "Je laat je afdeling nu 20.000 extra gevallen per maand minder doen"
-            "dat zal de druk op de afdeling zeker verlagen!"
-            $ drukte -=3
+        "Je moet echt dingen los laten... Maar welke?"
+        "laat het russische werk voorlopig maar liggen" if rus:
+            s "okay, dan doen we dat. ik hoop dat het een beetje scheelt"
             $ rus = False
-            if werk:
-                jump randomtoekomstcasus
+            $ rusnot = True
+            if rusblock:
+                $ tijdperdag += 2
+                jump kantoor
             else:
-                jump toekomsteventpicker
+                $ tijdperdag += 1
+                jump kantoor
 
-        "doe apeldoorn automatisch" if apel:
-            "je laat ongeveer 5 sollicitaties per maand geautomatiseerd doen"
-            "dit levert helaas niets op qua drukte van de afdeling"
-            $ apel = False
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
+        "doe de appenpokken maar even niet" if apel:
+            s "sorry, MetaRobbin... dat kan niet... ik moet echt een antwoord hebben op deze vraag"
+            s "of heb je inmiddels een antwoord?"
+            menu:
+                "Wat zijn de gevolgen voor appenpokken?"
+                "Er zijn geen gevolgen":
+                    $ apel = False
+                    $ tijdperdag += 1
+                    jump kantoor
+                "we moeten alle diplomas uit apeldoorn stoppen op dit moment":
+                    $ apel = False
+                    $ apelnot = True
+                    $ tijdperdag += 1
+                    jump kantoor
+                "ik weet het nog niet":
+                    jump minderwerk
 
         "stop met de handmatige afhandeling van de afgekeurde school" if hol:
-            "De afdeling gaat vanaf nu alle diplomas van de afgekeurde shool geautomatiseerd afkeuren"
-            "dit bespaard je een hoop werk... maar je mist enorm veel solliciaties"
-            $ drukte -=2
+            s "okay, dan doen we dat. ik hoop dat het een beetje scheelt"
+            $ tijdperdag -= 1
             $ hol = False
-            if werk:
-                jump randomtoekomstcasus
-            else:
-                jump toekomsteventpicker
+            $ foutediplomas = True
+            $ holnot = True
+            jump kantoor
 
-        "meer informatie over de verschillen":
-            "aantal sollicitaties met een russiche nationaliteit zijn 20.000 per maand, en van Russische scholen 25.000"
-            "vanuit Apeldoorn zijn er 5 sollicitaties per maand en 600 die van een school in Apeldoorn een diploma hebben gekregen"
-            "De afgekeurde school heeft 500.000 diplomas uitgegeven en naar, verwachting, zijn er ca. 100 die ongeldig moeten worden"
-            jump toekomstcasus4
 
     return
 

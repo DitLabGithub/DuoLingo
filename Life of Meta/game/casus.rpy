@@ -64,4 +64,5 @@ init python:
     Places[5] = Place(3000,1200, "kantoor", False)
     Places[6] = Place(1650,75, "baas", True)
     Places[7] = Place(25,375, "informatiepunt", True)
+    Places[8] = Place(1700,700, "toilet1", False)
 

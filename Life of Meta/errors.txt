@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 1066: choice menuitem expects a non-empty block.
-    "Ja":
-         ^
-
-File "game/freeroam.rpy", line 1079: choice menuitem expects a non-empty block.
-    "Ja":
-         ^
+File "game/freeroam.rpy", line 605: choice menuitem expects a non-empty block.
+    "ik weet het nog niet":
+                           ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Tue Sep  6 12:49:05 2022
+Tue Sep 13 12:24:31 2022

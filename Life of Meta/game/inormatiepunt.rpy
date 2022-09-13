@@ -90,12 +90,12 @@ label informatiepunt:
             menu:
                 "wil je meet informatie opvragen over deze persoon?"
                 "Ja":
-                    #TODO meer info... tricky hier...
                     n "je vraagt de gegevens op van de AIVD en krijgt het gehele strafblad te zien van Cor"
                     $ casus5.aanv_data = "Cor heeft een enorm strafblad"
                     $ casus5.res_used += 1
                     $ informatie += 5
                     $ teveelinfo = True
+                    $ evil += 1
                     return
                 "Nee":
                     $ casus5.aanv_data = "Cor heeft een vlag bij zijn naam"

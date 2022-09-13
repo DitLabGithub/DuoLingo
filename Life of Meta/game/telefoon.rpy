@@ -28,18 +28,51 @@ label telefoon:
                             "ik weet waar je woont... "
                             m "wat probeer je te zeggen"
                             "niets, maar ik ga ervan uit dat het diploma verwerkt wordt!"
-                            n "Je hangt snel op en roept Sylvie"
-                            s "wat is er aan de hand?"
-                            m "Deze persoon heeft een vals diploma ingestuurd van een niet bestaande school en nu probeert hij mij te dwingen om het te verwerken."
-                            s "OH? dat is niet best..."
-                            s "ik bel security. Dan kan deze persoon worden opgepakt. gelukkig slaan we alle gespreken op"
-                            s "zullen we deze zaak dan maar afwijzen? "
-                            m "Lijkt me een goed idee, dank je, Baas"
-                            $ casus1.besluit = "je hebt deze zaak afgewezen"
-                            s "geen probleem, MetaRobbin! goed werk!"
-                            $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
-                            $ casus1.aanv_belb = True
-                            return
+                            $ open -= 1
+                            menu:
+                                "wat wil je doen?"
+                                "hang snel op en roep Sylvie":
+                                    n "Je hangt snel op en roept Sylvie"
+                                    s "wat is er aan de hand?"
+                                    m "Deze persoon heeft een vals diploma ingestuurd van een niet bestaande school en nu probeert hij mij te dwingen om het te verwerken."
+                                    s "OH? dat is niet best..."
+                                    s "ik bel security. Dan kan deze persoon worden opgepakt. gelukkig slaan we alle gespreken op"
+                                    s "zullen we deze zaak dan maar afwijzen? "
+                                    m "Lijkt me een goed idee, dank je, Baas"
+                                    $ casus1.besluit = "je hebt deze zaak afgewezen"
+                                    s "geen probleem, MetaRobbin! goed werk!"
+                                    $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
+                                    $ casus1.aanv_belb = True
+                                    return
+                                "verwerk het diploma":
+                                    m "okay, ik regel het"
+                                    $ evil += 1
+                                    n "Je loopt naar Sylvie"
+                                    scene baas
+                                    m "de zaak van B. Botje moet worden toegekend"
+                                    s "okay, dan verwerken we dat"
+                                    $ casus1.besluit = "je hebt deze zaak toegekend"
+                                    s "geen probleem, MetaRobbin! goed werk!"
+                                    $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
+                                    $ casus1.aanv_belb = True
+                                    return
+                                "zeg dat het bij deze is afgemeld en dat Berend moet uitkijken" if evil > 1:
+                                    m "weet je wat Berend..."
+                                    m "wij nemen alle gespreken hier op en deze ook. je bedreigingen hebben totaal geen zin"
+                                    m "maar ik heb je adres... dus binnenkort kun je een bezoekje verwachten"
+                                    m "be prepared"
+                                    $ evil += 2
+                                    scene baas
+                                    m "Je loopt naar Sylvie"
+                                    scene baas
+                                    m "de zaak van B. Botje moet worden afgewezen"
+                                    s "okay, dan verwerken we dat"
+                                    $ casus1.besluit = "je hebt deze zaak afgewezen"
+                                    s "geen probleem, MetaRobbin! goed werk!"
+                                    $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
+                                    $ casus1.aanv_belb = True
+                                    return
+
                         "vraag naar de school" if casus1.schoolinfo == False:
                             m "Welke school heb je gezeten?"
                             "op een school in Zuidlaren, vernoemd naar een Boot van een zeevaarder, Danzig. niet te verwaren met de plaats of de band natuurlijk..."
