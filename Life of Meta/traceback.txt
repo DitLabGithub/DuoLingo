@@ -1,86 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <renpy.display.im.Image object ('toilet1_icon.png') at 0x0000000000d4f040>:
-  File "game/freeroam.rpy", line 451, in script call
+While running game code:
+  File "game/freeroam.rpy", line 488, in script call
     call eventpicker
-  File "game/freeroam.rpy", line 434, in script
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "game/freeroam.rpy", line 434, in <module>
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-OSError: Couldn't find file 'toilet1_icon.png'.
+  File "game/freeroam.rpy", line 473, in script call
+    call toilet
+  File "game/freeroam.rpy", line 221, in script
+    jump Berend
+ScriptError: could not find label 'Berend'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/freeroam.rpy", line 451, in script call
+  File "game/freeroam.rpy", line 488, in script call
     call eventpicker
-  File "game/freeroam.rpy", line 434, in script
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\renpy-8.0.2-sdk\renpy\python.py", line 1052, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/freeroam.rpy", line 434, in <module>
-    $ Location = renpy.call_screen("MapScreen", _layer="screens")
-  File "C:\renpy-8.0.2-sdk\renpy\exports.py", line 3174, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "C:\renpy-8.0.2-sdk\renpy\ui.py", line 299, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\renpy-8.0.2-sdk\renpy\display\core.py", line 3377, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, **kwargs) # type: ignore
-  File "C:\renpy-8.0.2-sdk\renpy\display\core.py", line 3906, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\renpy-8.0.2-sdk\renpy\display\core.py", line 2602, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 495, in renpy.display.render.render_screen
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\screen.py", line 704, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 884, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\behavior.py", line 882, in render
-    rv = super(Button, self).render(width, height, st, at)
-  File "C:\renpy-8.0.2-sdk\renpy\display\layout.py", line 1334, in render
-    surf = render(child,
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 266, in renpy.display.render.render
-  File "C:\renpy-8.0.2-sdk\renpy\display\im.py", line 627, in render
-    return cache.get(self, render=True)
-  File "C:\renpy-8.0.2-sdk\renpy\display\im.py", line 295, in get
-    surf = image.load()
-  File "C:\renpy-8.0.2-sdk\renpy\display\im.py", line 720, in load
-    raise e
-  File "C:\renpy-8.0.2-sdk\renpy\display\im.py", line 685, in load
-    filelike = renpy.loader.load(self.filename)
-  File "C:\renpy-8.0.2-sdk\renpy\loader.py", line 820, in load
-    raise IOError("Couldn't find file '%s'." % name)
-OSError: Couldn't find file 'toilet1_icon.png'.
+  File "game/freeroam.rpy", line 473, in script call
+    call toilet
+  File "game/freeroam.rpy", line 221, in script
+    jump Berend
+  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1974, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\renpy-8.0.2-sdk\renpy\script.py", line 927, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'Berend'.
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.2.22081402
 Life of Meta 1.0
-Tue Sep 13 13:06:48 2022
+Tue Sep 20 12:52:41 2022

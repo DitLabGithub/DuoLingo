@@ -117,8 +117,8 @@ label eventpicker:
     if toestemming == False:
         $ rng1 = renpy.random.randint (1,4)
 
-        if rng1 < 3 or werk:
-            # na alle casussen toestemming op true?
+        if rng1 < 4 or werk:
+
            return
 
         else:
@@ -127,8 +127,8 @@ label eventpicker:
             if lasteventnr == 1:
 
                 # eerste event voor na werk. uitgaan met de covid pass.
-                    image fraude = im.Scale("win.png", 1920,1080)
 
+                    scene win
                     if booster == False:
 
                         "tijd voor een avondje uit..."
@@ -145,7 +145,7 @@ label eventpicker:
                                 "je hebt een fantastisch feestje tot laat in de nacht"
                                 "helaas... kom je veel te laat op je werk"
                                 $ laat = True
-                                jump badending
+                                jump oudwerknewstyle
 
                             "je besluit niet te gaan en een nieuwe booster aan te vragen":
 
@@ -159,7 +159,7 @@ label eventpicker:
 
 
                             "je besluit gewoon te gaan en maar zien hoe het loopt":
-
+                                $ evil += 1
                                 "je gaat de stad in en komt wat vrienden tegen"
                                 "jullie besluiten naar de kroeg te gaan"
                                 "als jullie bij de kroeg komen zie je dat er een corona controle is..."
@@ -174,7 +174,7 @@ label eventpicker:
                                         return
 
                                     "je gaat naar een andere kroeg, zonder corona controle":
-
+                                        $ evil += 1
                                         "je zit in je eentje in de kroeg, want al je vrienden zijn de andere kroeg gegaan"
                                         "na een tijdje verveel je je en besluit je maar naar huis te gaan"
                                         "op tijd naar bed. in ieder geval ben je op tijd op je werk"
@@ -182,7 +182,7 @@ label eventpicker:
                                         jump oudwerknewstyle
 
                                     "je besluit een telefoon van je vriend te gebruiken":
-
+                                        $ evil += 1
                                         "na wat gedoe kom je toch binnen"
                                         "laat het feest maar beginnen!!"
                                         "na een paar uur wil je nog een biertje halen, maar je krijgt een onverwachte controle"
@@ -198,11 +198,11 @@ label eventpicker:
                                                 jump oudwerknewstyle
 
                                             "je vraagt je vriend om een biertje te gaan halen":
-
+                                                $ evil += 1
                                                 "je hebt een fantastisch feestje tot laat in de nacht"
                                                 "helaas... kom je veel te laat op je werk"
                                                 $ laat = True
-                                                jump badending
+                                                jump oudwerknewstyle
 
                                             "je gaat gewoon bestellen":
 
@@ -230,7 +230,7 @@ label eventpicker:
                         "helaas kom je veel te laat op je werk..."
                         $ lasteventnr += 1
                         $ laat = True
-                        jump badending
+                        jump oudwerknewstyle
                     return
 
             if lasteventnr == 2:
@@ -316,7 +316,7 @@ label loverevent:
                 $ laat = True
                 $ lasteventnr += 1
 
-                jump badending
+                jump oudwerknewstyle
 
             "je blijft zitten waar je zit en drinkt nog wat verder":
 
@@ -324,7 +324,7 @@ label loverevent:
                 "het wordt een lange avond en wordt wakker naar de kroeg"
                 "helaas, ga je vandaag je werk niet halen..."
                 $ laat = True
-                jump badending
+                jump oudwerknewstyle
 
             "je besluit maar naar huis te gaan...":
 
@@ -332,7 +332,7 @@ label loverevent:
                 "daarna snel naar huis en komt redelijk vroeg thuis"
                 "de volgende ochtend ben je een beetje brak, maar nog op tijd op het werk"
 
-                #jump randomcasus
+                jump oudwerknewstyle
                 return
 
         return
@@ -349,7 +349,7 @@ label deavond:
             "je praat nog wat langer door aan de telefoon"
             "na een tijdje zegt ze dat ze nu toch echt moet gaan... "
             "dus jullie zeggen elkaar gedag en beloven weer te bellen"
-            #jump randomcasus
+            jump oudwerknewstyle
             return
 
 
@@ -361,7 +361,7 @@ label deavond:
             "je besluit maar naar bed te gaan en je op te maken voor een volgende werkdag"
 
             "als je wakker wordt voel je je wat sip... dit was de kans om haar mee uit te vragen"
-            "terwijl je naar je werk loopt krijg je een berichtje"
+            "als je uit bed stapt krijg je een berichtje en je besluit gelijk terug te bellen"
             v "Hey MetaRobbin, sorry van ons gesprek gister... ik wilde je eigenlijk wat vragen"
             m "ik jou ook eigenlijk, ik bel je gelijk"
 
@@ -374,14 +374,15 @@ label deavond:
 
             $ lasteventnr += 1
 
-            #jump randomcasus
+            jump oudwerknewstyle
             return
 
         "sluit af en ga naar bed":
 
             "jammer... zo wordt het nooit wat natuurlijk..."
+            jump gameover
 
-            scene gameover
+
 
     return
 
@@ -425,8 +426,8 @@ label deechteavond:
                     "Jullie halen nog een biertje... en nog een... en nog een"
                     "Aan het einde van de avond gaan jullie allebei naar je eigen huis"
                     "Helaas metarobbin! Je had een kans... volgende keer beter"
-
-                    #jump randomcasus
+                    $ laat = True
+                    jump oudwerknewstyle
                     return
 
         "In de bioscoop":
@@ -486,7 +487,7 @@ return
 
 label consentual:
 # blockchain voor consentual sex
-
+    #TODO plaatje appartement vriendin
     "Jullie komen bij haar huis aan"
     "Na wat gezoen vraagt ze"
     v "Je gebruikt het toch wel?"
@@ -496,6 +497,7 @@ label consentual:
     m "De wat?"
     v "Gewoon even downloaden, in checken, akkoord geven voor de vrijpartij met toestemming en we kunnen"
     "Je download snel de app, logt in."
+    #TODO mobiel op laten poppen
     "Je ziet gelijk al de vraag staan"
     "Er is iemand de een vrijpartij met je wil, wil jij ook?"
 
@@ -514,6 +516,7 @@ return
 
 label toestemming:
     $ lasteventnr += 1
+    scene bedkamer
     "Eindelijk is het zover, je beland in bed met deze prachtige vrouw"
     "Het begin van een mooie relatie"
     "Die toestemmingsapp zet je op een idee"
@@ -523,6 +526,9 @@ label toestemming:
     $ toestemming = True
     jump oudwerknewstyle
     return
+
+#######################################################################################################################
+# toekomstevents
 
 label toekomstevent1:
     $ toekomstevent +=1

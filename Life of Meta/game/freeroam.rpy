@@ -1,5 +1,3 @@
-#TODO teammeeting als resources te hoog worden, misschien een manier blokken? of geen info meer opvragenvoor 2 dagen wegens drukt?
-#TODO goedbezig label vervangen...
 #TODO liveevents plaatjes fixen
 #TODO plaatjes werk fixen
 #TODO beperkte tijd voor een open casus...
@@ -128,8 +126,6 @@ label oudwerknewstyle:
             # teveel gebruik van rss door speler
             jump kantoor
 
-label badending:
-    jump oudwerknewstyle
 
 label functioneringsgesprek:
     scene baas
@@ -168,8 +164,6 @@ label functioneringsgesprek:
         s "het gaat goed zo MetaRobbin! ik geen geen opmerkingen over je werk"
         jump kantoor
 
-
-
 label koffieapparaat:
     scene koffieapparaat
     n "je loopt naar het [Location]"
@@ -181,15 +175,28 @@ label koffieapparaat:
             return
 
         "neem een dubbele espresso":
-            n "je pakt een dubbele espresso. zoveel caffiene. het lijkt erop of je vandaag meer kunt dan anders!"
-            #TODO max 1 keer per  dag tijd aftrek. misschien na 2 een nahcte niet slapen?
-            $ tijd += -1
-            return
+            if espresso < 2:
+                n "je pakt een dubbele espresso. zoveel caffiene. het lijkt erop of je vandaag meer kunt dan anders!"
+                #TODO max 1 keer per  dag tijd aftrek. misschien na 2 een nahcte niet slapen?
+                $ espresso += 1
+                $ tijd = max(0, tijd-2)
+                return
+            else:
+                n "je pakt een dubbele espresso... maar dit is duidelijk teveel..."
+                n "de rest van de dag ben je enorm hyper en van werken komt er niet veel meer terecht"
+                scene civ
+                n "als je naar huis gaat komt er ook niets van slapen terecht"
+                n "je blijft de hele nacht om Civilazation VI te spelen"
+                n "na het derde spel ga je naar bed"
+                $ laat = True
+                $ espresso = 0
+                jump oudwerknewstyle
+
 
         "neem een latte machiatto met lactosevrije amandelmelk en glutenvrije vanille creme":
             n "Sorry robbin. Maar eh. dit lijkt mij echt niet de bedoeling!"
             $ score = 0
-            jump oudwerknewstyle
+            jump gameover
 
         "neem een warme chocolademelk":
             n "je neemt een warme chocolademelk. heerlijk..."
@@ -200,7 +207,19 @@ label toilet:
     scene toilet
     menu:
         "[Location]"
-        "kggrrrrgg" if evil > 3:
+        "kggrrrrgg" if evil > 5:
+            n "het gaat niet meer zo goed, of wel MetaRobbin"
+            n "je pakt je messen op en wacht tot de volgende persoon op het toilet komt"
+            scene toiletblood
+            n "zodra de persoon binnenkomt, leef je je uit!"
+            n "je voelt je voor het eerst vrij"
+            n "wat een heerlijk gevoel..."
+            menu:
+                "wat wil je doen?"
+                "op zoek naar Berend Botje":
+                    jump Berend
+                "blijf op kantoor":
+                    jump kantoor
             return
 
         "Doe een plasje en ga terug naar kantoor":
@@ -221,7 +240,7 @@ label toilet1:
     menu:
         "[Location]"
         "kggrrrrgg" if evil > 3:
-            return
+            jump toilet
 
         "Doe een plasje en ga terug naar kantoor":
             n "dit toilet is veel te relaxed..."
@@ -599,6 +618,7 @@ label timereset:
     scene baas
     s "wat wil je doen, MetaRobbin?"
     s "volgens mij heb je teveel op je bordje liggen..."
+    jump minderwerk
 
 label minderwerk:
     menu:
@@ -642,8 +662,8 @@ label minderwerk:
 
     return
 
-
-
+######################################################################################################################
+# kantoor scherm
 
 screen MapScreen():
     frame:
@@ -655,7 +675,7 @@ screen MapScreen():
         frame:
             background Solid("#C0C0C0")
             vbox:
-                    text "{color=#000000}Tijd: [dag]:[tijd]/[tijdperdag]{/color}"
+                    text "{color=#000000}Tijd: [dag]:[tijd] ([tijdperdag]){/color}"
                     text "{color=#000000}{b}Zaken{/b}"
                     text "{color=#000000}open: [open]"
                     text "{color=#000000}afgerond: [afgerond]"

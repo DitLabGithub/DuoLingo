@@ -56,7 +56,7 @@ label telefoon:
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
                                     return
-                                "zeg dat het bij deze is afgemeld en dat Berend moet uitkijken" if evil > 1:
+                                "zeg dat het bij deze is afgemeld en dat Berend moet uitkijken" if evil > 0:
                                     m "weet je wat Berend..."
                                     m "wij nemen alle gespreken hier op en deze ook. je bedreigingen hebben totaal geen zin"
                                     m "maar ik heb je adres... dus binnenkort kun je een bezoekje verwachten"

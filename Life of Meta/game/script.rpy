@@ -70,6 +70,8 @@ default lasteventnr = 1
 default toekomstevent = 1
 #score om de toekomst in te gaan
 default toestemming = False
+#espresso score
+default espresso = 0
 #score die bepaald of je maandmederker bent geweest
 default maandmedewerker = False
 #score van de drukte op de afdeling waar je op werkt...
@@ -139,7 +141,7 @@ return
 
 label toekomstbaan:
 #andere baan...
-
+#TODO koppelen aan nieuwe werkwijze
     scene black
     with dissolve
 
@@ -186,6 +188,12 @@ label toekomstbaan:
     $ lasteventnr +=1
     jump randomtoekomstcasus
     return
+
+label gameover:
+    scene gameover
+    pause
+    return
+
 
 # nieuwe werk is TIR aanpassen of handmatig checken
 # x rusland casus (boycot rusland, oplossen in TIR, je mist een belangrijke rus die in nederland zou kunnen werken, oplossen hand, DUO komt in tijdnood)
