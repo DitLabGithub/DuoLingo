@@ -1,8 +1,6 @@
 #TODO liveevents plaatjes fixen
 #TODO plaatjes werk fixen
 #TODO beperkte tijd voor een open casus...
-#TODO bug: samenvallen van te laat en functioneringsgesprek...
-#TODO lifeevents even checken op uitgangen waarheen te jumpen en $ laat = True ertussen proppen
 #TODO casus rusland (omkoping evil +1)
 
 label werk:

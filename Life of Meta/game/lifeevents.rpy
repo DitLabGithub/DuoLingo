@@ -549,6 +549,7 @@ label toekomstevent2:
 
 label toekomstevent3:
     $ toekomstevent +=1
+    scene huis
     "samen een huis komen, hypotheek en al die meuk..."
     jump randomtoekomstcasus
 
@@ -559,7 +560,7 @@ label toekomstevent4:
 
 label toekomstevent5:
     $ toekomstevent +=1
-    #TODO tijdelijk event geboorte plaatjes maken
+    scene huis
     n "metamindy komt naar je toe en zegt"
     v happy "ik moet je wat vertellen"
     m "wat?"
