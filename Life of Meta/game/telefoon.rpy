@@ -43,6 +43,7 @@ label telefoon:
                                     s "geen probleem, MetaRobbin! goed werk!"
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
+                                    $ casus1.cas = False
                                     return
                                 "verwerk het diploma":
                                     m "okay, ik regel het"
@@ -55,6 +56,7 @@ label telefoon:
                                     s "geen probleem, MetaRobbin! goed werk!"
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
+                                    $ casus1.cas = False
                                     return
                                 "zeg dat het bij deze is afgemeld en dat Berend moet uitkijken" if evil > 0:
                                     m "weet je wat Berend..."
@@ -71,6 +73,7 @@ label telefoon:
                                     s "geen probleem, MetaRobbin! goed werk!"
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
+                                    $ casus1.cas = False
                                     return
 
                         "vraag naar de school" if casus1.schoolinfo == False:
@@ -149,7 +152,7 @@ label telefoon:
                     $ casus5.res_used += 1
                     menu:
                         "Wat wil je vragen?"
-                        "vraag naar de school" if school5info:
+                        "vraag naar de school" if casus5.schoolinfo:
                             m "ik zie dat je heb gestudeerd aan Flipper college?"
                             "ja dat klopt"
                             m "in 1981?"
@@ -161,7 +164,7 @@ label telefoon:
                             $ casus5.aanv_bel = "Je hebt Cor gesproken, maar hij hangt steeds op"
                             $ casus5.aanv_belb = True
                             return
-                        "vraag naar de school" if school5info is False:
+                        "vraag naar de school" if casus5.schoolinfo == False:
                             m "ik zie dat je heb gestudeerd aan Flipper college?"
                             "ja dat klopt"
                             m "in 1981?"

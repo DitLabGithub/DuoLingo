@@ -1,7 +1,8 @@
-#TODO liveevents plaatjes fixen
-#TODO plaatjes werk fixen
 #TODO beperkte tijd voor een open casus...
 #TODO casus rusland (omkoping evil +1)
+#TODO jump naar toekomst werk./... dat moet niet dag wordt niet correct afgelsoten
+#TODO casussen uitwerken over hoe het in de toekomst zou gaan
+#TODO plaatjes van nieuwe werkwijze opschuiven zodat sylvie er niet voor staat
 
 label werk:
 # intro naar werk. alleen eerste keer
@@ -65,7 +66,7 @@ label oudwerknewstyle:
 
     else:
         $ rng = renpy.random.randint (1,3)
-        if dag > 3 and rng == 1:
+        if dag > 3 and rng < 4:  #TODO goede verdeling maken
              if toekomstcas == 1:
                 jump toekomstcasus1
              if toekomstcas == 2:
@@ -82,47 +83,50 @@ label oudwerknewstyle:
             $ tijd = 0
             $ dag += 1
             n "na het ontbijt ga je naar kantoor"
-            jump kantoor
 
-        if dag > 0 and dag % 3 == 0:
-            #functioneringsgesprek
-            s "Hallo MetaRobbin, het is tijd voor je periodieke functioneringsgesprek"
-            jump functioneringsgesprek
-        elif dag > 0:
-            # teamoverleg
+            if dag > 0 and dag % 3 == 0:
+                #functioneringsgesprek
+                s "Hallo MetaRobbin, het is tijd voor je periodieke functioneringsgesprek"
+                jump functioneringsgesprek
+            elif dag > 0:
+                # teamoverleg
 
-            $ rng = renpy.random.randint (1,10)
-            $ rng1 = renpy.random.randint (1,2)
-            if rng == 5:
-                scene teammeeting
-                s "welkom allemaal op de teammeeting"
+                $ rng = renpy.random.randint (1,10)
+                $ rng1 = renpy.random.randint (1,2)
+                if rng == 5:
+                    scene teammeeting
+                    s "welkom allemaal op de teammeeting"
 
-                if rng1 == 1 and teltimer >= 200:
-                    #afdeling zoeken dicht voor x dagen
-                    s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
-                    s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
-                    s "houdt er rekening mee met je werk"
-                    s "Rondvraag..."
-                    s "Niemand? okay, dan maar weer aan het werk!"
-                    $ Places[7].IsActive = False
-                    $ zoektimer = dag + 3
+                    if rng1 == 1 and teltimer >= 200:
+                        #afdeling zoeken dicht voor x dagen
+                        s "we hebben te horen gekregen dat de informatiediensten afdeling het werk niet meer aan kan"
+                        s "het gevolg is dat vanaf morgen ze even geen nieuwe opdrachten meer oppakken"
+                        s "houdt er rekening mee met je werk"
+                        s "Rondvraag..."
+                        s "Niemand? okay, dan maar weer aan het werk!"
+                        $ Places[7].IsActive = False
+                        $ zoektimer = dag + 3
 
+                        jump kantoor
+                    elif rng1 == 2 and teltimer >= 200:
+                        #telefoon is dicht voor x dagen
+                        s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
+                        s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
+                        s "houdt er rekening mee met je werk"
+                        s "Rondvraag..."
+                        s "Niemand? okay, dan maar weer aan het werk!"
+                        $ Places[3].IsActive = False
+                        $ teltimer = dag + 3
+                        jump kantoor
+                    else:
+                        n "na een half uur..."
+                        s "vandaag hebben we niets meer te bespreken"
+                        jump kantoor
+                else:
                     jump kantoor
-                elif rng1 == 2 and teltimer >= 200:
-                    #telefoon is dicht voor x dagen
-                    s "we hebben te horen gekregen dat de telefoonlijnen in onderhoud gaan"
-                    s "het gevolg is dat vanaf morgen je niet kunt bellen voor een paar dagen"
-                    s "houdt er rekening mee met je werk"
-                    s "Rondvraag..."
-                    s "Niemand? okay, dan maar weer aan het werk!"
-                    $ Places[3].IsActive = False
-                    $ teltimer = dag + 3
-                    jump kantoor
-                s "vandaag hebben we niets meer te bespreken"
+            else:
+                # teveel gebruik van rss door speler
                 jump kantoor
-        else:
-            # teveel gebruik van rss door speler
-            jump kantoor
 
 
 label functioneringsgesprek:

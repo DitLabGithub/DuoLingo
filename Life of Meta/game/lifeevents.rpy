@@ -247,7 +247,9 @@ label eventpicker:
     else:
 
         if lasteventnr == 5 or werk:
-            jump toekomstbaan
+            jump oudwerknewstyle
+            #jump toekomstbaan
+            # hier moet de verwijzing naar de toekomst gaan komen.
 
         else:
             jump oudwerknewstyle

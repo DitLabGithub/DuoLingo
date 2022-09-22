@@ -45,6 +45,9 @@ define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ff
 image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
 define a = Character(_("Ambtenaar"), image="sylvie", color="#c8ffc8")
 image side sylvie = "sylvie blue normal.png"
+image side sylvie surprised = "sylvie blue surprised.png"
+image side sylvie giggle = "sylvie blue giggle.png"
+image side sylvie smile = "sylvie blue smile.png"
 
 #narrator
 define n = Character(None, what_style="centered_text", window_style="centered_window", window_xfill=True, window_yfill=True, window_background="images/n_bg.png", what_color="#ddd")
@@ -133,57 +136,50 @@ label Alleenwerk:
 
 
 label test:
-    jump toekomstevent5
+    jump toekomstbaan
 
 return
 
 
 
 label toekomstbaan:
-#andere baan...
 #TODO koppelen aan nieuwe werkwijze
-    scene black
+    scene baas
     with dissolve
 
     n "Je hebt het verder uitgedacht en denkt dat het werk een stuk simpeler kan worden door een blockchain"
     n "Zodra je op het werk bent plan je een overleg in met Sylvie"
     m "Hoi Sylvie, ik heb een idee. Wil je dat met mij bespreken?"
     s "Natuurlijk MetaRobbin, zeg het maar!"
-    m "Je weet dat we iedere keer die diplomas checken, terwijl veel van dat check werk makkelijker kan."
-    m "Als we die diplomas opvragen, via een wallet, die de personen hebben gekregen van de school."
-    m "Dan hoeven we een heleboel diplomas niet meer te controleren, alleen de moeilijke gevallen waarbij iemand de boel probeert te flessen"
-    s "Ik snapte niet helemaal hoe dat ging... maar denk je dat dit kan werken?"
+    m "Je weet dat we iedere keer die diplomas controleren, terwijl veel van dat werk makkelijker kan."
+    m "Wat nou als we alle diploma's die uitgegeven worden door een betrouwbare school goed keuren"
+    m "Dan hoeven we een heleboel diplomas niet meer te controleren, alleen de moeilijke gevallen waarbij iemand de boel probeert te flessen of de gevallen waarbij we de school niet kennen"
+    m "De persoon krijgt dan het diploma in zijn prive wallet."
+    m "en als ze die dan nodig hebben, versturen ze die gewoon, of eigenlijk alleen datgene wat nodig is"
+    s surprised "Ik snapte niet helemaal hoe dat ging... maar denk je dat dit kan werken?"
     m "Ja, ik kreeg het idee van de consentual-app"
-    m "Ehm... "
-    #TODO andere metarobbin plaatje
     n "MetaRobbin kleurt gelijk rood..."
-    s "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
-    m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk aan ons."
-    s "Oh dat is slim... Wil je dat verder uitwerken? Dan hoef je de komende tijd geen diploma's te checken. "
-
-    n "Na een paar weken heb je het idee wat verder uitgewerkt."
-    n "Als mensen nu digitaal hun diploma opsturen via een wallet, dan we checken gelijk of de school door ons geregistreerd is betrouwbare school."
-    n "Het enige wat we dan moeten doen is een keuze maken tussen een register bijwerken of de lastige gevallen handmatig afhandelen"
-
-    m "Zullen we een voorbeeld doen, Sylvie?"
-    s "Ja, graag!"
-    m "Weet je nog dat gekochte diploma? waarbij ik werd bedreigd?"
-    s "Ja, natuurlijk... wat een ellende was dat..."
-    m "Kijk, we vragen niet meer om een copy van het diploma, maar alle diplomas van een persoon staan in z'n wallet"
-    s "Net zoiets als die consentual app?"
-    m "Precies zo.Op het moment dat iemand een diploma krijgt, dan kun je dat diploma in je wallet laden en kun je hem versturen."
-    m "wij krijgen dan die copy van het diploma bij ons binnen en zien gelijk of het diploma geldig is."
-    m "we moeten hiervoor wel een registratie bijhouden van betrouwbare scholen."
-    m "Maar iedere keer als er een diploma binnenkomt van een school die niet in de lijst staat moeten we daarover een beslissing nemen"
-    s "dus als er een onbekende school binnenkomt, moeten we onderzoeken of het een echte school is?"
-    m "Precies dat!"
-    s "Oh als dat alles is, gaat dat ons een een hoop werk schelen"
-    s "Goed gedaan MetaRobbin!"
-    s "Het lijkt mij een goed idee als jij die afdeling gaat aansturen! Lijkt je dat wat?"
-    m "Oh echt? Dat is fantastisch!"
-
-    n "De volgende dag ga je gelijk aan de slag, langzamerhand moet het register gevuld worden, maar gelukkig heb je een lijst met betrouwbare scholen"
-    n "Deze diplomas gaan vanaf nu automatisch door"
+    s giggle "Oh ja, die ken ik wel... Dat is toch waar je toestemming geeft?"
+    m "Ja die! Nou precies zo eigenlijk, maar in plaats van toestemming, geef je je diploma tijdelijk aan iemand anders."
+    scene wallet1
+    m "kijk zo werkt het ongeveer. zodra je slaagt voor je diploma kun je je diploma ophalen van de school"
+    m "je bent dan zelf eigenaar van je diploma en mag ermee doen wat je wilt."
+    m "wij noemen dat een verifiable credential"
+    m "maar als je hem nodig hebt, kun je die tijdelijk aan iemand laten zien"
+    s surprised "maar dat vertrouwt nog niemand?"
+    scene wallet2
+    m "maar daarvoor zijn wij er nog"
+    m "wij gaan namelijk bijhouden wie betrouwbaar zijn en diplomas mogen uitgeven in een zogenaamd trusted issuer register"
+    m "dus deze school is een trusted issuer"
+    s - surprised "ah dat is handig... "
+    s "maar hoe werkt het dan als je je diploma wilt laten zien?"
+    scene wallet3
+    m "kijk, als een bedrijf wil weten wat deze persoon hebt gedaan, dan geeft de persoon toestemming"
+    m "in dit geval van zijn afstudeerrichting, dus ook niet het hele diploma"
+    s "dus alleen wat dat bedrijf nodig heeft?"
+    m "ja, en wat de persoon wil laten zien natuurlijk"
+    s smile "oh wat een goed idee MetaRobbin!"
+    s "wat voor werk hebben we dan nog over?"
 
     $ lasteventnr +=1
     jump randomtoekomstcasus
@@ -200,9 +196,6 @@ label gameover:
 # x appenpokken in apeldoorn en we willen niemand uit apeldoorn accepteren (handmatig is enige oplossing)
 # x in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
 # latenz ien verschil tussen oude casussen...
-
-
-
 
 
 # bewaren van resultaten vna oude casus icm de nieuwe zien

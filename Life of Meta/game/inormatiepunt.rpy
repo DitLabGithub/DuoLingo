@@ -75,6 +75,7 @@ label informatiepunt:
         "Flipper College van zaak 5" if casus5.cas:
             $ tijd += 1
             $ casus5.res_used += 1
+            $ casus5.schoolinfo = True
             n "De school bestaat, maar kan het diploma niet hebben uitgegeven"
             $ casus5.school_data = "De school bestaat, maar niet tijdens het moment van diploma uitgifte"
             $ informatie += 1

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/freeroam.rpy", line 605: choice menuitem expects a non-empty block.
-    "ik weet het nog niet":
-                           ^
+File "game/script.rpy", line 162: end of line expected.
+    scene wallet1.bmp
+                 ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Tue Sep 13 12:24:31 2022
+Thu Sep 22 14:34:50 2022
