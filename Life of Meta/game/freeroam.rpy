@@ -65,8 +65,8 @@ label oudwerknewstyle:
             jump kantoor
 
     else:
-        $ rng = renpy.random.randint (1,3)
-        if dag > 3 and rng < 4:  #TODO goede verdeling maken
+        $ rng = renpy.random.randint (1,5)
+        if dag > 3 and rng == 1:  #TODO goede verdeling maken
              if toekomstcas == 1:
                 jump toekomstcasus1
              if toekomstcas == 2:
