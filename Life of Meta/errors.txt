@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 162: end of line expected.
-    scene wallet1.bmp
-                 ^
+File "game/lifeevents.rpy", line 67: end of line expected.
+    show counter.png
+                ^
 
 Ren'Py Version: Ren'Py 8.0.2.22081402
-Thu Sep 22 14:34:50 2022
+Wed Nov 30 15:18:40 2022

@@ -1,6 +1,6 @@
 label born:
 
-    show hospital
+    scene ziekenhuis
     show pa at left
     show ma at right
 
@@ -539,7 +539,7 @@ label toekomstevent1:
     v "ja, maar eerst mijn diploma ophalen!"
     v "ik heb de wallet al gedownload... nu nog het diploma"
     "casus van wallet uit diplomaregister"
-    jump randomtoekomstcasus
+    jump kantoor
 
 label toekomstevent2:
     $ toekomstevent +=1
@@ -572,7 +572,7 @@ label toekomstevent5:
     v "ja..."
     m "wat fantastisch!"
     n "aangezien we geen maanden gaan wachten, springen we wat voorwaarts in de tijd"
-    show hospital
+    scene ziekenhuis
     play sound "audio/hospital.mp3"
     m "dat is het liefste kind dat ik ooit heb gezien "
     v happy "hmm ja, hoe zullen we hem noemen? "
@@ -580,7 +580,7 @@ label toekomstevent5:
 
     $ kidname = renpy.input("welke naam wil je het kind geven?", length=32)
     if not kidname:
-        $ kidname = "kiddo"
+        $ kidname = "MetaKiddo"
     v "[kidname]... ja dat is een leuke naam!"
     m "ugh... weet je nog wat pa vertelde over mijn aanmelding?"
     v annoyed "ja... dat weet ik nog... laten we hopen dat het tegenwoordig wat makkelijker gaat... die lange wachttijden"
@@ -631,8 +631,8 @@ label toekomstevent5:
                 show balie
                 n "ben je er al flauw van?"
                 n "laten we maar aannemen dat de aanmelding goed is gegaan... "
-                jump randomtoekomstcasus
-    jump randomtoekomstcasus
+                jump kantoor
+    jump kantoor
 
 label toekomstevent6:
     $ toekomstevent +=1

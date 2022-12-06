@@ -7,15 +7,12 @@
 label werk:
 # intro naar werk. alleen eerste keer
     stop music
-    scene duogroot
+    scene duo
     with fade
 
     "Je eerste werkdag bij DUO start vandaag"
 
     "In de verte zie je het DUO gebouw naderen"
-
-    scene duoingang
-    with fade
 
     "Na een rondleiding en lunch is het tijd om je manager te ontmoeten"
     "Je wordt begroet door je manager, Sylvie"
@@ -202,6 +199,9 @@ label koffieapparaat:
 
         "neem een warme chocolademelk":
             n "je neemt een warme chocolademelk. heerlijk..."
+            return
+
+        "terug naar kantoor":
             return
 
 

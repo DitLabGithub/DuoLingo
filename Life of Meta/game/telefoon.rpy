@@ -44,6 +44,7 @@ label telefoon:
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
                                     $ casus1.cas = False
+                                    $ casus1.nogniet = False
                                     return
                                 "verwerk het diploma":
                                     m "okay, ik regel het"
@@ -57,6 +58,7 @@ label telefoon:
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
                                     $ casus1.cas = False
+                                    $ casus1.nogniet = False
                                     return
                                 "zeg dat het bij deze is afgemeld en dat Berend moet uitkijken" if evil > 0:
                                     m "weet je wat Berend..."
@@ -74,6 +76,7 @@ label telefoon:
                                     $ casus1.aanv_bel = "je hebt gebeld en bent bedreigd door de aanvrager"
                                     $ casus1.aanv_belb = True
                                     $ casus1.cas = False
+                                    $ casus1.nogniet = False
                                     return
 
                         "vraag naar de school" if casus1.schoolinfo == False:

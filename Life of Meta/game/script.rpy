@@ -10,6 +10,7 @@ define m = Character(_("MetaRobbin"), color="#c8c8ff")
 define kid = Character(_("[kidname]"), color="#c8c8ff")
 
 #metamindy en metamama
+#TODO plaatje metamama
 define v = Character(_("MetaMindy"), image="mindy", color="#a23af9")
 define ma = Character(_("MetaMama"), image="mindy", color="DA0CD1")
 image side mindy =  im.Scale("mindy.png", 400, 700)
@@ -41,6 +42,7 @@ image side metapapa angry1 = im.Scale("s1-tsundere.png", 400, 700)
 
 
 #receptionist en Sylvie
+#TODO receptionist
 define receptionist = Character(_("receptionist"), image="sylvie1", color="#c8ffc8")
 image side sylvie1 = im.Scale("sylvie green normal.png", 400, 700)
 define a = Character(_("Ambtenaar"), image="sylvie", color="#c8ffc8")
@@ -54,12 +56,13 @@ define n = Character(None, what_style="centered_text", window_style="centered_wi
 # define text = Character(None, what_style="centered_text", window_style="centered_window", window_xfill=True, window_yfill=True, window_background="images/n_bg.png", what_color="#ddd")
 
 #images
-image hospital = im.Scale("ziekenhuis.jpg", 1920,1080)
-image stadhuis = im.Scale("Stadhuis.jpg", 1920,1080)
+image balie = im.Scale("counter.png", 1920,1080)
+## image stadhuis = im.Scale("Stadhuis.jpg", 1920,1080)
 image ditlablogo = im.Scale("46.png", 1920,500)
 image ma = im.Scale("mindy.png", 400, 700)
 image pa = im.Scale("s1-normal.png", 400, 700)
-image balie = im.Scale("balie.png", 1920,1080)
+
+#image balie = im.Scale("balie.png", 1920,1080)
 
 #random score die overal gebruikt kan worden
 default rng = 1
@@ -166,9 +169,9 @@ label toekomstbaan:
     m "je bent dan zelf eigenaar van je diploma en mag ermee doen wat je wilt."
     m "wij noemen dat een verifiable credential"
     m "maar als je hem nodig hebt, kun je die tijdelijk aan iemand laten zien"
-    s surprised "maar dat vertrouwt nog niemand?"
+    s surprised "maar wie vertrouwt dat dan? je kunt toch zelf ook gewoon iets in die wallet zetten?"
     scene wallet2
-    m "maar daarvoor zijn wij er nog"
+    m "ja dat kan wel, maar dat heeft niet dezelfde waarde als ons diploma"
     m "wij gaan namelijk bijhouden wie betrouwbaar zijn en diplomas mogen uitgeven in een zogenaamd trusted issuer register"
     m "dus deze school is een trusted issuer"
     s - surprised "ah dat is handig... "
@@ -176,10 +179,18 @@ label toekomstbaan:
     scene wallet3
     m "kijk, als een bedrijf wil weten wat deze persoon hebt gedaan, dan geeft de persoon toestemming"
     m "in dit geval van zijn afstudeerrichting, dus ook niet het hele diploma"
-    s "dus alleen wat dat bedrijf nodig heeft?"
-    m "ja, en wat de persoon wil laten zien natuurlijk"
+    m "en het bedrijf weet dat het kan vertrouwen op de gegevens omdat het gekoppeld is aan een Trusted Issuer"
+    s "maar die wallet? hoe werkt dat dan?"
+    #TODO scene phonewallet
+    m "kijk, hier zie je wat de gegevens zijn van die persoon van een diploma"
+    m "als je een verzoek krijgt van dat bedrijf, kun je gewoon uitvinken wat je niet wilt laten zien"
+    m "en vervolgens stuur je het op naar het bedrijf en kunnen zij er voor een bepaalde periode je gegevens inzien"
     s smile "oh wat een goed idee MetaRobbin!"
     s "wat voor werk hebben we dan nog over?"
+    m "wij moeten beoordelen of scholen betrouwbaar zijn."
+    m "als we eerst beginnen met publieke scholen uit nederland, dan hebben we het grootste gedeelte van ons register al klaar"
+    m "voor de buitenlandse scholen moet we nog wat bedenken..."
+
 
     $ lasteventnr +=1
     jump randomtoekomstcasus
@@ -191,17 +202,17 @@ label gameover:
     return
 
 
-# nieuwe werk is TIR aanpassen of handmatig checken
-# x rusland casus (boycot rusland, oplossen in TIR, je mist een belangrijke rus die in nederland zou kunnen werken, oplossen hand, DUO komt in tijdnood)
-# x appenpokken in apeldoorn en we willen niemand uit apeldoorn accepteren (handmatig is enige oplossing)
-# x in holland casus, (heel inholland of 60 diplomas die ongeldig zijn of combi)
-# latenz ien verschil tussen oude casussen...
 
-
-# bewaren van resultaten vna oude casus icm de nieuwe zien
-# flowchart
-# diploma via email
-# diploma legaliseren vragen naar casussen
 
 label credits:
     "sounds from soundjay.com and pixabay.com"
+
+#TODO Plaatjes niet goed
+#TODO      Vertaling verduidelijking
+#TODO      Functioneren ipv te laat...
+#TODO      Achtergrond bij datenight
+#TODO      Bij zaken opened terug
+#TODO      Vertaling dag te laat openen
+#TODO      Leukv tikfout
+#TODO      Teveel werk bij te weinig casussen
+#TODO      Einde casussen...

@@ -1,19 +1,19 @@
 init python:
     class Casus:
         def __init__(self):   #, cas, aanv_bel, aanv_belb, aanv_data, school_bel, school_data, vertaling, besluit, vertklaar, schoolinfo, vert, res_used
-            self.cas = False
-            self.aanv_bel = "De aanvrager is nog niet gebeld"
-            self.aanv_belb = False
-            self.aanv_data = "Er zijn nog geen gegevens opgevraagd van de aanvrager"
-            self.school_bel = "De school is nog niet gebeld"
-            self.school_data = "Er zijn nog geen extra gegevens bekend van de school"
-            self.vertaling = "Dit diploma is nog niet vertaald"
-            self.besluit = "Je hebt nog geen besluit genomen"
-            self.nogniet = True
-            self.vertklaar = 100
-            self.schoolinfo = False
-            self.vert = False
-            self.res_used = 0
+            self.cas = False    ## casus is gesloten (false) of open (true)
+            self.aanv_bel = "De aanvrager is nog niet gebeld"  ##aanvrager notitie voor het bellen
+            self.aanv_belb = False ##aanvrager is gebeld of niet
+            self.aanv_data = "Er zijn nog geen gegevens opgevraagd van de aanvrager"  ##aanvrager notitie over opvragen gegevens
+            self.school_bel = "De school is nog niet gebeld" ##school notitie bij bellen
+            self.school_data = "Er zijn nog geen extra gegevens bekend van de school" ##school notitie bij informatie aanvraag
+            self.vertaling = "Dit diploma is nog niet vertaald" ##vertalings notitie van diploma
+            self.besluit = "Je hebt nog geen besluit genomen" ##besluit genomen of niet
+            self.nogniet = True  #als false, dan is de casus afgesloten en komt niet meer terug
+            self.vertklaar = 1000 #optie voor vertaling klaar. 100 is extreem nummer, wordt naar dag berekend als speler op vertaling aanvrager klikt
+            self.schoolinfo = False #schoolinfo is aangevraagd bij true
+            self.vert = False #vertaling is aangevraagd bij true
+            self.res_used = 0 #resources gebruikt. wordt gebruikt voor totale berekening
 
 #    self.started_translating = None
 #    self.saw_translation = False
