@@ -118,7 +118,7 @@ label eventpicker:
         $ rng1 = renpy.random.randint (1,4)
 
         if rng1 < 4 or werk:
-
+           jump oudwerknewstyle
            return
 
         else:

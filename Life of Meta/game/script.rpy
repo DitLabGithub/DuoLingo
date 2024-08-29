@@ -41,6 +41,7 @@ image side metapapa angry1 = im.Scale("s1-tsundere.png", 400, 700)
 
 #duo
 #TODO duogebouw als afbeelding
+#TODO duogebouw als afbeelding
 define duo = Character(_("Ambtenaar"), image="sylvie", color="#c8ffc8")
 
 #receptionist en Sylvie
