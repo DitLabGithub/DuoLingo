@@ -1,0 +1,12 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+The label cafmenu is defined twice, at File "game/script.rpy", line 214:
+label cafmenu:
+and File "game/script.rpy", line 215:
+    menu cafmenu:
+
+
+Ren'Py Version: Ren'Py 8.0.2.22081402
+Mon Sep  9 16:05:32 2024

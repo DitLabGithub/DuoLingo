@@ -1,0 +1,22 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 195, in script
+    jump endquiz
+ScriptError: could not find label 'endquiz'.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 195, in script
+    jump endquiz
+  File "C:\renpy-8.0.2-sdk\renpy\ast.py", line 1974, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\renpy-8.0.2-sdk\renpy\script.py", line 927, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'endquiz'.
+
+Windows-10-10.0.22621 AMD64
+Ren'Py 8.0.2.22081402
+ExamDayDisaster 1.0
+Mon Sep  9 16:46:14 2024
