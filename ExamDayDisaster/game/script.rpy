@@ -11,6 +11,7 @@ image side emma angry = im.Scale("emmanagry.png", 400, 700)
 
 define N = Character (None)
 
+define un = Character(_("???"), image="anna")
 define A = Character(_("Anna"), image="anna")
 image side anna = im.Scale("annacolor1.png", 400, 700)
 
@@ -32,7 +33,7 @@ image side worker = im.Scale("slominoworker.png", 400, 700)
 
 define card_reader = Character("Card Reader")
 
-define un = Character(_("???"), image="anna")
+
 
 #narrator
 # define n = Character(None, what_style="centered_text", window_style="centered_window")
